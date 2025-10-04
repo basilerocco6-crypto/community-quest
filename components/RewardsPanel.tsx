@@ -32,17 +32,15 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
     <Sheet.Root open={isOpen} onOpenChange={onClose}>
       <Sheet.Content className="max-h-[90vh] max-w-5xl">
         {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <Sheet.Title className="text-2xl font-bold">Your Rewards</Sheet.Title>
-            <Sheet.Description className="text-sm text-gray-500 mt-1">
-              Level {user.currentLevel} • {user.totalPoints} points
-            </Sheet.Description>
-          </div>
-          <Sheet.Close />
+        <div className="flex flex-col items-center text-center mb-8 relative">
+          <Sheet.Close className="absolute top-0 right-0" />
+          <Sheet.Title className="text-2xl font-bold mb-2">Your Rewards</Sheet.Title>
+          <Sheet.Description className="text-sm text-gray-500">
+            Level {user.currentLevel} • {user.totalPoints} points
+          </Sheet.Description>
         </div>
 
-        <div className="overflow-y-auto max-h-[70vh] space-y-4">
+        <div className="overflow-y-auto max-h-[70vh] space-y-6">
           {/* Current Benefits - Compact */}
           {currentDiscount > 0 && (
             <Card variant="surface" className="border-l-4 border-l-blue-500">
@@ -63,7 +61,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
           )}
 
           {/* Rewards Grid - Side by Side */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Available Rewards */}
             <Card variant="surface" className="h-fit">
               <div className="p-4">
@@ -151,9 +149,9 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
         </div>
 
         {/* Footer */}
-        <div className="mt-6 pt-4 border-t border-border">
-          <div className="flex justify-between items-center">
-            <Text size="1" color="gray" className="flex-1">
+        <div className="mt-8 pt-6 border-t border-border">
+          <div className="flex flex-col items-center text-center space-y-4">
+            <Text size="1" color="gray" className="max-w-md">
               Earn more points by participating in community activities to unlock additional rewards.
             </Text>
             <Button onClick={onClose} size="2" variant="ghost">
