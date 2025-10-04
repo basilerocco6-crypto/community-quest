@@ -32,19 +32,7 @@ export default function CommunityQuest() {
       <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-                <div className="flex items-center">
-                  <Heading 
-                    size="4" 
-                    className="text-foreground font-bold"
-                    style={{
-                      textShadow: '2px 2px 4px rgba(0,0,0,0.3), 1px 1px 2px rgba(0,0,0,0.2)',
-                      color: '#1F2937'
-                    }}
-                  >
-                    Community Quest
-                  </Heading>
-                </div>
+            {/* Logo - Removed for app store readiness */}
 
             {/* Search */}
             <div className="flex-1 max-w-lg mx-8">
@@ -83,9 +71,7 @@ export default function CommunityQuest() {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
                   </svg>
                 </IconButton>
-                <span className="absolute -top-1 -right-1 bg-red-500 text-[10px] font-bold rounded-full min-w-[16px] h-[16px] flex items-center justify-center shadow-lg border border-black" style={{color: '#000000'}}>
-                  34
-                </span>
+                {/* No notification badge for fresh installation */}
               </div>
 
               <Avatar 
@@ -228,12 +214,7 @@ export default function CommunityQuest() {
               />
             </div>
 
-        {/* Last Updated */}
-        <div className="mt-8 text-center">
-          <Text size="2" color="gray">
-            Last updated: Feb 27th 2024 10:01am
-          </Text>
-        </div>
+        {/* Last Updated - Removed for app store readiness */}
       </main>
 
       {/* Level Breakdown Modal */}
