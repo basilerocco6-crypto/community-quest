@@ -64,7 +64,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Available Rewards */}
             <Card variant="surface" className="h-fit">
-              <div className="p-6">
+              <div className="p-8">
                 <Heading size="4" className="mb-4 font-semibold flex items-center gap-2">
                   <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
@@ -107,7 +107,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
 
             {/* Claimed Rewards */}
             <Card variant="surface" className="h-fit">
-              <div className="p-6">
+              <div className="p-8">
                 <Heading size="4" className="mb-4 font-semibold flex items-center gap-2">
                   <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
