@@ -42,7 +42,7 @@ export default function CommunityQuest() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
                 </TextField.Slot>
-                <TextField.Input placeholder="Search members..." className="hidden sm:block" />
+                <TextField.Input placeholder="Search members..." className="hidden lg:block" />
                 <TextField.Input placeholder="Search..." className="block sm:hidden" />
               </TextField.Root>
             </div>
@@ -101,7 +101,7 @@ export default function CommunityQuest() {
                         {/* Inner ring */}
                         <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
                           {/* Custom large avatar */}
-                          <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                          <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
                             {MOCK_USER.avatar ? (
                               <img 
                                 src={MOCK_USER.avatar} 
@@ -112,38 +112,38 @@ export default function CommunityQuest() {
                               <img 
                                 src="/construction-illo.svg" 
                                 alt="Construction placeholder"
-                                className="w-16 h-16 sm:w-18 sm:h-18 lg:w-20 lg:h-20"
+                                className="w-16 h-16 lg:w-20 lg:h-20"
                               />
                             )}
                           </div>
                         </div>
                       </div>
                       {/* Level Badge - positioned like Skool with better visibility */}
-                      <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center border-3 shadow-xl" style={{backgroundColor: '#1754D8', borderColor: 'white'}}>
-                        <span className="text-lg sm:text-xl font-extrabold" style={{color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>{MOCK_USER.currentLevel}</span>
+                      <div className="absolute -bottom-1 -right-1 lg:-bottom-2 lg:-right-2 w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-3 shadow-xl" style={{backgroundColor: '#1754D8', borderColor: 'white'}}>
+                        <span className="text-lg lg:text-xl font-extrabold" style={{color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>{MOCK_USER.currentLevel}</span>
                       </div>
                     </div>
 
                     {/* User Info */}
                     <div className="flex flex-col gap-2 text-center">
-                      <div className="text-xl sm:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.name}</div>
-                      <div className="text-base sm:text-lg" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
-                      <div className="text-xs sm:text-sm" style={{color: '#4B5563'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
+                      <div className="text-xl lg:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.name}</div>
+                      <div className="text-base lg:text-lg" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
+                      <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
                     </div>
 
                     {/* Stats Below Avatar - Horizontal Layout */}
                     <div className="flex gap-4 sm:gap-6 w-full justify-center">
                       <div className="text-center">
-                        <div className="text-xl sm:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.weeklyPoints}</div>
-                        <div className="text-xs sm:text-sm" style={{color: '#4B5563'}}>This Week</div>
+                        <div className="text-xl lg:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.weeklyPoints}</div>
+                        <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>This Week</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-xl sm:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.monthlyPoints}</div>
-                        <div className="text-xs sm:text-sm" style={{color: '#4B5563'}}>This Month</div>
+                        <div className="text-xl lg:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.monthlyPoints}</div>
+                        <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>This Month</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-xl sm:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.totalPoints}</div>
-                        <div className="text-xs sm:text-sm" style={{color: '#4B5563'}}>All Time</div>
+                        <div className="text-xl lg:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.totalPoints}</div>
+                        <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>All Time</div>
                       </div>
                     </div>
                   </div>
@@ -156,15 +156,15 @@ export default function CommunityQuest() {
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
                           <div key={level.level} className="flex flex-col items-center gap-1 sm:gap-2">
                             {/* Level Badge */}
-                            <div className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center border-2 ${
+                            <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full flex items-center justify-center border-2 ${
                               level.level <= MOCK_USER.currentLevel 
                                 ? 'border-blue-600' 
                                 : 'bg-gray-200 border-gray-300'
                             }`} style={level.level <= MOCK_USER.currentLevel ? {backgroundColor: '#1754D8'} : {}}>
                               {level.level <= MOCK_USER.currentLevel ? (
-                                <span className="text-sm sm:text-base lg:text-lg font-bold" style={{color: '#FFFFFF'}}>{level.level}</span>
+                                <span className="text-sm lg:text-lg font-bold" style={{color: '#FFFFFF'}}>{level.level}</span>
                               ) : (
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{color: '#6B7280'}} fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-4 h-4 lg:w-6 lg:h-6" style={{color: '#6B7280'}} fill="currentColor" viewBox="0 0 20 20">
                                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                 </svg>
                               )}
@@ -172,9 +172,9 @@ export default function CommunityQuest() {
                             
                             {/* Level Info */}
                             <div className="flex flex-col items-center text-center">
-                              <div className="text-xs sm:text-sm font-medium" style={{color: '#000000'}}>L{level.level}</div>
-                              <div className="text-xs hidden sm:block" style={{color: '#4B5563'}}>
-                                {level.memberPercentage}%
+                              <div className="text-xs lg:text-sm font-medium" style={{color: '#000000'}}>L{level.level}</div>
+                              <div className="text-xs hidden lg:block" style={{color: '#4B5563'}}>
+                                {level.memberPercentage}% of members
                               </div>
                             </div>
                           </div>
@@ -186,15 +186,15 @@ export default function CommunityQuest() {
                         {MOCK_LEVELS.slice(5, 9).map((level) => (
                           <div key={level.level} className="flex flex-col items-center gap-1 sm:gap-2">
                             {/* Level Badge */}
-                            <div className={`w-10 h-10 sm:w-12 sm:h-12 lg:w-14 lg:h-14 rounded-full flex items-center justify-center border-2 ${
+                            <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full flex items-center justify-center border-2 ${
                               level.level <= MOCK_USER.currentLevel 
                                 ? 'border-blue-600' 
                                 : 'bg-gray-200 border-gray-300'
                             }`} style={level.level <= MOCK_USER.currentLevel ? {backgroundColor: '#1754D8'} : {}}>
                               {level.level <= MOCK_USER.currentLevel ? (
-                                <span className="text-sm sm:text-base lg:text-lg font-bold" style={{color: '#FFFFFF'}}>{level.level}</span>
+                                <span className="text-sm lg:text-lg font-bold" style={{color: '#FFFFFF'}}>{level.level}</span>
                               ) : (
-                                <svg className="w-4 h-4 sm:w-5 sm:h-5 lg:w-6 lg:h-6" style={{color: '#6B7280'}} fill="currentColor" viewBox="0 0 20 20">
+                                <svg className="w-4 h-4 lg:w-6 lg:h-6" style={{color: '#6B7280'}} fill="currentColor" viewBox="0 0 20 20">
                                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                 </svg>
                               )}
@@ -202,9 +202,9 @@ export default function CommunityQuest() {
                             
                             {/* Level Info */}
                             <div className="flex flex-col items-center text-center">
-                              <div className="text-xs sm:text-sm font-medium" style={{color: '#000000'}}>L{level.level}</div>
-                              <div className="text-xs hidden sm:block" style={{color: '#4B5563'}}>
-                                {level.memberPercentage}%
+                              <div className="text-xs lg:text-sm font-medium" style={{color: '#000000'}}>L{level.level}</div>
+                              <div className="text-xs hidden lg:block" style={{color: '#4B5563'}}>
+                                {level.memberPercentage}% of members
                               </div>
                             </div>
                           </div>
