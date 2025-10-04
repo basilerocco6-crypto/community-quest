@@ -65,7 +65,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
             {/* Available Rewards */}
             <Card variant="surface" className="h-fit">
               <div className="p-8">
-                <Heading size="4" className="mb-4 font-semibold flex items-center gap-2">
+                <Heading size="4" className="mb-6 font-semibold flex items-center gap-2">
                   <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
@@ -94,12 +94,14 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                     ))}
                   </div>
                 ) : (
-                  <div className="flex flex-col items-center justify-center py-6">
-                    <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex flex-col items-center justify-center py-8 space-y-4">
+                    <svg className="h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
                     </svg>
-                    <Text size="2" color="gray" className="font-medium mb-0.5 text-center">No new rewards available</Text>
-                    <Text size="1" color="gray" className="text-center">Level up to unlock more rewards!</Text>
+                    <div className="space-y-2 text-center">
+                      <Text size="2" color="gray" className="font-medium">No new rewards available</Text>
+                      <Text size="1" color="gray">Level up to unlock more rewards!</Text>
+                    </div>
                   </div>
                 )}
               </div>
@@ -108,7 +110,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
             {/* Claimed Rewards */}
             <Card variant="surface" className="h-fit">
               <div className="p-8">
-                <Heading size="4" className="mb-4 font-semibold flex items-center gap-2">
+                <Heading size="4" className="mb-6 font-semibold flex items-center gap-2">
                   <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -135,12 +137,14 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                     ))}
                   </div>
                 ) : (
-                  <div className="flex flex-col items-center justify-center py-6">
-                    <svg className="h-8 w-8 text-gray-400 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex flex-col items-center justify-center py-8 space-y-4">
+                    <svg className="h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <Text size="2" color="gray" className="font-medium mb-0.5 text-center">No rewards claimed yet</Text>
-                    <Text size="1" color="gray" className="text-center">Start claiming your available rewards!</Text>
+                    <div className="space-y-2 text-center">
+                      <Text size="2" color="gray" className="font-medium">No rewards claimed yet</Text>
+                      <Text size="1" color="gray">Start claiming your available rewards!</Text>
+                    </div>
                   </div>
                 )}
               </div>
