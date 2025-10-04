@@ -40,7 +40,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
           </Sheet.Description>
         </div>
 
-        <div className="overflow-y-auto max-h-[70vh] space-y-6">
+        <div className="overflow-y-auto max-h-[70vh] space-y-6 px-6">
           {/* Current Benefits - Compact */}
           {currentDiscount > 0 && (
             <Card variant="surface" className="border-l-4 border-l-blue-500">
@@ -61,7 +61,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
           )}
 
           {/* Rewards Grid - Side by Side */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 px-4">
             {/* Available Rewards */}
             <Card variant="surface" className="h-fit">
               <div className="p-8">
