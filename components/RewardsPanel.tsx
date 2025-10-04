@@ -156,7 +156,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
             <Text size="1" color="gray" className="flex-1">
               Earn more points by participating in community activities to unlock additional rewards.
             </Text>
-            <Button onClick={onClose} size="2" variant="outline">
+            <Button onClick={onClose} size="2" variant="ghost">
               Close
             </Button>
           </div>
