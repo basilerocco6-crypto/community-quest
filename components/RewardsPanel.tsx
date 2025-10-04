@@ -30,125 +30,133 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
 
   return (
     <Sheet.Root open={isOpen} onOpenChange={onClose}>
-      <Sheet.Content className="max-h-[80vh] max-w-4xl">
-        <Sheet.Title>Your Rewards</Sheet.Title>
-        <Sheet.Description>
-          Level {user.currentLevel} • {user.totalPoints} points
-        </Sheet.Description>
-        <Sheet.Close />
+      <Sheet.Content className="max-h-[90vh] max-w-5xl">
+        {/* Header */}
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <Sheet.Title className="text-2xl font-bold">Your Rewards</Sheet.Title>
+            <Sheet.Description className="text-sm text-gray-500 mt-1">
+              Level {user.currentLevel} • {user.totalPoints} points
+            </Sheet.Description>
+          </div>
+          <Sheet.Close />
+        </div>
 
-        <div className="overflow-y-auto max-h-[60vh]">
-          {/* Current Benefits */}
+        <div className="overflow-y-auto max-h-[70vh] space-y-6">
+          {/* Current Benefits - Compact */}
           {currentDiscount > 0 && (
-            <div className="mb-6">
-              <Heading size="5" className="mb-3">Active Benefits</Heading>
-              <Card variant="surface">
-                <div className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center">
-                      <svg className="w-5 h-5 text-primary-foreground" fill="currentColor" viewBox="0 0 20 20">
-                        <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732L14.146 12.8l-1.179 4.456a1 1 0 01-1.856.416L9.5 15.134 6.146 17.068a1 1 0 01-1.732-1.732L6.854 12.8 5.675 8.344a1 1 0 011.856-.416L9.5 9.866l3.354-1.934a1 1 0 011.146 0z" clipRule="evenodd" />
-                      </svg>
-                    </div>
-                    <div className="flex flex-col">
-                      <Heading size="3">{currentDiscount}% Member Discount</Heading>
-                      <Text size="2" color="gray">Applied automatically to all purchases</Text>
-                    </div>
+            <Card variant="surface" className="border-l-4 border-l-blue-500">
+              <div className="p-4">
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                    <svg className="w-4 h-4 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732L14.146 12.8l-1.179 4.456a1 1 0 01-1.856.416L9.5 15.134 6.146 17.068a1 1 0 01-1.732-1.732L6.854 12.8 5.675 8.344a1 1 0 011.856-.416L9.5 9.866l3.354-1.934a1 1 0 011.146 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <Heading size="4" className="font-semibold">{currentDiscount}% Member Discount</Heading>
+                    <Text size="1" color="gray">Applied automatically to all purchases</Text>
                   </div>
                 </div>
-              </Card>
-            </div>
+              </div>
+            </Card>
           )}
 
-          <div className="flex flex-col lg:flex-row gap-6">
+          {/* Rewards Grid - Side by Side */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Available Rewards */}
-            <div className="flex flex-col gap-3 flex-1">
-              <Heading size="5">Available Rewards</Heading>
-              {availableRewards.length > 0 ? (
-                <div className="flex flex-col gap-3">
-                  {availableRewards.map((reward) => (
-                    <Card key={reward.id} variant="surface">
-                      <div className="p-4">
-                        <div className="flex items-start justify-between">
-                          <div className="flex flex-col gap-2 flex-1">
-                            <Heading size="3">{reward.name}</Heading>
-                            <Text size="2" color="gray">{formatRewardDescription(reward)}</Text>
+            <Card variant="surface">
+              <div className="p-4">
+                <Heading size="4" className="mb-4 font-semibold flex items-center gap-2">
+                  <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  Available Rewards
+                </Heading>
+                
+                {availableRewards.length > 0 ? (
+                  <div className="space-y-3">
+                    {availableRewards.map((reward) => (
+                      <div key={reward.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <Heading size="3" className="font-medium">{reward.name}</Heading>
                             <Badge color="blue" size="1">Level {reward.requiredLevel}</Badge>
                           </div>
-                          <Button
-                            onClick={() => handleClaimReward(reward.id)}
-                            size="2"
-                            className="ml-4"
-                          >
-                            Claim
-                          </Button>
+                          <Text size="1" color="gray">{formatRewardDescription(reward)}</Text>
                         </div>
+                        <Button
+                          onClick={() => handleClaimReward(reward.id)}
+                          size="1"
+                          className="ml-3"
+                        >
+                          Claim
+                        </Button>
                       </div>
-                    </Card>
-                  ))}
-                </div>
-              ) : (
-                <Card variant="ghost">
-                  <div className="p-4">
-                    <div className="flex flex-col items-center gap-3 py-8">
-                      <svg className="h-12 w-12 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
-                      </svg>
-                      <Text size="2" color="gray">No new rewards available</Text>
-                      <Text size="1" color="gray">Level up to unlock more rewards!</Text>
-                    </div>
+                    ))}
                   </div>
-                </Card>
-              )}
-            </div>
+                ) : (
+                  <div className="text-center py-6">
+                    <svg className="h-8 w-8 text-gray-400 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
+                    </svg>
+                    <Text size="2" color="gray" className="font-medium">No new rewards available</Text>
+                    <Text size="1" color="gray">Level up to unlock more rewards!</Text>
+                  </div>
+                )}
+              </div>
+            </Card>
 
             {/* Claimed Rewards */}
-            <div className="flex flex-col gap-3 flex-1">
-              <Heading size="5">Claimed Rewards</Heading>
-              {claimedRewards.length > 0 ? (
-                <div className="flex flex-col gap-3">
-                  {claimedRewards.map((reward) => (
-                    <Card key={reward.id} variant="surface">
-                      <div className="p-4">
-                        <div className="flex items-start gap-3">
-                          <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
-                            <svg className="w-4 h-4 text-green-600" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                            </svg>
-                          </div>
-                          <div className="flex flex-col gap-2 flex-1">
-                            <Heading size="3">{reward.name}</Heading>
-                            <Text size="2" color="gray">{formatRewardDescription(reward)}</Text>
+            <Card variant="surface">
+              <div className="p-4">
+                <Heading size="4" className="mb-4 font-semibold flex items-center gap-2">
+                  <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                  </svg>
+                  Claimed Rewards
+                </Heading>
+                
+                {claimedRewards.length > 0 ? (
+                  <div className="space-y-3">
+                    {claimedRewards.map((reward) => (
+                      <div key={reward.id} className="flex items-center gap-3 p-3 bg-green-50 rounded-lg border border-green-200">
+                        <div className="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center flex-shrink-0">
+                          <svg className="w-3 h-3 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-1">
+                            <Heading size="3" className="font-medium">{reward.name}</Heading>
                             <Badge color="green" size="1">Claimed</Badge>
                           </div>
+                          <Text size="1" color="gray">{formatRewardDescription(reward)}</Text>
                         </div>
                       </div>
-                    </Card>
-                  ))}
-                </div>
-              ) : (
-                <Card variant="ghost">
-                  <div className="p-4">
-                    <div className="flex flex-col items-center gap-3 py-8">
-                      <svg className="h-12 w-12 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-                      <Text size="2" color="gray">No rewards claimed yet</Text>
-                      <Text size="1" color="gray">Start claiming your available rewards!</Text>
-                    </div>
+                    ))}
                   </div>
-                </Card>
-              )}
-            </div>
+                ) : (
+                  <div className="text-center py-6">
+                    <svg className="h-8 w-8 text-gray-400 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <Text size="2" color="gray" className="font-medium">No rewards claimed yet</Text>
+                    <Text size="1" color="gray">Start claiming your available rewards!</Text>
+                  </div>
+                )}
+              </div>
+            </Card>
           </div>
         </div>
 
-        <div className="mt-6 pt-6 border-t border-border">
-          <div className="flex justify-between items-center w-full">
-            <Text size="2" color="gray" className="flex-1">
+        {/* Footer */}
+        <div className="mt-6 pt-4 border-t border-border">
+          <div className="flex justify-between items-center">
+            <Text size="1" color="gray" className="flex-1">
               Earn more points by participating in community activities to unlock additional rewards.
             </Text>
-            <Button onClick={onClose} size="2">
+            <Button onClick={onClose} size="2" variant="outline">
               Close
             </Button>
           </div>
