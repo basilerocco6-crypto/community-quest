@@ -1,25 +1,32 @@
 <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Traffic Cone -->
-  <path d="M30 90 L30 40 L90 40 L90 90 L30 90 Z" fill="#FF6B35" stroke="#000" stroke-width="2"/>
+  <!-- Dark teal background -->
+  <rect width="120" height="120" fill="#4A5D5E"/>
+  
+  <!-- Traffic Cone Base -->
+  <rect x="25" y="85" width="70" height="15" fill="#FF6B35" stroke="#000" stroke-width="2"/>
+  
+  <!-- Traffic Cone Body -->
+  <path d="M30 85 L30 35 L90 35 L90 85 Z" fill="#FF6B35" stroke="#000" stroke-width="2"/>
   
   <!-- Reflective bands on cone -->
-  <path d="M32 50 L88 50 L88 55 L32 55 Z" fill="#E5E7EB"/>
-  <path d="M32 65 L88 65 L88 70 L32 70 Z" fill="#E5E7EB"/>
+  <rect x="32" y="45" width="56" height="6" fill="#F3F4F6" stroke="#000" stroke-width="1"/>
+  <rect x="32" y="60" width="56" height="6" fill="#F3F4F6" stroke="#000" stroke-width="1"/>
   
   <!-- Cone opening -->
-  <circle cx="60" cy="40" r="8" fill="#FF6B35" stroke="#000" stroke-width="2"/>
+  <circle cx="60" cy="35" r="8" fill="#FF6B35" stroke="#000" stroke-width="2"/>
   
-  <!-- Hard Hat -->
-  <ellipse cx="65" cy="35" rx="18" ry="12" fill="#FFE066" stroke="#000" stroke-width="2"/>
-  <ellipse cx="65" cy="32" rx="16" ry="10" fill="#FFE066"/>
+  <!-- Hard Hat Dome -->
+  <ellipse cx="65" cy="28" rx="20" ry="14" fill="#FFE066" stroke="#000" stroke-width="2"/>
+  <ellipse cx="65" cy="25" rx="18" ry="12" fill="#FFE066"/>
   
-  <!-- Hard hat brim -->
-  <path d="M47 32 Q65 38 83 32" fill="#FFE066" stroke="#000" stroke-width="2"/>
+  <!-- Hard Hat Brim -->
+  <path d="M45 25 Q65 32 85 25" fill="#FFE066" stroke="#000" stroke-width="2"/>
   
-  <!-- Shading and highlights -->
-  <path d="M30 40 L60 40 L60 90 L30 90 Z" fill="#E55A2B" opacity="0.3"/>
-  <path d="M60 40 L90 40 L90 90 L60 90 Z" fill="#FF6B35" opacity="0.1"/>
+  <!-- Hard Hat Highlights -->
+  <path d="M50 15 Q65 20 80 15" fill="#FFF" opacity="0.8"/>
+  <path d="M48 23 Q65 28 82 23" fill="#FFF" opacity="0.6"/>
   
-  <!-- Hard hat shadow on cone -->
-  <ellipse cx="65" cy="42" rx="12" ry="3" fill="#000" opacity="0.2"/>
+  <!-- Cone Highlights -->
+  <path d="M30 35 L35 35 L35 85 L30 85 Z" fill="#FFF" opacity="0.3"/>
+  <path d="M30 85 L35 85 L35 100 L30 100 Z" fill="#FFF" opacity="0.3"/>
 </svg>
