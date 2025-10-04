@@ -100,12 +100,20 @@ export default function CommunityQuest() {
                         {/* Inner ring */}
                         <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
                           {/* Custom large avatar */}
-                          <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-white shadow-md">
-                            <img 
-                              src={MOCK_USER.avatar} 
-                              alt={MOCK_USER.name}
-                              className="w-full h-full object-cover"
-                            />
+                          <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                            {MOCK_USER.avatar ? (
+                              <img 
+                                src={MOCK_USER.avatar} 
+                                alt={MOCK_USER.name}
+                                className="w-full h-full object-cover"
+                              />
+                            ) : (
+                              <img 
+                                src="/construction-illo.svg" 
+                                alt="Construction placeholder"
+                                className="w-20 h-20"
+                              />
+                            )}
                           </div>
                         </div>
                       </div>
