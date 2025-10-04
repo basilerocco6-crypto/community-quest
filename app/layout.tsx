@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Whop App",
-	description: "My Whop App",
+	title: "Community Quest - Engagement Leaderboard",
+	description: "Track community engagement, earn points, and unlock rewards with Community Quest",
 };
 
 export default function RootLayout({
