@@ -42,7 +42,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
           <Sheet.Close />
         </div>
 
-        <div className="overflow-y-auto max-h-[70vh] space-y-6">
+        <div className="overflow-y-auto max-h-[70vh] space-y-4">
           {/* Current Benefits - Compact */}
           {currentDiscount > 0 && (
             <Card variant="surface" className="border-l-4 border-l-blue-500">
@@ -63,11 +63,11 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
           )}
 
           {/* Rewards Grid - Side by Side */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
             {/* Available Rewards */}
-            <Card variant="surface">
-              <div className="p-4">
-                <Heading size="4" className="mb-4 font-semibold flex items-center gap-2">
+            <Card variant="surface" className="h-fit">
+              <div className="p-5">
+                <Heading size="4" className="mb-5 font-semibold flex items-center gap-2">
                   <svg className="w-5 h-5 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
@@ -96,11 +96,11 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-6">
-                    <svg className="h-8 w-8 text-gray-400 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex flex-col items-center justify-center py-8">
+                    <svg className="h-10 w-10 text-gray-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v13m0-13V6a2 2 0 112 2h-2zm0 0V5.5A2.5 2.5 0 109.5 8H12zm-7 4h14M5 12a2 2 0 110-4h14a2 2 0 110 4M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
                     </svg>
-                    <Text size="2" color="gray" className="font-medium">No new rewards available</Text>
+                    <Text size="2" color="gray" className="font-medium mb-1">No new rewards available</Text>
                     <Text size="1" color="gray">Level up to unlock more rewards!</Text>
                   </div>
                 )}
@@ -108,9 +108,9 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
             </Card>
 
             {/* Claimed Rewards */}
-            <Card variant="surface">
-              <div className="p-4">
-                <Heading size="4" className="mb-4 font-semibold flex items-center gap-2">
+            <Card variant="surface" className="h-fit">
+              <div className="p-5">
+                <Heading size="4" className="mb-5 font-semibold flex items-center gap-2">
                   <svg className="w-5 h-5 text-green-500" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
                   </svg>
@@ -137,11 +137,11 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-6">
-                    <svg className="h-8 w-8 text-gray-400 mx-auto mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <div className="flex flex-col items-center justify-center py-8">
+                    <svg className="h-10 w-10 text-gray-400 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <Text size="2" color="gray" className="font-medium">No rewards claimed yet</Text>
+                    <Text size="2" color="gray" className="font-medium mb-1">No rewards claimed yet</Text>
                     <Text size="1" color="gray">Start claiming your available rewards!</Text>
                   </div>
                 )}
