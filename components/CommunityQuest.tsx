@@ -101,7 +101,7 @@ export default function CommunityQuest() {
                         {/* Inner ring */}
                         <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
                           {/* Custom large avatar */}
-                          <div className="w-24 h-24 lg:w-32 lg:h-32 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                          <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
                             {MOCK_USER.avatar ? (
                               <img 
                                 src={MOCK_USER.avatar} 
@@ -112,7 +112,7 @@ export default function CommunityQuest() {
                               <img 
                                 src="/construction-illo.svg" 
                                 alt="Construction placeholder"
-                                className="w-16 h-16 lg:w-20 lg:h-20"
+                                className="w-24 h-24 lg:w-28 lg:h-28"
                               />
                             )}
                           </div>
@@ -134,16 +134,16 @@ export default function CommunityQuest() {
                     {/* Stats Below Avatar - Horizontal Layout */}
                     <div className="flex gap-4 sm:gap-6 w-full justify-center">
                       <div className="text-center">
-                        <div className="text-lg lg:text-xl font-bold" style={{color: '#000000'}}>{MOCK_USER.weeklyPoints}</div>
-                        <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>This Week</div>
+                        <div className="text-base font-bold" style={{color: '#000000'}}>{MOCK_USER.weeklyPoints}</div>
+                        <div className="text-xs" style={{color: '#4B5563'}}>This Week</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg lg:text-xl font-bold" style={{color: '#000000'}}>{MOCK_USER.monthlyPoints}</div>
-                        <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>This Month</div>
+                        <div className="text-base font-bold" style={{color: '#000000'}}>{MOCK_USER.monthlyPoints}</div>
+                        <div className="text-xs" style={{color: '#4B5563'}}>This Month</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-lg lg:text-xl font-bold" style={{color: '#000000'}}>{MOCK_USER.totalPoints}</div>
-                        <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>All Time</div>
+                        <div className="text-base font-bold" style={{color: '#000000'}}>{MOCK_USER.totalPoints}</div>
+                        <div className="text-xs" style={{color: '#4B5563'}}>All Time</div>
                       </div>
                     </div>
                   </div>
