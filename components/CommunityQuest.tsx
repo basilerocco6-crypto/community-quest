@@ -148,71 +148,33 @@ export default function CommunityQuest() {
                     </div>
                   </div>
 
-                  {/* Right side - Level Breakdown in 2 Rows */}
+                  {/* Right side - Level Breakdown in List Format */}
                   <div className="flex-1 w-full lg:w-auto">
-                    <div className="space-y-3 sm:space-y-4">
-                      {/* First Row - Levels 1-5 */}
-                      <div className="grid grid-cols-5 gap-2 sm:gap-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4">
+                      {/* Left Column - Levels 1-5 */}
+                      <div className="space-y-2">
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
-                          <div key={level.level} className="flex flex-col items-center gap-1 sm:gap-2">
-                            {/* Level Badge */}
-                            <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full flex items-center justify-center border-2 ${
-                              level.level <= MOCK_USER.currentLevel 
-                                ? 'border-blue-600' 
-                                : 'bg-gray-200 border-gray-300'
-                            }`} style={level.level <= MOCK_USER.currentLevel ? {backgroundColor: '#1754D8'} : {}}>
-                              {level.level <= MOCK_USER.currentLevel ? (
-                                <span className="text-sm lg:text-lg font-bold" style={{color: '#FFFFFF'}}>{level.level}</span>
-                              ) : (
-                                <svg className="w-4 h-4 lg:w-6 lg:h-6" style={{color: '#6B7280'}} fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                                </svg>
-                              )}
-                            </div>
-                            
-                            {/* Level Info */}
-                            <div className="flex flex-col items-center text-center">
-                              <div className="text-xs lg:text-sm font-medium" style={{color: '#000000'}}>
-                                <span className="sm:hidden">L{level.level}</span>
-                                <span className="hidden sm:inline">Level {level.level}</span>
-                              </div>
-                              <div className="text-xs hidden sm:block" style={{color: '#4B5563'}}>
-                                {level.memberPercentage}% of members
-                              </div>
-                            </div>
+                          <div key={level.level} className="flex items-center gap-2 text-sm">
+                            <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                            </svg>
+                            <span style={{color: '#000000'}}>
+                              Level {level.level} - {level.name} ({level.memberPercentage}% of members)
+                            </span>
                           </div>
                         ))}
                       </div>
 
-                      {/* Second Row - Levels 6-9 */}
-                      <div className="grid grid-cols-4 gap-2 sm:gap-4 sm:ml-8">
+                      {/* Right Column - Levels 6-9 */}
+                      <div className="space-y-2">
                         {MOCK_LEVELS.slice(5, 9).map((level) => (
-                          <div key={level.level} className="flex flex-col items-center gap-1 sm:gap-2">
-                            {/* Level Badge */}
-                            <div className={`w-10 h-10 lg:w-14 lg:h-14 rounded-full flex items-center justify-center border-2 ${
-                              level.level <= MOCK_USER.currentLevel 
-                                ? 'border-blue-600' 
-                                : 'bg-gray-200 border-gray-300'
-                            }`} style={level.level <= MOCK_USER.currentLevel ? {backgroundColor: '#1754D8'} : {}}>
-                              {level.level <= MOCK_USER.currentLevel ? (
-                                <span className="text-sm lg:text-lg font-bold" style={{color: '#FFFFFF'}}>{level.level}</span>
-                              ) : (
-                                <svg className="w-4 h-4 lg:w-6 lg:h-6" style={{color: '#6B7280'}} fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                                </svg>
-                              )}
-                            </div>
-                            
-                            {/* Level Info */}
-                            <div className="flex flex-col items-center text-center">
-                              <div className="text-xs lg:text-sm font-medium" style={{color: '#000000'}}>
-                                <span className="sm:hidden">L{level.level}</span>
-                                <span className="hidden sm:inline">Level {level.level}</span>
-                              </div>
-                              <div className="text-xs hidden sm:block" style={{color: '#4B5563'}}>
-                                {level.memberPercentage}% of members
-                              </div>
-                            </div>
+                          <div key={level.level} className="flex items-center gap-2 text-sm">
+                            <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                            </svg>
+                            <span style={{color: '#000000'}}>
+                              Level {level.level} - {level.name} ({level.memberPercentage}% of members)
+                            </span>
                           </div>
                         ))}
                       </div>
