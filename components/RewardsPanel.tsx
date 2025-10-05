@@ -95,6 +95,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                     <img src="/money-pillow.svg" alt="No rewards available" className="h-16 w-16" />
                     <div className="space-y-2 text-center">
                       <Text size="2" color="gray" className="font-medium">No new rewards available</Text>
+                      <br />
                       <Text size="1" color="gray">Level up to unlock more rewards!</Text>
                     </div>
                   </div>
@@ -133,6 +134,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                     <img src="/bullseye.svg" alt="No rewards claimed" className="h-16 w-16" />
                     <div className="space-y-2 text-center">
                       <Text size="2" color="gray" className="font-medium">No rewards claimed yet</Text>
+                      <br />
                       <Text size="1" color="gray">Start claiming your available rewards!</Text>
                     </div>
                   </div>
