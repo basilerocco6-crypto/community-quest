@@ -139,24 +139,26 @@ export default function CommunityQuest() {
                       {/* Left Column - Levels 1-5 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
-                          <div key={level.level} className="flex items-center justify-between w-full text-sm">
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                              level.level <= MOCK_USER.currentLevel 
-                                ? 'bg-blue-600' 
-                                : 'bg-gray-200'
-                            }`}>
-                              <svg className={`w-4 h-4 ${
+                          <div key={level.level} className="flex items-center w-full text-sm">
+                            <div className="flex items-center gap-2">
+                              <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                                 level.level <= MOCK_USER.currentLevel 
-                                  ? 'text-white' 
-                                  : 'text-gray-400'
-                              }`} fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                              </svg>
+                                  ? 'bg-blue-600' 
+                                  : 'bg-gray-200'
+                              }`}>
+                                <svg className={`w-4 h-4 ${
+                                  level.level <= MOCK_USER.currentLevel 
+                                    ? 'text-white' 
+                                    : 'text-gray-400'
+                                }`} fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                </svg>
+                              </div>
+                              <span style={{color: '#000000'}}>
+                                Level {level.level} - {level.name}
+                              </span>
                             </div>
-                            <span className="flex-1 text-center px-4" style={{color: '#000000'}}>
-                              Level {level.level} - {level.name}
-                            </span>
-                            <span className="text-gray-500 text-xs">
+                            <span className="ml-auto text-gray-500 text-xs">
                               {level.memberPercentage}% of members
                             </span>
                           </div>
@@ -166,24 +168,26 @@ export default function CommunityQuest() {
                       {/* Right Column - Levels 6-9 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(5, 9).map((level) => (
-                          <div key={level.level} className="flex items-center justify-between w-full text-sm">
-                            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                              level.level <= MOCK_USER.currentLevel 
-                                ? 'bg-blue-600' 
-                                : 'bg-gray-200'
-                            }`}>
-                              <svg className={`w-4 h-4 ${
+                          <div key={level.level} className="flex items-center w-full text-sm">
+                            <div className="flex items-center gap-2">
+                              <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
                                 level.level <= MOCK_USER.currentLevel 
-                                  ? 'text-white' 
-                                  : 'text-gray-400'
-                              }`} fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                              </svg>
+                                  ? 'bg-blue-600' 
+                                  : 'bg-gray-200'
+                              }`}>
+                                <svg className={`w-4 h-4 ${
+                                  level.level <= MOCK_USER.currentLevel 
+                                    ? 'text-white' 
+                                    : 'text-gray-400'
+                                }`} fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                </svg>
+                              </div>
+                              <span style={{color: '#000000'}}>
+                                Level {level.level} - {level.name}
+                              </span>
                             </div>
-                            <span className="flex-1 text-center px-4" style={{color: '#000000'}}>
-                              Level {level.level} - {level.name}
-                            </span>
-                            <span className="text-gray-500 text-xs">
+                            <span className="ml-auto text-gray-500 text-xs">
                               {level.memberPercentage}% of members
                             </span>
                           </div>
