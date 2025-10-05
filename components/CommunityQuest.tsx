@@ -256,52 +256,154 @@ export default function CommunityQuest() {
                 <div className="p-6">
                   <Heading size="4" className="mb-4">🎯 How Members Earn Points</Heading>
                   
-                  <div className="space-y-4">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">Chat Message</span>
-                          <Badge color="blue">1-2 points</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">Forum Comment</span>
+                  <div className="space-y-6">
+                    {/* Chat & Communication */}
+                    <div>
+                      <Heading size="3" className="mb-3 text-blue-600">💬 Chat & Communication (Daily Engagement)</Heading>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                          <span className="font-medium">Send a message in chat</span>
                           <Badge color="blue">2 points</Badge>
                         </div>
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">Forum Post</span>
-                          <Badge color="blue">5-7 points</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">Course Completion</span>
-                          <Badge color="blue">10 points</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">Event Attendance</span>
+                        <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                          <span className="font-medium">Reply to someone's message</span>
                           <Badge color="blue">3 points</Badge>
                         </div>
-                      </div>
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">Referral</span>
-                          <Badge color="blue">15 points</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">Daily Login</span>
-                          <Badge color="blue">1 point</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">Profile Completion</span>
-                          <Badge color="blue">5 points</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">First Post</span>
+                        <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                          <span className="font-medium">Start a meaningful discussion thread</span>
                           <Badge color="blue">10 points</Badge>
                         </div>
-                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                          <span className="font-medium">Milestone Achievement</span>
-                          <Badge color="blue">25 points</Badge>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Get 5+ reactions on your message</span>
+                          <Badge color="green">5 bonus points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Daily chat streak (7 days)</span>
+                          <Badge color="green">20 bonus points</Badge>
                         </div>
                       </div>
+                    </div>
+
+                    {/* Forum Activity */}
+                    <div>
+                      <Heading size="3" className="mb-3 text-purple-600">📝 Forum Activity (Quality Content)</Heading>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                          <span className="font-medium">Create a forum post</span>
+                          <Badge color="purple">15 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
+                          <span className="font-medium">Reply to a forum post</span>
+                          <Badge color="purple">8 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Get your post pinned by admin</span>
+                          <Badge color="green">50 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Receive \"helpful\" reaction from 3+ members</span>
+                          <Badge color="green">15 bonus points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Create a post with 10+ replies</span>
+                          <Badge color="green">25 bonus points</Badge>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Course & Learning */}
+                    <div>
+                      <Heading size="3" className="mb-3 text-orange-600">🎓 Course & Learning</Heading>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                          <span className="font-medium">Complete a course module</span>
+                          <Badge color="orange">50 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                          <span className="font-medium">Complete an entire course</span>
+                          <Badge color="orange">200 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Score 90%+ on a quiz</span>
+                          <Badge color="green">30 bonus points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
+                          <span className="font-medium">Share course progress/wins</span>
+                          <Badge color="orange">20 points</Badge>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Community Value */}
+                    <div>
+                      <Heading size="3" className="mb-3 text-green-600">🤝 Community Value (Quality over Quantity)</Heading>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Help another member (verified by admin)</span>
+                          <Badge color="green">40 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Share a valuable resource</span>
+                          <Badge color="green">25 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Introduce yourself (one-time)</span>
+                          <Badge color="green">10 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Attend a live event/call</span>
+                          <Badge color="green">75 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Weekly check-in post</span>
+                          <Badge color="green">15 points</Badge>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Referrals & Growth */}
+                    <div>
+                      <Heading size="3" className="mb-3 text-red-600">🚀 Referrals & Growth</Heading>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                          <span className="font-medium">Refer a new member who joins</span>
+                          <Badge color="red">100 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Referred member reaches Contributor tier</span>
+                          <Badge color="green">50 bonus points</Badge>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Anti-Gaming Mechanisms */}
+              <Card>
+                <div className="p-6">
+                  <Heading size="4" className="mb-4">🛡️ Anti-Gaming Mechanisms</Heading>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <Text size="2"><strong>Point decay:</strong> Lose 5% of points monthly if inactive (no activity for 30 days)</Text>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <Text size="2"><strong>Quality filters:</strong> Admin can revoke points for spam or low-quality posts</Text>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <Text size="2"><strong>Diminishing returns:</strong> After 10 chat messages per day, points reduce to 1 point per message</Text>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <Text size="2"><strong>Manual review:</strong> Posts earning 50+ points trigger admin review</Text>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-yellow-50 rounded-lg">
+                      <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                      <Text size="2"><strong>Cooldowns:</strong> Can only earn course completion points once per course</Text>
                     </div>
                   </div>
                 </div>
@@ -316,30 +418,30 @@ export default function CommunityQuest() {
                     <div className="p-4 bg-blue-50 rounded-lg">
                       <div className="flex items-center gap-2 mb-2">
                         <Badge color="blue">Level 2</Badge>
-                        <span className="font-semibold">Contributor (25 points needed)</span>
+                        <span className="font-semibold">Contributor (100 points needed)</span>
                       </div>
                       <Text size="2" color="gray">
-                        Complete profile (5) + Make 10 forum posts (50-70) = <strong>55-75 points</strong> ✅
+                        Introduce yourself (10) + Create 6 forum posts (90) = <strong>100 points</strong> ✅
                       </Text>
                     </div>
                     
                     <div className="p-4 bg-green-50 rounded-lg">
                       <div className="flex items-center gap-2 mb-2">
                         <Badge color="green">Level 3</Badge>
-                        <span className="font-semibold">Action Taker (50 points needed)</span>
+                        <span className="font-semibold">Action Taker (300 points needed)</span>
                       </div>
                       <Text size="2" color="gray">
-                        Complete profile (5) + Attend 15 events (45) = <strong>50 points</strong> ✅
+                        Complete profile (10) + Complete 1 course (200) + Attend 1 live event (75) = <strong>285 points</strong> ✅
                       </Text>
                     </div>
                     
                     <div className="p-4 bg-purple-50 rounded-lg">
                       <div className="flex items-center gap-2 mb-2">
                         <Badge color="purple">Level 4</Badge>
-                        <span className="font-semibold">Builder (100 points needed)</span>
+                        <span className="font-semibold">Builder (600 points needed)</span>
                       </div>
                       <Text size="2" color="gray">
-                        Complete profile (5) + Make 20 forum posts (100-140) = <strong>105-145 points</strong> ✅
+                        Complete 2 courses (400) + Help 5 members (200) = <strong>600 points</strong> ✅
                       </Text>
                     </div>
                   </div>
@@ -355,43 +457,43 @@ export default function CommunityQuest() {
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="yellow">Level 1</Badge>
                       <div>
-                        <span className="font-medium">Noob</span>
-                        <Text size="1" color="gray"> Basic community access</Text>
+                        <span className="font-medium">Noob (0-99 points)</span>
+                        <Text size="1" color="gray"> Access to basic community channels, View leaderboard rankings, Access to welcome resources</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="yellow">Level 2</Badge>
                       <div>
-                        <span className="font-medium">Contributor</span>
-                        <Text size="1" color="gray"> 5% discount + exclusive content</Text>
+                        <span className="font-medium">Contributor (100-299 points)</span>
+                        <Text size="1" color="gray"> Access to exclusive 'Contributors Only' chat, Custom 'Contributor' badge</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="yellow">Level 3</Badge>
                       <div>
-                        <span className="font-medium">Action Taker</span>
-                        <Text size="1" color="gray"> 10% discount + VIP support</Text>
+                        <span className="font-medium">Action Taker (300-599 points)</span>
+                        <Text size="1" color="gray"> Early access to new content/courses, Priority support response, Monthly spotlight feature opportunity</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="gray">Level 4</Badge>
                       <div>
-                        <span className="font-medium">Builder</span>
-                        <Text size="1" color="gray"> 15% discount + mentorship</Text>
+                        <span className="font-medium">Builder (600-999 points)</span>
+                        <Text size="1" color="gray"> Featured member profile, Double points on weekend activities</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="gray">Level 5</Badge>
                       <div>
-                        <span className="font-medium">Expert</span>
-                        <Text size="1" color="gray"> 20% discount + moderator privileges</Text>
+                        <span className="font-medium">Expert (1,000-1,999 points)</span>
+                        <Text size="1" color="gray"> Access to Expert-only masterminds, Monthly group coaching call access, "Expert" role with special color/badge, Ability to host community events, Free access to one premium course/month</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="gray">Level 6-9</Badge>
                       <div>
-                        <span className="font-medium">Grandmaster → Goat</span>
-                        <Text size="1" color="gray"> 25-50% discount + exclusive benefits</Text>
+                        <span className="font-medium">Grandmaster → GOAT (2,000+ points)</span>
+                        <Text size="1" color="gray"> Revenue sharing, Beta access, Moderator privileges, 15% discount, Monthly 1:1 coaching, Equity opportunities</Text>
                       </div>
                     </div>
                   </div>
