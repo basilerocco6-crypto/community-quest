@@ -27,6 +27,7 @@ export async function POST(request: NextRequest): Promise<Response> {
 			'forum_app': process.env.FORUM_APP_SECRET,
 			'course_app': process.env.COURSE_APP_SECRET,
 			'event_app': process.env.EVENT_APP_SECRET,
+			'livestreaming_app': process.env.LIVESTREAMING_APP_SECRET,
 			'community_app': process.env.COMMUNITY_APP_SECRET,
 			'referral_app': process.env.REFERRAL_APP_SECRET,
 		};
@@ -62,6 +63,14 @@ export async function POST(request: NextRequest): Promise<Response> {
 			
 			// Event App events
 			'event_attended': 'live_event_attendance',
+			
+			// Livestreaming App events
+			'stream_started': 'live_event_attendance',
+			'stream_attended': 'live_event_attendance',
+			'stream_chat_message': 'chat_message',
+			'stream_reaction': 'chat_reaction_bonus',
+			'speaker_joined': 'live_event_attendance',
+			'raised_hand': 'live_event_attendance',
 			
 			// Community App events
 			'member_helped': 'member_help',
@@ -162,6 +171,7 @@ export async function GET(request: NextRequest): Promise<Response> {
 				'forum_app', 
 				'course_app',
 				'event_app',
+				'livestreaming_app',
 				'community_app',
 				'referral_app'
 			],
@@ -174,6 +184,7 @@ export async function GET(request: NextRequest): Promise<Response> {
 					forum_app: ["post_created", "post_replied", "post_pinned", "helpful_reaction", "high_engagement"],
 					course_app: ["module_completed", "course_completed", "quiz_excellent", "progress_shared"],
 					event_app: ["event_attended"],
+					livestreaming_app: ["stream_started", "stream_attended", "stream_chat_message", "stream_reaction", "speaker_joined", "raised_hand"],
 					community_app: ["member_helped", "resource_shared", "member_introduced", "weekly_checkin"],
 					referral_app: ["user_referred", "tier_achieved"]
 				}

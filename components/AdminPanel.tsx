@@ -122,6 +122,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                 <Badge color="purple">Forum App Integration</Badge>
                 <Badge color="green">Course App Integration</Badge>
                 <Badge color="orange">Event App Integration</Badge>
+                <Badge color="yellow">Livestreaming App Integration</Badge>
                 <Badge color="red">Community App Integration</Badge>
                 <Badge color="cyan">Referral App Integration</Badge>
               </div>
@@ -291,6 +292,19 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                       <Heading size="4" className="mb-2">Event App</Heading>
                       <ul className="text-sm space-y-1">
                         <li>• event_attended (75 points)</li>
+                      </ul>
+                    </div>
+                  </Card>
+                  <Card>
+                    <div className="p-3">
+                      <Heading size="4" className="mb-2">Livestreaming App</Heading>
+                      <ul className="text-sm space-y-1">
+                        <li>• stream_started (75 points)</li>
+                        <li>• stream_attended (75 points)</li>
+                        <li>• stream_chat_message (2 points)</li>
+                        <li>• stream_reaction (5 bonus)</li>
+                        <li>• speaker_joined (75 points)</li>
+                        <li>• raised_hand (75 points)</li>
                       </ul>
                     </div>
                   </Card>

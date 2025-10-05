@@ -209,6 +209,67 @@ async function handleEngagementWebhook(webhookData: any) {
 				console.log(`Tracked event attendance from user ${data.user_id}`);
 				break;
 
+			// === LIVESTREAMING APP EVENTS ===
+			case "livestream.started":
+				await trackWhopActivity(data.host_user_id, 'live_event_attendance', {
+					streamId: data.stream_id,
+					streamTitle: data.stream_title,
+					streamType: 'hosted',
+					sourceApp: source_app || 'livestreaming_app'
+				});
+				console.log(`Tracked livestream start from host ${data.host_user_id}`);
+				break;
+			
+			case "livestream.attended":
+				await trackWhopActivity(data.user_id, 'live_event_attendance', {
+					streamId: data.stream_id,
+					streamTitle: data.stream_title,
+					streamDuration: data.duration_minutes,
+					sourceApp: source_app || 'livestreaming_app'
+				});
+				console.log(`Tracked livestream attendance from user ${data.user_id}`);
+				break;
+			
+			case "livestream.chat_message":
+				await trackWhopActivity(data.user_id, 'chat_message', {
+					messageLength: data.content?.length || 0,
+					streamId: data.stream_id,
+					streamTitle: data.stream_title,
+					sourceApp: source_app || 'livestreaming_app'
+				});
+				console.log(`Tracked livestream chat message from user ${data.user_id}`);
+				break;
+			
+			case "livestream.reaction":
+				await trackWhopActivity(data.user_id, 'chat_reaction_bonus', {
+					streamId: data.stream_id,
+					reactionType: data.reaction_type,
+					reactionCount: data.reaction_count,
+					sourceApp: source_app || 'livestreaming_app'
+				});
+				console.log(`Tracked livestream reaction from user ${data.user_id}`);
+				break;
+			
+			case "livestream.speaker_joined":
+				await trackWhopActivity(data.user_id, 'live_event_attendance', {
+					streamId: data.stream_id,
+					streamTitle: data.stream_title,
+					participationType: 'speaker',
+					sourceApp: source_app || 'livestreaming_app'
+				});
+				console.log(`Tracked livestream speaker participation from user ${data.user_id}`);
+				break;
+			
+			case "livestream.raised_hand":
+				await trackWhopActivity(data.user_id, 'live_event_attendance', {
+					streamId: data.stream_id,
+					streamTitle: data.stream_title,
+					participationType: 'raised_hand',
+					sourceApp: source_app || 'livestreaming_app'
+				});
+				console.log(`Tracked livestream raised hand from user ${data.user_id}`);
+				break;
+
 			// === COMMUNITY VALUE EVENTS ===
 			case "member.helped":
 				await trackWhopActivity(data.helper_user_id, 'member_help', {
