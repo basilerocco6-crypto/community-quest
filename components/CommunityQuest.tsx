@@ -112,7 +112,7 @@ export default function CommunityQuest() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
             <div className="space-y-6 sm:space-y-8">
               {/* Combined User Profile and Level Breakdown Section */}
-              <div className="bg-white rounded-lg p-4 sm:p-6 shadow-lg border border-gray-200">
+              <div className="bg-black rounded-lg p-4 sm:p-6 shadow-lg border border-gray-700">
                 <div className="flex flex-row gap-8">
                   {/* Left side - User Profile Section (1/3 width) */}
                   <div className="flex flex-col items-center gap-4 w-1/3">
@@ -148,9 +148,9 @@ export default function CommunityQuest() {
 
                     {/* User Info */}
                     <div className="flex flex-col gap-2 text-center">
-                      <div className="text-xl lg:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.name}</div>
+                      <div className="text-xl lg:text-2xl font-bold" style={{color: '#FFFFFF'}}>{MOCK_USER.name}</div>
                       <div className="text-base lg:text-lg" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
-                      <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
+                      <div className="text-xs lg:text-sm" style={{color: '#9CA3AF'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
                     </div>
 
                   </div>
@@ -177,10 +177,10 @@ export default function CommunityQuest() {
                             
                             {/* Vertical Text Stack */}
                             <div className="flex flex-col">
-                              <div className="text-xs font-medium" style={{color: '#000000'}}>
+                              <div className="text-xs font-medium" style={{color: '#FFFFFF'}}>
                                 Level {level.level} - {level.name}
                               </div>
-                              <div className="text-xs text-gray-500">
+                              <div className="text-xs text-gray-400">
                                 {level.memberPercentage}% of members
                               </div>
                             </div>
@@ -207,10 +207,10 @@ export default function CommunityQuest() {
                             
                             {/* Vertical Text Stack */}
                             <div className="flex flex-col">
-                              <div className="text-xs font-medium" style={{color: '#000000'}}>
+                              <div className="text-xs font-medium" style={{color: '#FFFFFF'}}>
                                 Level {level.level} - {level.name}
                               </div>
-                              <div className="text-xs text-gray-500">
+                              <div className="text-xs text-gray-400">
                                 {level.memberPercentage}% of members
                               </div>
                             </div>
