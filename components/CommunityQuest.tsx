@@ -191,11 +191,6 @@ export default function CommunityQuest() {
                               <div className="text-xs text-gray-500">
                                 {level.memberPercentage}% of members
                               </div>
-                              {level.level === 7 && (
-                                <div className="text-xs text-blue-600">
-                                  Unlock 'Visit Skool HQ'
-                                </div>
-                              )}
                             </div>
                           </div>
                         ))}
