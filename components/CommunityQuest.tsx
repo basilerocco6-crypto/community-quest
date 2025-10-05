@@ -135,7 +135,7 @@ export default function CommunityQuest() {
                         {/* Inner ring */}
                         <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
                           {/* Custom large avatar */}
-                          <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                          <div className="w-40 h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
                             {MOCK_USER.avatar ? (
                               <img 
                                 src={MOCK_USER.avatar} 
@@ -146,7 +146,7 @@ export default function CommunityQuest() {
                               <img 
                                 src="/construction-illo.svg" 
                                 alt="Construction placeholder"
-                                className="w-24 h-24 sm:w-32 sm:h-32 lg:w-36 lg:h-36"
+                                className="w-32 h-32 lg:w-36 lg:h-36"
                               />
                             )}
                           </div>
@@ -160,9 +160,9 @@ export default function CommunityQuest() {
 
                     {/* User Info */}
                     <div className="flex flex-col gap-2 text-center">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold" style={{color: '#FFFFFF'}}>{MOCK_USER.name}</div>
-                      <div className="text-sm sm:text-base lg:text-lg" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
-                      <div className="text-xs sm:text-xs lg:text-sm" style={{color: '#9CA3AF'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
+                      <div className="text-xl lg:text-2xl font-bold" style={{color: '#FFFFFF'}}>{MOCK_USER.name}</div>
+                      <div className="text-base lg:text-lg" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
+                      <div className="text-xs lg:text-sm" style={{color: '#9CA3AF'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
                     </div>
 
                   </div>
@@ -189,10 +189,10 @@ export default function CommunityQuest() {
                             
                             {/* Vertical Text Stack */}
                             <div className="flex flex-col">
-                              <div className="text-sm sm:text-xs font-medium" style={{color: '#FFFFFF'}}>
+                              <div className="text-xs font-medium" style={{color: '#FFFFFF'}}>
                                 Level {level.level} - {level.name}
                               </div>
-                              <div className="text-sm sm:text-xs text-gray-400">
+                              <div className="text-xs text-gray-400">
                                 {level.memberPercentage}% of members
                               </div>
                             </div>
@@ -219,10 +219,10 @@ export default function CommunityQuest() {
                             
                             {/* Vertical Text Stack */}
                             <div className="flex flex-col">
-                              <div className="text-sm sm:text-xs font-medium" style={{color: '#FFFFFF'}}>
+                              <div className="text-xs font-medium" style={{color: '#FFFFFF'}}>
                                 Level {level.level} - {level.name}
                               </div>
-                              <div className="text-sm sm:text-xs text-gray-400">
+                              <div className="text-xs text-gray-400">
                                 {level.memberPercentage}% of members
                               </div>
                             </div>
