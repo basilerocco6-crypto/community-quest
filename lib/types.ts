@@ -63,7 +63,7 @@ export const MOCK_LEVELS: Level[] = [
     name: "Noob",
     requiredPoints: 0,
     perks: ["Basic community access"],
-    memberPercentage: 88, // Match original Skool percentages
+    memberPercentage: 100, // Automatically unlocked for all members
     badgeColor: "bg-yellow-400",
     isUnlocked: true
   },
