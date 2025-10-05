@@ -135,13 +135,13 @@ export default function CommunityQuest() {
 
                   {/* Right side - Level Breakdown in List Format (2/3 width) */}
                   <div className="w-2/3">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-8">
                       {/* Left Column - Levels 1-5 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
-                          <div key={level.level} className="flex items-center w-full text-sm">
-                            <div className="flex items-center gap-2">
-                              <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                          <div key={level.level} className="flex items-center justify-between w-full text-sm whitespace-nowrap">
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                                 level.level <= MOCK_USER.currentLevel 
                                   ? 'bg-blue-600' 
                                   : 'bg-gray-200'
@@ -158,7 +158,7 @@ export default function CommunityQuest() {
                                 Level {level.level} - {level.name}
                               </span>
                             </div>
-                            <span className="ml-auto text-gray-500 text-xs">
+                            <span className="text-gray-500 text-xs flex-shrink-0">
                               {level.memberPercentage}% of members
                             </span>
                           </div>
@@ -168,9 +168,9 @@ export default function CommunityQuest() {
                       {/* Right Column - Levels 6-9 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(5, 9).map((level) => (
-                          <div key={level.level} className="flex items-center w-full text-sm">
-                            <div className="flex items-center gap-2">
-                              <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                          <div key={level.level} className="flex items-center justify-between w-full text-sm whitespace-nowrap">
+                            <div className="flex items-center gap-2 flex-shrink-0">
+                              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
                                 level.level <= MOCK_USER.currentLevel 
                                   ? 'bg-blue-600' 
                                   : 'bg-gray-200'
@@ -187,7 +187,7 @@ export default function CommunityQuest() {
                                 Level {level.level} - {level.name}
                               </span>
                             </div>
-                            <span className="ml-auto text-gray-500 text-xs">
+                            <span className="text-gray-500 text-xs flex-shrink-0">
                               {level.memberPercentage}% of members
                             </span>
                           </div>
