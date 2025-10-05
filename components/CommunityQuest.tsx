@@ -14,6 +14,7 @@ import {
   Text,
   Separator
 } from "frosted-ui";
+import { Lock } from "lucide-react";
 import UserProfile from "./UserProfile";
 import LeaderboardSection from "./LeaderboardSection";
 import LevelBreakdown from "./LevelBreakdown";
