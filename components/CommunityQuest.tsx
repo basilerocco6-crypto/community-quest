@@ -260,14 +260,13 @@ export default function CommunityQuest() {
       {/* Profile Panel */}
       {showProfilePanel && (
         <Sheet.Root open onOpenChange={() => setShowProfilePanel(false)}>
-          <Sheet.Content className="max-w-md max-h-[80vh]">
-            <div className="flex flex-col h-full">
-              <div className="flex items-center justify-between p-4 border-b">
-                <Sheet.Title className="text-xl font-semibold">Profile</Sheet.Title>
-                <Sheet.Close />
-              </div>
-              
-              <div className="flex-1 p-4 overflow-y-auto">
+          <Sheet.Content className="max-w-md h-[80vh] flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
+              <Sheet.Title className="text-xl font-semibold">Profile</Sheet.Title>
+              <Sheet.Close />
+            </div>
+            
+            <div className="flex-1 p-4 overflow-y-auto min-h-0">
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Avatar 
@@ -343,7 +342,6 @@ export default function CommunityQuest() {
                     </div>
                   </Card>
                 </div>
-              </div>
             </div>
           </Sheet.Content>
         </Sheet.Root>
