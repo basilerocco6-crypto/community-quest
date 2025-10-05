@@ -173,10 +173,10 @@ export default function CommunityQuest() {
                             {/* Level Info */}
                             <div className="flex flex-col items-center text-center">
                               <div className="text-xs lg:text-sm font-medium" style={{color: '#000000'}}>
-                                <span className="lg:hidden">L{level.level}</span>
-                                <span className="hidden lg:inline">Level {level.level}</span>
+                                <span className="sm:hidden">L{level.level}</span>
+                                <span className="hidden sm:inline">Level {level.level}</span>
                               </div>
-                              <div className="text-xs hidden lg:block" style={{color: '#4B5563'}}>
+                              <div className="text-xs hidden sm:block" style={{color: '#4B5563'}}>
                                 {level.memberPercentage}% of members
                               </div>
                             </div>
@@ -206,10 +206,10 @@ export default function CommunityQuest() {
                             {/* Level Info */}
                             <div className="flex flex-col items-center text-center">
                               <div className="text-xs lg:text-sm font-medium" style={{color: '#000000'}}>
-                                <span className="lg:hidden">L{level.level}</span>
-                                <span className="hidden lg:inline">Level {level.level}</span>
+                                <span className="sm:hidden">L{level.level}</span>
+                                <span className="hidden sm:inline">Level {level.level}</span>
                               </div>
-                              <div className="text-xs hidden lg:block" style={{color: '#4B5563'}}>
+                              <div className="text-xs hidden sm:block" style={{color: '#4B5563'}}>
                                 {level.memberPercentage}% of members
                               </div>
                             </div>
