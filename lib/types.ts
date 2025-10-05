@@ -79,7 +79,7 @@ export const MOCK_LEVELS: Level[] = [
   },
   {
     level: 3,
-    name: "Builder",
+    name: "Contributor",
     requiredPoints: 50,
     perks: ["VIP support", "Early access to new features"],
     discountPercentage: 10,
@@ -89,7 +89,7 @@ export const MOCK_LEVELS: Level[] = [
   },
   {
     level: 4,
-    name: "Craftsperson",
+    name: "Builder",
     requiredPoints: 100,
     perks: ["Mentorship opportunities", "Custom badge"],
     discountPercentage: 15,
@@ -99,7 +99,7 @@ export const MOCK_LEVELS: Level[] = [
   },
   {
     level: 5,
-    name: "Architect",
+    name: "Expert",
     requiredPoints: 200,
     perks: ["Moderator privileges", "Direct access to founders"],
     discountPercentage: 20,
@@ -119,7 +119,7 @@ export const MOCK_LEVELS: Level[] = [
   },
   {
     level: 7,
-    name: "Goat",
+    name: "Leader",
     requiredPoints: 500,
     perks: ["Co-founder status", "Equity opportunities"],
     discountPercentage: 30,
@@ -139,7 +139,7 @@ export const MOCK_LEVELS: Level[] = [
   },
   {
     level: 9,
-    name: "God",
+    name: "Goat",
     requiredPoints: 1000,
     perks: ["Ultimate recognition", "All previous benefits"],
     discountPercentage: 50,
