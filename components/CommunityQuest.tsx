@@ -25,6 +25,7 @@ import { MOCK_USER, MOCK_LEADERBOARD_WEEKLY, MOCK_LEADERBOARD_MONTHLY, MOCK_LEAD
 export default function CommunityQuest() {
   const [showLevelBreakdown, setShowLevelBreakdown] = useState(false);
   const [showRewardsPanel, setShowRewardsPanel] = useState(false);
+  const [showPointsGuide, setShowPointsGuide] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -200,6 +201,16 @@ export default function CommunityQuest() {
                 </div>
               </div>
 
+              {/* Learn How Points Work Link */}
+              <div className="text-center">
+                <button 
+                  onClick={() => setShowPointsGuide(true)}
+                  className="text-sm text-blue-600 hover:text-blue-800 underline cursor-pointer"
+                >
+                  Learn how points work
+                </button>
+              </div>
+
               {/* Leaderboard Section */}
               <LeaderboardSection 
                 weeklyLeaderboard={MOCK_LEADERBOARD_WEEKLY}
@@ -228,6 +239,214 @@ export default function CommunityQuest() {
 
       {/* Engagement Tracker (Demo) */}
       <EngagementTracker />
+
+      {/* Points Guide Modal */}
+      {showPointsGuide && (
+        <Dialog.Root open onOpenChange={() => setShowPointsGuide(false)}>
+          <Dialog.Content size="5" className="max-h-[90vh] max-w-4xl">
+            <Dialog.Title className="text-2xl font-bold mb-4">How Points & Levels Work</Dialog.Title>
+            <Dialog.Description className="text-gray-600 mb-6">
+              Learn how to earn points and progress through community levels
+            </Dialog.Description>
+            <Dialog.Close />
+
+            <div className="overflow-y-auto max-h-[70vh] space-y-6">
+              {/* How to Earn Points */}
+              <Card>
+                <div className="p-6">
+                  <Heading size="4" className="mb-4">🎯 How Members Earn Points</Heading>
+                  
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">Chat Message</span>
+                          <Badge color="blue">1-2 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">Forum Comment</span>
+                          <Badge color="blue">2 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">Forum Post</span>
+                          <Badge color="blue">5-7 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">Course Completion</span>
+                          <Badge color="blue">10 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">Event Attendance</span>
+                          <Badge color="blue">3 points</Badge>
+                        </div>
+                      </div>
+                      <div className="space-y-3">
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">Referral</span>
+                          <Badge color="blue">15 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">Daily Login</span>
+                          <Badge color="blue">1 point</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">Profile Completion</span>
+                          <Badge color="blue">5 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">First Post</span>
+                          <Badge color="blue">10 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
+                          <span className="font-medium">Milestone Achievement</span>
+                          <Badge color="blue">25 points</Badge>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Level Progression Examples */}
+              <Card>
+                <div className="p-6">
+                  <Heading size="4" className="mb-4">📈 Level Progression Examples</Heading>
+                  
+                  <div className="space-y-4">
+                    <div className="p-4 bg-blue-50 rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge color="blue">Level 2</Badge>
+                        <span className="font-semibold">Contributor (25 points needed)</span>
+                      </div>
+                      <Text size="2" color="gray">
+                        Complete profile (5) + Make 10 forum posts (50-70) = <strong>55-75 points</strong> ✅
+                      </Text>
+                    </div>
+                    
+                    <div className="p-4 bg-green-50 rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge color="green">Level 3</Badge>
+                        <span className="font-semibold">Contributor (50 points needed)</span>
+                      </div>
+                      <Text size="2" color="gray">
+                        Complete profile (5) + Attend 15 events (45) = <strong>50 points</strong> ✅
+                      </Text>
+                    </div>
+                    
+                    <div className="p-4 bg-purple-50 rounded-lg">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge color="purple">Level 4</Badge>
+                        <span className="font-semibold">Builder (100 points needed)</span>
+                      </div>
+                      <Text size="2" color="gray">
+                        Complete profile (5) + Make 20 forum posts (100-140) = <strong>105-145 points</strong> ✅
+                      </Text>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Level Benefits */}
+              <Card>
+                <div className="p-6">
+                  <Heading size="4" className="mb-4">🏆 Level Benefits</Heading>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                      <Badge color="yellow">Level 1</Badge>
+                      <div>
+                        <span className="font-medium">Noob</span>
+                        <Text size="1" color="gray">Basic community access</Text>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                      <Badge color="yellow">Level 2</Badge>
+                      <div>
+                        <span className="font-medium">Contributor</span>
+                        <Text size="1" color="gray">5% discount + exclusive content</Text>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                      <Badge color="yellow">Level 3</Badge>
+                      <div>
+                        <span className="font-medium">Contributor</span>
+                        <Text size="1" color="gray">10% discount + VIP support</Text>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                      <Badge color="gray">Level 4</Badge>
+                      <div>
+                        <span className="font-medium">Builder</span>
+                        <Text size="1" color="gray">15% discount + mentorship</Text>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                      <Badge color="gray">Level 5</Badge>
+                      <div>
+                        <span className="font-medium">Expert</span>
+                        <Text size="1" color="gray">20% discount + moderator privileges</Text>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                      <Badge color="gray">Level 6-9</Badge>
+                      <div>
+                        <span className="font-medium">Grandmaster → Goat</span>
+                        <Text size="1" color="gray">25-50% discount + exclusive benefits</Text>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+
+              {/* Key Features */}
+              <Card>
+                <div className="p-6">
+                  <Heading size="4" className="mb-4">✨ Key Features</Heading>
+                  
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <Text size="2">Points are cumulative</Text>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <Text size="2">Multiple paths to level up</Text>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <Text size="2">Real-time point updates</Text>
+                      </div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <Text size="2">Rewards consistent engagement</Text>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <Text size="2">Scalable progression system</Text>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                        <Text size="2">Automatic level unlocking</Text>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-border">
+              <div className="flex justify-end">
+                <Button onClick={() => setShowPointsGuide(false)} size="2">
+                  Close
+                </Button>
+              </div>
+            </div>
+          </Dialog.Content>
+        </Dialog.Root>
+      )}
     </div>
   );
 }
