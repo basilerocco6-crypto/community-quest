@@ -139,28 +139,25 @@ export default function CommunityQuest() {
                       {/* Left Column - Levels 1-5 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
-                          <div key={level.level} className="flex items-center justify-between w-full text-sm" style={{whiteSpace: 'nowrap'}}>
-                            <div className="flex items-center gap-2">
-                              <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                                level.level <= MOCK_USER.currentLevel 
-                                  ? 'bg-blue-600' 
-                                  : 'bg-gray-200'
-                              }`}>
-                                <svg className={`w-4 h-4 ${
-                                  level.level <= MOCK_USER.currentLevel 
-                                    ? 'text-white' 
-                                    : 'text-gray-400'
-                                }`} fill="currentColor" viewBox="0 0 20 20">
+                          <div key={level.level} className="flex items-start gap-3 w-full">
+                            {/* Lock Icon Container - Fixed width */}
+                            <div className="w-10 flex-shrink-0">
+                              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                                <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                 </svg>
                               </div>
-                              <span style={{color: '#000000'}} className="whitespace-nowrap">
-                                Level {level.level} - {level.name}
-                              </span>
                             </div>
-                            <span className="text-gray-500 text-xs flex-shrink-0 whitespace-nowrap">
-                              {level.memberPercentage}% of members
-                            </span>
+                            
+                            {/* Vertical Text Stack */}
+                            <div className="flex flex-col">
+                              <div className="text-sm font-semibold" style={{color: '#000000'}}>
+                                Level {level.level} - {level.name}
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                {level.memberPercentage}% of members
+                              </div>
+                            </div>
                           </div>
                         ))}
                       </div>
@@ -168,28 +165,25 @@ export default function CommunityQuest() {
                       {/* Right Column - Levels 6-9 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(5, 9).map((level) => (
-                          <div key={level.level} className="flex items-center justify-between w-full text-sm" style={{whiteSpace: 'nowrap'}}>
-                            <div className="flex items-center gap-2">
-                              <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
-                                level.level <= MOCK_USER.currentLevel 
-                                  ? 'bg-blue-600' 
-                                  : 'bg-gray-200'
-                              }`}>
-                                <svg className={`w-4 h-4 ${
-                                  level.level <= MOCK_USER.currentLevel 
-                                    ? 'text-white' 
-                                    : 'text-gray-400'
-                                }`} fill="currentColor" viewBox="0 0 20 20">
+                          <div key={level.level} className="flex items-start gap-3 w-full">
+                            {/* Lock Icon Container - Fixed width */}
+                            <div className="w-10 flex-shrink-0">
+                              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
+                                <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
                                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                 </svg>
                               </div>
-                              <span style={{color: '#000000'}} className="whitespace-nowrap">
-                                Level {level.level} - {level.name}
-                              </span>
                             </div>
-                            <span className="text-gray-500 text-xs flex-shrink-0 whitespace-nowrap">
-                              {level.memberPercentage}% of members
-                            </span>
+                            
+                            {/* Vertical Text Stack */}
+                            <div className="flex flex-col">
+                              <div className="text-sm font-semibold" style={{color: '#000000'}}>
+                                Level {level.level} - {level.name}
+                              </div>
+                              <div className="text-xs text-gray-500">
+                                {level.memberPercentage}% of members
+                              </div>
+                            </div>
                           </div>
                         ))}
                       </div>
