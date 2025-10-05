@@ -92,7 +92,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center py-8 space-y-4">
-                    <img src="/money-pillow.svg" alt="No rewards available" className="h-10 w-10" />
+                    <img src="/money-pillow.svg" alt="No rewards available" className="h-16 w-16" />
                     <div className="space-y-2 text-center">
                       <Text size="2" color="gray" className="font-medium">No new rewards available</Text>
                       <Text size="1" color="gray">Level up to unlock more rewards!</Text>
@@ -130,7 +130,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center py-8 space-y-4">
-                    <img src="/bullseye.svg" alt="No rewards claimed" className="h-10 w-10" />
+                    <img src="/bullseye.svg" alt="No rewards claimed" className="h-16 w-16" />
                     <div className="space-y-2 text-center">
                       <Text size="2" color="gray" className="font-medium">No rewards claimed yet</Text>
                       <Text size="1" color="gray">Start claiming your available rewards!</Text>
