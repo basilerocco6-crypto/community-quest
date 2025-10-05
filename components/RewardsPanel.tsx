@@ -65,8 +65,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
             {/* Available Rewards */}
             <Card variant="surface" className="h-fit">
               <div className="p-8">
-                <Heading size="4" className="mb-6 font-semibold flex items-center gap-2">
-                  <img src="/bullseye.svg" alt="Available Rewards" className="w-5 h-5" />
+                <Heading size="4" className="mb-6 font-semibold">
                   Available Rewards
                 </Heading>
                 
@@ -106,8 +105,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
             {/* Claimed Rewards */}
             <Card variant="surface" className="h-fit">
               <div className="p-8">
-                <Heading size="4" className="mb-6 font-semibold flex items-center gap-2">
-                  <img src="/bullseye.svg" alt="Claimed Rewards" className="w-5 h-5" />
+                <Heading size="4" className="mb-6 font-semibold">
                   Claimed Rewards
                 </Heading>
                 
@@ -132,9 +130,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center py-8 space-y-4">
-                    <svg className="h-10 w-10 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                    <img src="/bullseye.svg" alt="No rewards claimed" className="h-10 w-10" />
                     <div className="space-y-2 text-center">
                       <Text size="2" color="gray" className="font-medium">No rewards claimed yet</Text>
                       <Text size="1" color="gray">Start claiming your available rewards!</Text>
