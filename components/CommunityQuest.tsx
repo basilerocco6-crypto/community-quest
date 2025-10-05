@@ -243,7 +243,7 @@ export default function CommunityQuest() {
       {/* Points Guide Modal */}
       {showPointsGuide && (
         <Dialog.Root open onOpenChange={() => setShowPointsGuide(false)}>
-          <Dialog.Content size="5" className="max-h-[90vh] max-w-4xl">
+          <Dialog.Content size="4" className="max-h-[90vh] max-w-4xl">
             <Dialog.Title className="text-2xl font-bold mb-4">How Points & Levels Work</Dialog.Title>
             <Dialog.Description className="text-gray-600 mb-6">
               Learn how to earn points and progress through community levels
