@@ -155,9 +155,19 @@ export default function CommunityQuest() {
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
                           <div key={level.level} className="flex items-center gap-3 text-sm">
-                            <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                            </svg>
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                              level.level <= MOCK_USER.currentLevel 
+                                ? 'bg-blue-600' 
+                                : 'bg-gray-200'
+                            }`}>
+                              {level.level <= MOCK_USER.currentLevel ? (
+                                <span className="text-white text-sm font-bold">{level.level}</span>
+                              ) : (
+                                <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                </svg>
+                              )}
+                            </div>
                             <span className="flex-1" style={{color: '#000000'}}>
                               Level {level.level} - {level.name}
                             </span>
@@ -172,9 +182,19 @@ export default function CommunityQuest() {
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(5, 9).map((level) => (
                           <div key={level.level} className="flex items-center gap-3 text-sm">
-                            <svg className="w-4 h-4 text-gray-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                            </svg>
+                            <div className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                              level.level <= MOCK_USER.currentLevel 
+                                ? 'bg-blue-600' 
+                                : 'bg-gray-200'
+                            }`}>
+                              {level.level <= MOCK_USER.currentLevel ? (
+                                <span className="text-white text-sm font-bold">{level.level}</span>
+                              ) : (
+                                <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                </svg>
+                              )}
+                            </div>
                             <span className="flex-1" style={{color: '#000000'}}>
                               Level {level.level} - {level.name}
                             </span>
