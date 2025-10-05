@@ -326,7 +326,7 @@ export default function CommunityQuest() {
                     <div className="p-4 bg-green-50 rounded-lg">
                       <div className="flex items-center gap-2 mb-2">
                         <Badge color="green">Level 3</Badge>
-                        <span className="font-semibold">Contributor (50 points needed)</span>
+                        <span className="font-semibold">Action Taker (50 points needed)</span>
                       </div>
                       <Text size="2" color="gray">
                         Complete profile (5) + Attend 15 events (45) = <strong>50 points</strong> ✅
@@ -369,7 +369,7 @@ export default function CommunityQuest() {
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="yellow">Level 3</Badge>
                       <div>
-                        <span className="font-medium">Contributor</span>
+                        <span className="font-medium">Action Taker</span>
                         <Text size="1" color="gray">10% discount + VIP support</Text>
                       </div>
                     </div>

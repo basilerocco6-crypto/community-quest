@@ -79,7 +79,7 @@ export const MOCK_LEVELS: Level[] = [
   },
   {
     level: 3,
-    name: "Contributor",
+    name: "Action Taker",
     requiredPoints: 50,
     perks: ["VIP support", "Early access to new features"],
     discountPercentage: 10,
