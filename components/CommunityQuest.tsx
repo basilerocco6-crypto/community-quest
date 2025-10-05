@@ -101,14 +101,33 @@ export default function CommunityQuest() {
         </div>
       </header>
 
+      {/* Mobile-specific styles */}
+      <style jsx>{`
+        @media (max-width: 1023px) {
+          .main-layout {
+            flex-direction: column !important;
+          }
+          .profile-section {
+            width: 100% !important;
+          }
+          .level-breakdown-section {
+            width: 100% !important;
+          }
+          .level-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1rem !important;
+          }
+        }
+      `}</style>
+
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
             <div className="space-y-6 sm:space-y-8">
               {/* Combined User Profile and Level Breakdown Section */}
               <div className="bg-black rounded-lg p-4 sm:p-6 shadow-lg border border-gray-700">
-                <div className="flex flex-col lg:flex-row gap-8">
-                  {/* Left side - User Profile Section (1/3 width on desktop, full width on mobile) */}
-                  <div className="flex flex-col items-center gap-4 w-full lg:w-1/3">
+                <div className="flex flex-row gap-8 main-layout">
+                  {/* Left side - User Profile Section (1/3 width) */}
+                  <div className="flex flex-col items-center gap-4 w-1/3 profile-section">
                     {/* MUCH BIGGER Profile Picture */}
                     <div className="relative">
                       {/* Outer gradient ring - Made much bigger */}
@@ -148,9 +167,9 @@ export default function CommunityQuest() {
 
                   </div>
 
-                  {/* Right side - Level Breakdown in List Format (2/3 width on desktop, full width on mobile) */}
-                  <div className="w-full lg:w-2/3">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                  {/* Right side - Level Breakdown in List Format (2/3 width) */}
+                  <div className="w-2/3 level-breakdown-section">
+                    <div className="grid grid-cols-2 gap-8 level-grid">
                       {/* Left Column - Levels 1-5 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
