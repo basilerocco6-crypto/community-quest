@@ -18,7 +18,6 @@ import UserProfile from "./UserProfile";
 import LeaderboardSection from "./LeaderboardSection";
 import LevelBreakdown from "./LevelBreakdown";
 import RewardsPanel from "./RewardsPanel";
-import EngagementTracker from "./EngagementTracker";
 import CommunityLevelsBreakdown from "./CommunityLevelsBreakdown";
 import AdminPanel from "./AdminPanel";
 import { MOCK_USER, MOCK_LEADERBOARD_WEEKLY, MOCK_LEADERBOARD_MONTHLY, MOCK_LEADERBOARD_ALLTIME, MOCK_LEVELS } from "@/lib/types";
@@ -257,9 +256,6 @@ export default function CommunityQuest() {
         isOpen={showRewardsPanel}
         onClose={() => setShowRewardsPanel(false)}
       />
-
-      {/* Engagement Tracker (Demo) */}
-      <EngagementTracker />
 
       {/* Admin Panel */}
       <AdminPanel 
