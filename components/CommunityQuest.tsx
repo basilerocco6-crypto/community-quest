@@ -227,7 +227,7 @@ export default function CommunityQuest() {
                   onClick={() => setShowPointsGuide(true)}
                   className="text-sm text-blue-600 hover:text-blue-800 underline cursor-pointer"
                 >
-                  Learn how points work - BUTTON REMOVED ✅
+                  Learn how points work
                 </button>
               </div>
 
