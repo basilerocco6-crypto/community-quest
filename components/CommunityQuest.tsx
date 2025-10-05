@@ -89,12 +89,12 @@ export default function CommunityQuest() {
                 className="cursor-pointer"
                 title="Open Profile"
               >
-                <Avatar 
-                  src={MOCK_USER.avatar} 
-                  alt={MOCK_USER.name} 
-                  fallback={MOCK_USER.name.charAt(0)}
-                  size="2"
-                />
+              <Avatar 
+                src={MOCK_USER.avatar} 
+                alt={MOCK_USER.name} 
+                fallback={MOCK_USER.name.charAt(0)}
+                size="2"
+              />
               </button>
             </div>
           </div>
@@ -106,9 +106,9 @@ export default function CommunityQuest() {
             <div className="space-y-6 sm:space-y-8">
               {/* Combined User Profile and Level Breakdown Section */}
               <div className="bg-black rounded-lg p-4 sm:p-6 shadow-lg border border-gray-700">
-                <div className="flex flex-col lg:flex-row gap-8">
-                  {/* Left side - User Profile Section (1/3 width on desktop, full width on mobile) */}
-                  <div className="flex flex-col items-center gap-4 w-full lg:w-1/3">
+                <div className="flex flex-row gap-8">
+                  {/* Left side - User Profile Section (1/3 width) */}
+                  <div className="flex flex-col items-center gap-4 w-1/3">
                     {/* MUCH BIGGER Profile Picture */}
                     <div className="relative">
                       {/* Outer gradient ring - Made much bigger */}
@@ -116,7 +116,7 @@ export default function CommunityQuest() {
                         {/* Inner ring */}
                         <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
                           {/* Custom large avatar */}
-                          <div className="w-32 h-32 sm:w-40 sm:h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                          <div className="w-40 h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
                             {MOCK_USER.avatar ? (
                               <img 
                                 src={MOCK_USER.avatar} 
@@ -127,7 +127,7 @@ export default function CommunityQuest() {
                               <img 
                                 src="/construction-illo.svg" 
                                 alt="Construction placeholder"
-                                className="w-24 h-24 sm:w-32 sm:h-32 lg:w-36 lg:h-36"
+                                className="w-32 h-32 lg:w-36 lg:h-36"
                               />
                             )}
                           </div>
@@ -141,16 +141,16 @@ export default function CommunityQuest() {
 
                     {/* User Info */}
                     <div className="flex flex-col gap-2 text-center">
-                      <div className="text-lg sm:text-xl lg:text-2xl font-bold" style={{color: '#FFFFFF'}}>{MOCK_USER.name}</div>
-                      <div className="text-sm sm:text-base lg:text-lg" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
-                      <div className="text-xs sm:text-xs lg:text-sm" style={{color: '#9CA3AF'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
+                      <div className="text-xl lg:text-2xl font-bold" style={{color: '#FFFFFF'}}>{MOCK_USER.name}</div>
+                      <div className="text-base lg:text-lg" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
+                      <div className="text-xs lg:text-sm" style={{color: '#9CA3AF'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
                     </div>
 
                   </div>
 
-                  {/* Right side - Level Breakdown in List Format (2/3 width on desktop, full width on mobile) */}
-                  <div className="w-full lg:w-2/3">
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+                  {/* Right side - Level Breakdown in List Format (2/3 width) */}
+                  <div className="w-2/3">
+                    <div className="grid grid-cols-2 gap-8">
                       {/* Left Column - Levels 1-5 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
@@ -161,19 +161,19 @@ export default function CommunityQuest() {
                                 {level.isUnlocked ? (
                                   <span className="text-white text-sm font-semibold">{level.level}</span>
                                 ) : (
-                                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                                  </svg>
+                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                </svg>
                                 )}
                               </div>
                             </div>
                             
                             {/* Vertical Text Stack */}
                             <div className="flex flex-col">
-                              <div className="text-sm sm:text-xs font-medium" style={{color: '#FFFFFF'}}>
+                              <div className="text-xs font-medium" style={{color: '#FFFFFF'}}>
                                 Level {level.level} - {level.name}
                               </div>
-                              <div className="text-sm sm:text-xs text-gray-400">
+                              <div className="text-xs text-gray-400">
                                 {level.memberPercentage}% of members
                               </div>
                             </div>
@@ -191,19 +191,19 @@ export default function CommunityQuest() {
                                 {level.isUnlocked ? (
                                   <span className="text-white text-sm font-semibold">{level.level}</span>
                                 ) : (
-                                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                                  </svg>
+                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                </svg>
                                 )}
                               </div>
                             </div>
                             
                             {/* Vertical Text Stack */}
                             <div className="flex flex-col">
-                              <div className="text-sm sm:text-xs font-medium" style={{color: '#FFFFFF'}}>
+                              <div className="text-xs font-medium" style={{color: '#FFFFFF'}}>
                                 Level {level.level} - {level.name}
                               </div>
-                              <div className="text-sm sm:text-xs text-gray-400">
+                              <div className="text-xs text-gray-400">
                                 {level.memberPercentage}% of members
                               </div>
                             </div>
