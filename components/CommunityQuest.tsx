@@ -103,7 +103,7 @@ export default function CommunityQuest() {
 
       {/* Mobile-specific styles */}
       <style jsx>{`
-        @media (max-width: 1023px) {
+        @media (max-width: 1023px) and (orientation: portrait), (max-width: 1023px) and (orientation: landscape) {
           .main-layout {
             flex-direction: column !important;
           }
@@ -116,6 +116,23 @@ export default function CommunityQuest() {
           .level-grid {
             grid-template-columns: 1fr !important;
             gap: 1rem !important;
+          }
+        }
+        
+        /* Ensure desktop layout is preserved */
+        @media (min-width: 1024px) {
+          .main-layout {
+            flex-direction: row !important;
+          }
+          .profile-section {
+            width: 33.333333% !important;
+          }
+          .level-breakdown-section {
+            width: 66.666667% !important;
+          }
+          .level-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 2rem !important;
           }
         }
       `}</style>
