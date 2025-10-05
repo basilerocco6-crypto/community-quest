@@ -60,90 +60,90 @@ export interface Reward {
 export const MOCK_LEVELS: Level[] = [
   {
     level: 1,
-    name: "Newcomer",
+    name: "Noob",
     requiredPoints: 0,
     perks: ["Basic community access"],
-    memberPercentage: 100, // Everyone starts here in a fresh install
+    memberPercentage: 88, // Match original Skool percentages
     badgeColor: "bg-yellow-400",
     isUnlocked: true
   },
   {
     level: 2,
-    name: "Active Member",
+    name: "Contributor",
     requiredPoints: 25,
     perks: ["Access to exclusive content"],
     discountPercentage: 5,
-    memberPercentage: 0, // No one has reached this yet
+    memberPercentage: 5, // Match original Skool percentages
     badgeColor: "bg-yellow-400",
     isUnlocked: false
   },
   {
     level: 3,
-    name: "Community Champion",
+    name: "Builder",
     requiredPoints: 50,
     perks: ["VIP support", "Early access to new features"],
     discountPercentage: 10,
-    memberPercentage: 0,
+    memberPercentage: 2, // Match original Skool percentages
     badgeColor: "bg-yellow-400",
     isUnlocked: false
   },
   {
     level: 4,
-    name: "Engagement Expert",
+    name: "Craftsperson",
     requiredPoints: 100,
     perks: ["Mentorship opportunities", "Custom badge"],
     discountPercentage: 15,
-    memberPercentage: 0,
+    memberPercentage: 1, // Match original Skool percentages
     badgeColor: "bg-gray-400",
     isUnlocked: false
   },
   {
     level: 5,
-    name: "Community Leader",
+    name: "Architect",
     requiredPoints: 200,
     perks: ["Moderator privileges", "Direct access to founders"],
     discountPercentage: 20,
-    memberPercentage: 0,
+    memberPercentage: 1, // Match original Skool percentages
     badgeColor: "bg-gray-400",
     isUnlocked: false
   },
   {
     level: 6,
-    name: "Elite Member",
+    name: "Grandmaster",
     requiredPoints: 350,
     perks: ["Revenue sharing opportunities"],
     discountPercentage: 25,
-    memberPercentage: 0,
+    memberPercentage: 1, // Match original Skool percentages
     badgeColor: "bg-gray-400",
     isUnlocked: false
   },
   {
     level: 7,
-    name: "Community Legend",
+    name: "Goat",
     requiredPoints: 500,
     perks: ["Co-founder status", "Equity opportunities"],
     discountPercentage: 30,
-    memberPercentage: 0,
+    memberPercentage: 1, // Match original Skool percentages
     badgeColor: "bg-gray-400",
     isUnlocked: false
   },
   {
     level: 8,
-    name: "Community Icon",
+    name: "Wizard",
     requiredPoints: 750,
     perks: ["Named community feature", "Lifetime benefits"],
     discountPercentage: 40,
-    memberPercentage: 0,
+    memberPercentage: 1, // Match original Skool percentages
     badgeColor: "bg-gray-400",
     isUnlocked: false
   },
   {
     level: 9,
-    name: "Community God",
+    name: "God",
     requiredPoints: 1000,
     perks: ["Ultimate recognition", "All previous benefits"],
     discountPercentage: 50,
-    memberPercentage: 0,
+    memberPercentage: 0, // Match original Skool percentages
     badgeColor: "bg-gray-400",
     isUnlocked: false
   }
