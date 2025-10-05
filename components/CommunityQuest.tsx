@@ -356,42 +356,42 @@ export default function CommunityQuest() {
                       <Badge color="yellow">Level 1</Badge>
                       <div>
                         <span className="font-medium">Noob</span>
-                        <Text size="1" color="gray">Basic community access</Text>
+                        <Text size="1" color="gray"> Basic community access</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="yellow">Level 2</Badge>
                       <div>
                         <span className="font-medium">Contributor</span>
-                        <Text size="1" color="gray">5% discount + exclusive content</Text>
+                        <Text size="1" color="gray"> 5% discount + exclusive content</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="yellow">Level 3</Badge>
                       <div>
                         <span className="font-medium">Action Taker</span>
-                        <Text size="1" color="gray">10% discount + VIP support</Text>
+                        <Text size="1" color="gray"> 10% discount + VIP support</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="gray">Level 4</Badge>
                       <div>
                         <span className="font-medium">Builder</span>
-                        <Text size="1" color="gray">15% discount + mentorship</Text>
+                        <Text size="1" color="gray"> 15% discount + mentorship</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="gray">Level 5</Badge>
                       <div>
                         <span className="font-medium">Expert</span>
-                        <Text size="1" color="gray">20% discount + moderator privileges</Text>
+                        <Text size="1" color="gray"> 20% discount + moderator privileges</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="gray">Level 6-9</Badge>
                       <div>
                         <span className="font-medium">Grandmaster → Goat</span>
-                        <Text size="1" color="gray">25-50% discount + exclusive benefits</Text>
+                        <Text size="1" color="gray"> 25-50% discount + exclusive benefits</Text>
                       </div>
                     </div>
                   </div>
