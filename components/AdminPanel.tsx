@@ -107,7 +107,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
               <div className="flex items-center justify-between mb-3">
                 <Heading size="3">🔗 External App Integration</Heading>
                 <Button 
-                  variant="outline" 
+                  variant="ghost" 
                   size="2"
                   onClick={() => setShowIntegrationGuide(true)}
                 >
