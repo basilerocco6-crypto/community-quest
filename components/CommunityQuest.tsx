@@ -143,9 +143,13 @@ export default function CommunityQuest() {
                             {/* Lock Icon Container - Fixed width */}
                             <div className="w-10 flex-shrink-0">
                               <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{backgroundColor: '#1754D8'}}>
-                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                                </svg>
+                                {level.isUnlocked ? (
+                                  <span className="text-white text-sm font-semibold">{level.level}</span>
+                                ) : (
+                                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                  </svg>
+                                )}
                               </div>
                             </div>
                             
@@ -169,9 +173,13 @@ export default function CommunityQuest() {
                             {/* Lock Icon Container - Fixed width */}
                             <div className="w-10 flex-shrink-0">
                               <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{backgroundColor: '#1754D8'}}>
-                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                  <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                                </svg>
+                                {level.isUnlocked ? (
+                                  <span className="text-white text-sm font-semibold">{level.level}</span>
+                                ) : (
+                                  <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                                  </svg>
+                                )}
                               </div>
                             </div>
                             
