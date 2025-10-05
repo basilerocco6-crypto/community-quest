@@ -26,6 +26,8 @@ export default function CommunityQuest() {
   const [showLevelBreakdown, setShowLevelBreakdown] = useState(false);
   const [showRewardsPanel, setShowRewardsPanel] = useState(false);
   const [showPointsGuide, setShowPointsGuide] = useState(false);
+  const [showChatPanel, setShowChatPanel] = useState(false);
+  const [showProfilePanel, setShowProfilePanel] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -50,7 +52,12 @@ export default function CommunityQuest() {
 
             {/* Right side icons */}
             <div className="flex items-center space-x-1 sm:space-x-2">
-              <IconButton variant="ghost" size="2">
+              <IconButton 
+                variant="ghost" 
+                size="2"
+                onClick={() => setShowChatPanel(true)}
+                title="Open Chat"
+              >
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
                 </svg>
@@ -76,12 +83,18 @@ export default function CommunityQuest() {
                 {/* No notification badge for fresh installation */}
               </div>
 
-              <Avatar 
-                src={MOCK_USER.avatar} 
-                alt={MOCK_USER.name} 
-                fallback={MOCK_USER.name.charAt(0)}
-                size="2"
-              />
+              <button 
+                onClick={() => setShowProfilePanel(true)}
+                className="cursor-pointer"
+                title="Open Profile"
+              >
+                <Avatar 
+                  src={MOCK_USER.avatar} 
+                  alt={MOCK_USER.name} 
+                  fallback={MOCK_USER.name.charAt(0)}
+                  size="2"
+                />
+              </button>
             </div>
           </div>
         </div>
@@ -239,6 +252,145 @@ export default function CommunityQuest() {
 
       {/* Engagement Tracker (Demo) */}
       <EngagementTracker />
+
+      {/* Chat Panel */}
+      {showChatPanel && (
+        <Sheet.Root open onOpenChange={() => setShowChatPanel(false)}>
+          <Sheet.Content className="max-w-2xl">
+            <div className="flex flex-col h-full">
+              <div className="flex items-center justify-between p-4 border-b">
+                <Sheet.Title className="text-xl font-semibold">Community Chat</Sheet.Title>
+                <Sheet.Close />
+              </div>
+              
+              <div className="flex-1 p-4 overflow-y-auto">
+                <div className="space-y-4">
+                  <div className="text-center py-8">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <svg className="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                      </svg>
+                    </div>
+                    <Heading size="4" className="mb-2">Welcome to Community Chat!</Heading>
+                    <Text color="gray" className="mb-4">
+                      Start conversations, share ideas, and connect with fellow community members.
+                    </Text>
+                    <div className="space-y-2 text-sm text-gray-600">
+                      <p>💬 Send messages to earn 2 points</p>
+                      <p>💭 Reply to others to earn 3 points</p>
+                      <p>🔥 Start discussions to earn 10 points</p>
+                      <p>⭐ Get reactions to earn bonus points!</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="p-4 border-t">
+                <div className="flex gap-2">
+                  <TextField.Root className="flex-1">
+                    <TextField.Input placeholder="Type your message..." />
+                  </TextField.Root>
+                  <Button size="2" disabled>
+                    Send
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Sheet.Content>
+        </Sheet.Root>
+      )}
+
+      {/* Profile Panel */}
+      {showProfilePanel && (
+        <Sheet.Root open onOpenChange={() => setShowProfilePanel(false)}>
+          <Sheet.Content className="max-w-md">
+            <div className="flex flex-col h-full">
+              <div className="flex items-center justify-between p-4 border-b">
+                <Sheet.Title className="text-xl font-semibold">Profile</Sheet.Title>
+                <Sheet.Close />
+              </div>
+              
+              <div className="flex-1 p-4 overflow-y-auto">
+                <div className="text-center mb-6">
+                  <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Avatar 
+                      src={MOCK_USER.avatar} 
+                      alt={MOCK_USER.name} 
+                      fallback={MOCK_USER.name.charAt(0)}
+                      size="5"
+                    />
+                  </div>
+                  <Heading size="4" className="mb-2">{MOCK_USER.name}</Heading>
+                  <Badge color="blue">Level {MOCK_USER.currentLevel} • {MOCK_USER.totalPoints} points</Badge>
+                </div>
+                
+                <div className="space-y-4">
+                  <Card>
+                    <div className="p-4">
+                      <Heading size="3" className="mb-3">Quick Stats</Heading>
+                      <div className="space-y-2">
+                        <div className="flex justify-between">
+                          <Text>Current Level</Text>
+                          <Badge color="blue">Level {MOCK_USER.currentLevel}</Badge>
+                        </div>
+                        <div className="flex justify-between">
+                          <Text>Total Points</Text>
+                          <Text weight="medium">{MOCK_USER.totalPoints}</Text>
+                        </div>
+                        <div className="flex justify-between">
+                          <Text>Join Date</Text>
+                          <Text>Recently joined</Text>
+                        </div>
+                      </div>
+                    </div>
+                  </Card>
+                  
+                  <Card>
+                    <div className="p-4">
+                      <Heading size="3" className="mb-3">Quick Actions</Heading>
+                      <div className="space-y-2">
+                        <Button 
+                          variant="ghost" 
+                          size="2" 
+                          className="w-full justify-start"
+                          onClick={() => {
+                            setShowProfilePanel(false);
+                            setShowRewardsPanel(true);
+                          }}
+                        >
+                          🏆 View Rewards
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="2" 
+                          className="w-full justify-start"
+                          onClick={() => {
+                            setShowProfilePanel(false);
+                            setShowPointsGuide(true);
+                          }}
+                        >
+                          📖 Learn How Points Work
+                        </Button>
+                        <Button 
+                          variant="ghost" 
+                          size="2" 
+                          className="w-full justify-start"
+                          onClick={() => {
+                            setShowProfilePanel(false);
+                            setShowLevelBreakdown(true);
+                          }}
+                        >
+                          📊 View All Levels
+                        </Button>
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+              </div>
+            </div>
+          </Sheet.Content>
+        </Sheet.Root>
+      )}
 
       {/* Points Guide Modal */}
       {showPointsGuide && (
