@@ -101,50 +101,120 @@ export default function CommunityQuest() {
         </div>
       </header>
 
-      {/* Mobile-specific styles */}
-      <style jsx>{`
-        @media (max-width: 1023px) and (orientation: portrait), (max-width: 1023px) and (orientation: landscape) {
-          .main-layout {
-            flex-direction: column !important;
-          }
-          .profile-section {
-            width: 100% !important;
-          }
-          .level-breakdown-section {
-            width: 100% !important;
-          }
-          .level-grid {
-            grid-template-columns: 1fr !important;
-            gap: 1rem !important;
-          }
-        }
-        
-        /* Ensure desktop layout is preserved */
-        @media (min-width: 1024px) {
-          .main-layout {
-            flex-direction: row !important;
-          }
-          .profile-section {
-            width: 33.333333% !important;
-          }
-          .level-breakdown-section {
-            width: 66.666667% !important;
-          }
-          .level-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-            gap: 2rem !important;
-          }
-        }
-      `}</style>
 
-      {/* Main Content */}
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+      {/* Mobile Layout - Hidden on Desktop */}
+      <div className="lg:hidden">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
+          <div className="space-y-6 sm:space-y-8">
+            <div className="bg-black rounded-lg p-4 sm:p-6 shadow-lg border border-gray-700">
+              <div className="flex flex-col gap-8">
+                {/* Mobile User Profile Section */}
+                <div className="flex flex-col items-center gap-4 w-full">
+                  <div className="relative">
+                    <div className="p-3 rounded-full shadow-lg" style={{backgroundColor: '#FA4616'}}>
+                      <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
+                        <div className="w-32 h-32 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                          {MOCK_USER.avatar ? (
+                            <img 
+                              src={MOCK_USER.avatar} 
+                              alt={MOCK_USER.name}
+                              className="w-full h-full object-cover"
+                            />
+                          ) : (
+                            <img 
+                              src="/construction-illo.svg" 
+                              alt="Construction placeholder"
+                              className="w-24 h-24"
+                            />
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="absolute -bottom-1 -right-1 w-10 h-10 rounded-full flex items-center justify-center border-3 shadow-xl" style={{backgroundColor: '#1754D8', borderColor: 'white'}}>
+                      <span className="text-lg font-extrabold" style={{color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>{MOCK_USER.currentLevel}</span>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 text-center">
+                    <div className="text-lg font-bold" style={{color: '#FFFFFF'}}>{MOCK_USER.name}</div>
+                    <div className="text-sm" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
+                    <div className="text-xs" style={{color: '#9CA3AF'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
+                  </div>
+                </div>
+                {/* Mobile Level Breakdown */}
+                <div className="w-full">
+                  <div className="grid grid-cols-1 gap-4">
+                    <div className="space-y-3">
+                      {MOCK_LEVELS.slice(0, 5).map((level) => (
+                        <div key={level.level} className="flex items-start gap-3 w-full">
+                          <div className="w-6 h-6 flex-shrink-0 flex items-center justify-center">
+                            {level.level === 1 ? (
+                              <span className="text-sm font-bold" style={{color: '#10B981'}}>{level.level}</span>
+                            ) : (
+                              <Lock className="w-4 h-4" style={{color: '#6B7280'}} />
+                            )}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-xs font-medium" style={{color: '#FFFFFF'}}>
+                              Level {level.level} - {level.name}
+                            </div>
+                            <div className="text-xs text-gray-400">
+                              {level.memberPercentage}% of members
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="space-y-3">
+                      {MOCK_LEVELS.slice(5).map((level) => (
+                        <div key={level.level} className="flex items-start gap-3 w-full">
+                          <div className="w-6 h-6 flex-shrink-0 flex items-center justify-center">
+                            <Lock className="w-4 h-4" style={{color: '#6B7280'}} />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="text-xs font-medium" style={{color: '#FFFFFF'}}>
+                              Level {level.level} - {level.name}
+                            </div>
+                            <div className="text-xs text-gray-400">
+                              {level.memberPercentage}% of members
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Learn How Points Work Link */}
+              <div className="text-center">
+                <button 
+                  onClick={() => setShowPointsGuide(true)}
+                  className="text-sm text-blue-600 hover:text-blue-800 underline cursor-pointer"
+                >
+                  Learn how points work
+                </button>
+              </div>
+
+              {/* Leaderboard Section */}
+              <LeaderboardSection 
+                weeklyLeaderboard={MOCK_LEADERBOARD_WEEKLY}
+                monthlyLeaderboard={MOCK_LEADERBOARD_MONTHLY}
+                allTimeLeaderboard={MOCK_LEADERBOARD_ALLTIME}
+              />
+            </div>
+          </div>
+        </main>
+      </div>
+
+      {/* Desktop Layout - Hidden on Mobile */}
+      <div className="hidden lg:block">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
             <div className="space-y-6 sm:space-y-8">
               {/* Combined User Profile and Level Breakdown Section */}
               <div className="bg-black rounded-lg p-4 sm:p-6 shadow-lg border border-gray-700">
-                <div className="flex flex-row gap-8 main-layout">
+                <div className="flex flex-row gap-8">
                   {/* Left side - User Profile Section (1/3 width) */}
-                  <div className="flex flex-col items-center gap-4 w-1/3 profile-section">
+                  <div className="flex flex-col items-center gap-4 w-1/3">
                     {/* MUCH BIGGER Profile Picture */}
                     <div className="relative">
                       {/* Outer gradient ring - Made much bigger */}
@@ -185,8 +255,8 @@ export default function CommunityQuest() {
                   </div>
 
                   {/* Right side - Level Breakdown in List Format (2/3 width) */}
-                  <div className="w-2/3 level-breakdown-section">
-                    <div className="grid grid-cols-2 gap-8 level-grid">
+                  <div className="w-2/3">
+                    <div className="grid grid-cols-2 gap-8">
                       {/* Left Column - Levels 1-5 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
@@ -271,6 +341,7 @@ export default function CommunityQuest() {
 
         {/* Last Updated - Removed for app store readiness */}
       </main>
+      </div>
 
       {/* Level Breakdown Modal */}
       {showLevelBreakdown && (
