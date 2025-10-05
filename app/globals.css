@@ -12,3 +12,31 @@ body {
 	color: var(--foreground);
 	font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Ensure desktop layout works correctly within Whop's iframe */
+@media (min-width: 1024px) {
+	.lg\\:hidden {
+		display: none !important;
+	}
+	.hidden.lg\\:block {
+		display: block !important;
+	}
+}
+
+/* Force desktop layout specificity within Whop environment */
+.whop-embed .desktop-layout {
+	flex-direction: row !important;
+}
+
+.whop-embed .desktop-layout .profile-section {
+	width: 33.333333% !important;
+}
+
+.whop-embed .desktop-layout .level-breakdown-section {
+	width: 66.666667% !important;
+}
+
+.whop-embed .desktop-layout .level-grid {
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 2rem !important;
+}
