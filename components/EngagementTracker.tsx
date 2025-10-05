@@ -21,23 +21,23 @@ export default function EngagementTracker() {
     switch (type) {
       case 'chat':
         engagementTracker.trackChatMessage(MOCK_USER.id, message.length);
-        setActivity(`Chat message tracked: +${message.length > 50 ? '2' : '1'} points`);
+        setActivity(`Chat message tracked: +2 points`);
         break;
       case 'forum_post':
         engagementTracker.trackForumPost(MOCK_USER.id, message.length);
-        setActivity(`Forum post tracked: +${message.length > 200 ? '7' : '5'} points`);
+        setActivity(`Forum post tracked: +15 points`);
         break;
       case 'forum_comment':
-        engagementTracker.trackForumComment(MOCK_USER.id);
-        setActivity(`Forum comment tracked: +2 points`);
+        engagementTracker.trackForumReply(MOCK_USER.id, 'demo_post');
+        setActivity(`Forum comment tracked: +8 points`);
         break;
       case 'course_completion':
         engagementTracker.trackCourseCompletion(MOCK_USER.id, 'course_1', 'Introduction to Community Building');
-        setActivity(`Course completion tracked: +10 points`);
+        setActivity(`Course completion tracked: +200 points`);
         break;
       case 'referral':
         engagementTracker.trackReferral(MOCK_USER.id, 'new_user_123');
-        setActivity(`Referral tracked: +15 points`);
+        setActivity(`Referral tracked: +100 points`);
         break;
     }
     setMessage("");
