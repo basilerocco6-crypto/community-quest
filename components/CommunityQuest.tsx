@@ -101,7 +101,7 @@ export default function CommunityQuest() {
                         {/* Inner ring */}
                         <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
                           {/* Custom large avatar */}
-                          <div className="w-32 h-32 lg:w-40 lg:h-40 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                          <div className="w-40 h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
                             {MOCK_USER.avatar ? (
                               <img 
                                 src={MOCK_USER.avatar} 
@@ -112,7 +112,7 @@ export default function CommunityQuest() {
                               <img 
                                 src="/construction-illo.svg" 
                                 alt="Construction placeholder"
-                                className="w-24 h-24 lg:w-28 lg:h-28"
+                                className="w-32 h-32 lg:w-36 lg:h-36"
                               />
                             )}
                           </div>
@@ -142,8 +142,8 @@ export default function CommunityQuest() {
                           <div key={level.level} className="flex items-start gap-3 w-full">
                             {/* Lock Icon Container - Fixed width */}
                             <div className="w-10 flex-shrink-0">
-                              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                                <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                              <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{backgroundColor: '#1754D8'}}>
+                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                 </svg>
                               </div>
@@ -151,7 +151,7 @@ export default function CommunityQuest() {
                             
                             {/* Vertical Text Stack */}
                             <div className="flex flex-col">
-                              <div className="text-sm font-semibold" style={{color: '#000000'}}>
+                              <div className="text-xs font-medium" style={{color: '#000000'}}>
                                 Level {level.level} - {level.name}
                               </div>
                               <div className="text-xs text-gray-500">
@@ -168,8 +168,8 @@ export default function CommunityQuest() {
                           <div key={level.level} className="flex items-start gap-3 w-full">
                             {/* Lock Icon Container - Fixed width */}
                             <div className="w-10 flex-shrink-0">
-                              <div className="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center">
-                                <svg className="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                              <div className="w-8 h-8 rounded-full flex items-center justify-center" style={{backgroundColor: '#1754D8'}}>
+                                <svg className="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
                                   <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                                 </svg>
                               </div>
@@ -177,12 +177,17 @@ export default function CommunityQuest() {
                             
                             {/* Vertical Text Stack */}
                             <div className="flex flex-col">
-                              <div className="text-sm font-semibold" style={{color: '#000000'}}>
+                              <div className="text-xs font-medium" style={{color: '#000000'}}>
                                 Level {level.level} - {level.name}
                               </div>
                               <div className="text-xs text-gray-500">
                                 {level.memberPercentage}% of members
                               </div>
+                              {level.level === 7 && (
+                                <div className="text-xs text-blue-600">
+                                  Unlock 'Visit Skool HQ'
+                                </div>
+                              )}
                             </div>
                           </div>
                         ))}
