@@ -134,15 +134,15 @@ export default function CommunityQuest() {
                     {/* Stats Below Avatar - Horizontal Layout */}
                     <div className="flex gap-4 sm:gap-6 w-full justify-center">
                       <div className="text-center">
-                        <div className="text-xl lg:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.weeklyPoints}</div>
+                        <div className="text-lg lg:text-xl font-bold" style={{color: '#000000'}}>{MOCK_USER.weeklyPoints}</div>
                         <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>This Week</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-xl lg:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.monthlyPoints}</div>
+                        <div className="text-lg lg:text-xl font-bold" style={{color: '#000000'}}>{MOCK_USER.monthlyPoints}</div>
                         <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>This Month</div>
                       </div>
                       <div className="text-center">
-                        <div className="text-xl lg:text-2xl font-bold" style={{color: '#000000'}}>{MOCK_USER.totalPoints}</div>
+                        <div className="text-lg lg:text-xl font-bold" style={{color: '#000000'}}>{MOCK_USER.totalPoints}</div>
                         <div className="text-xs lg:text-sm" style={{color: '#4B5563'}}>All Time</div>
                       </div>
                     </div>
