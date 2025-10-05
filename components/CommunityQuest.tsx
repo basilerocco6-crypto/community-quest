@@ -26,7 +26,6 @@ export default function CommunityQuest() {
   const [showLevelBreakdown, setShowLevelBreakdown] = useState(false);
   const [showRewardsPanel, setShowRewardsPanel] = useState(false);
   const [showPointsGuide, setShowPointsGuide] = useState(false);
-  const [showChatPanel, setShowChatPanel] = useState(false);
   const [showProfilePanel, setShowProfilePanel] = useState(false);
 
   return (
@@ -52,14 +51,9 @@ export default function CommunityQuest() {
 
             {/* Right side icons */}
             <div className="flex items-center space-x-1 sm:space-x-2">
-              <IconButton 
-                variant="ghost" 
-                size="2"
-                onClick={() => setShowChatPanel(true)}
-                title="Open Chat"
-              >
+              <IconButton variant="ghost" size="2" title="Notifications">
                 <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5-5 5-5h-5m-6 0v10a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2H9a2 2 0 00-2 2v10z" />
                 </svg>
               </IconButton>
               
@@ -253,52 +247,6 @@ export default function CommunityQuest() {
       {/* Engagement Tracker (Demo) */}
       <EngagementTracker />
 
-      {/* Chat Panel */}
-      {showChatPanel && (
-        <Sheet.Root open onOpenChange={() => setShowChatPanel(false)}>
-          <Sheet.Content className="max-w-2xl">
-            <div className="flex flex-col h-full">
-              <div className="flex items-center justify-between p-4 border-b">
-                <Sheet.Title className="text-xl font-semibold">Community Chat</Sheet.Title>
-                <Sheet.Close />
-              </div>
-              
-              <div className="flex-1 p-4 overflow-y-auto">
-                <div className="space-y-4">
-                  <div className="text-center py-8">
-                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <svg className="w-8 h-8 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-                      </svg>
-                    </div>
-                    <Heading size="4" className="mb-2">Welcome to Community Chat!</Heading>
-                    <Text color="gray" className="mb-4">
-                      Start conversations, share ideas, and connect with fellow community members.
-                    </Text>
-                    <div className="space-y-2 text-sm text-gray-600">
-                      <p>💬 Send messages to earn 2 points</p>
-                      <p>💭 Reply to others to earn 3 points</p>
-                      <p>🔥 Start discussions to earn 10 points</p>
-                      <p>⭐ Get reactions to earn bonus points!</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="p-4 border-t">
-                <div className="flex gap-2">
-                  <TextField.Root className="flex-1">
-                    <TextField.Input placeholder="Type your message..." />
-                  </TextField.Root>
-                  <Button size="2" disabled>
-                    Send
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </Sheet.Content>
-        </Sheet.Root>
-      )}
 
       {/* Profile Panel */}
       {showProfilePanel && (
@@ -411,7 +359,12 @@ export default function CommunityQuest() {
                   <div className="space-y-6">
                     {/* Chat & Communication */}
                     <div>
-                      <Heading size="3" className="mb-3 text-blue-600">💬 Chat & Communication (Daily Engagement)</Heading>
+                      <Heading size="3" className="mb-3 text-blue-600">💬 Chat & Communication (via Whop Chat App)</Heading>
+                      <div className="mb-3 p-3 bg-blue-50 rounded-lg">
+                        <Text size="2" color="blue" className="font-medium">
+                          💡 These activities are automatically tracked from your community's Whop Chat App
+                        </Text>
+                      </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
                           <span className="font-medium">Send a message in chat</span>
