@@ -1,13 +1,39 @@
 import { EngagementActivity, User } from "./types";
 
-// Point system for different engagement activities
+// Updated point system matching the comprehensive structure
 export const ENGAGEMENT_POINTS = {
-  chat_message: 1,
-  forum_post: 5,
-  forum_comment: 2,
-  course_completion: 10,
-  event_attendance: 3,
-  referral: 15,
+  // Chat & Communication (via Whop Chat App)
+  chat_message: 2,
+  chat_reply: 3,
+  discussion_start: 10,
+  chat_reaction_bonus: 5,
+  chat_streak_bonus: 20,
+  
+  // Forum Activity (Quality Content)
+  forum_post: 15,
+  forum_reply: 8,
+  forum_pinned: 50,
+  forum_helpful_bonus: 15,
+  forum_engagement_bonus: 25,
+  
+  // Course & Learning
+  course_module: 50,
+  course_completion: 200,
+  quiz_excellence: 30,
+  course_progress_share: 20,
+  
+  // Community Value (Quality over Quantity)
+  member_help: 40,
+  resource_share: 25,
+  self_introduction: 10,
+  live_event_attendance: 75,
+  weekly_checkin: 15,
+  
+  // Referrals & Growth
+  referral: 100,
+  referral_tier_bonus: 50,
+  
+  // Legacy support
   daily_login: 1,
   profile_completion: 5,
   first_post: 10,
@@ -33,17 +59,69 @@ export class EngagementTracker {
     return newActivity;
   }
 
+  // === CHAT & COMMUNICATION (via Whop Chat App) ===
+  
   // Track chat message
   trackChatMessage(userId: string, messageLength: number = 0): EngagementActivity {
     const points = ENGAGEMENT_POINTS.chat_message;
     return this.trackActivity({
       userId,
-      type: 'chat',
+      type: 'chat_message',
       points,
       description: `Sent a chat message${messageLength > 50 ? ' (detailed)' : ''}`,
       metadata: { messageLength }
     });
   }
+
+  // Track chat reply
+  trackChatReply(userId: string, originalMessageId: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.chat_reply;
+    return this.trackActivity({
+      userId,
+      type: 'chat_reply',
+      points,
+      description: 'Replied to someone\'s message',
+      metadata: { originalMessageId }
+    });
+  }
+
+  // Track discussion start
+  trackDiscussionStart(userId: string, discussionId: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.discussion_start;
+    return this.trackActivity({
+      userId,
+      type: 'discussion_start',
+      points,
+      description: 'Started a meaningful discussion thread',
+      metadata: { discussionId }
+    });
+  }
+
+  // Track chat reaction bonus
+  trackChatReactionBonus(userId: string, messageId: string, reactionCount: number): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.chat_reaction_bonus;
+    return this.trackActivity({
+      userId,
+      type: 'chat_reaction_bonus',
+      points,
+      description: `Got ${reactionCount}+ reactions on message`,
+      metadata: { messageId, reactionCount }
+    });
+  }
+
+  // Track chat streak bonus
+  trackChatStreakBonus(userId: string, streakDays: number): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.chat_streak_bonus;
+    return this.trackActivity({
+      userId,
+      type: 'chat_streak_bonus',
+      points,
+      description: `Daily chat streak (${streakDays} days)`,
+      metadata: { streakDays }
+    });
+  }
+
+  // === FORUM ACTIVITY (Quality Content) ===
 
   // Track forum post
   trackForumPost(userId: string, postLength: number = 0): EngagementActivity {
@@ -57,14 +135,65 @@ export class EngagementTracker {
     });
   }
 
-  // Track forum comment
-  trackForumComment(userId: string): EngagementActivity {
-    const points = ENGAGEMENT_POINTS.forum_comment;
+  // Track forum reply
+  trackForumReply(userId: string, postId: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.forum_reply;
     return this.trackActivity({
       userId,
-      type: 'forum_comment',
+      type: 'forum_reply',
       points,
-      description: 'Commented on a forum post'
+      description: 'Replied to a forum post',
+      metadata: { postId }
+    });
+  }
+
+  // Track forum post pinned
+  trackForumPinned(userId: string, postId: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.forum_pinned;
+    return this.trackActivity({
+      userId,
+      type: 'forum_pinned',
+      points,
+      description: 'Got post pinned by admin',
+      metadata: { postId }
+    });
+  }
+
+  // Track forum helpful bonus
+  trackForumHelpfulBonus(userId: string, postId: string, helpfulCount: number): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.forum_helpful_bonus;
+    return this.trackActivity({
+      userId,
+      type: 'forum_helpful_bonus',
+      points,
+      description: `Received "helpful" reaction from ${helpfulCount}+ members`,
+      metadata: { postId, helpfulCount }
+    });
+  }
+
+  // Track forum engagement bonus
+  trackForumEngagementBonus(userId: string, postId: string, replyCount: number): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.forum_engagement_bonus;
+    return this.trackActivity({
+      userId,
+      type: 'forum_engagement_bonus',
+      points,
+      description: `Created post with ${replyCount}+ replies`,
+      metadata: { postId, replyCount }
+    });
+  }
+
+  // === COURSE & LEARNING ===
+
+  // Track course module completion
+  trackCourseModule(userId: string, moduleId: string, moduleName: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.course_module;
+    return this.trackActivity({
+      userId,
+      type: 'course_module',
+      points,
+      description: `Completed course module: ${moduleName}`,
+      metadata: { moduleId, moduleName }
     });
   }
 
@@ -75,22 +204,98 @@ export class EngagementTracker {
       userId,
       type: 'course_completion',
       points,
-      description: `Completed course: ${courseName}`,
+      description: `Completed entire course: ${courseName}`,
       metadata: { courseId, courseName }
     });
   }
 
-  // Track event attendance
-  trackEventAttendance(userId: string, eventId: string, eventName: string): EngagementActivity {
-    const points = ENGAGEMENT_POINTS.event_attendance;
+  // Track quiz excellence
+  trackQuizExcellence(userId: string, quizId: string, score: number): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.quiz_excellence;
     return this.trackActivity({
       userId,
-      type: 'event_attendance',
+      type: 'quiz_excellence',
       points,
-      description: `Attended event: ${eventName}`,
+      description: `Scored ${score}%+ on quiz`,
+      metadata: { quizId, score }
+    });
+  }
+
+  // Track course progress share
+  trackCourseProgressShare(userId: string, courseId: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.course_progress_share;
+    return this.trackActivity({
+      userId,
+      type: 'course_progress_share',
+      points,
+      description: 'Shared course progress/wins',
+      metadata: { courseId }
+    });
+  }
+
+  // === COMMUNITY VALUE (Quality over Quantity) ===
+
+  // Track member help
+  trackMemberHelp(userId: string, helpedUserId: string, helpType: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.member_help;
+    return this.trackActivity({
+      userId,
+      type: 'member_help',
+      points,
+      description: `Helped another member (verified by admin)`,
+      metadata: { helpedUserId, helpType }
+    });
+  }
+
+  // Track resource share
+  trackResourceShare(userId: string, resourceType: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.resource_share;
+    return this.trackActivity({
+      userId,
+      type: 'resource_share',
+      points,
+      description: 'Shared a valuable resource',
+      metadata: { resourceType }
+    });
+  }
+
+  // Track self introduction
+  trackSelfIntroduction(userId: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.self_introduction;
+    return this.trackActivity({
+      userId,
+      type: 'self_introduction',
+      points,
+      description: 'Introduced yourself (one-time)',
+      metadata: { oneTime: true }
+    });
+  }
+
+  // Track live event attendance
+  trackLiveEventAttendance(userId: string, eventId: string, eventName: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.live_event_attendance;
+    return this.trackActivity({
+      userId,
+      type: 'live_event_attendance',
+      points,
+      description: `Attended live event: ${eventName}`,
       metadata: { eventId, eventName }
     });
   }
+
+  // Track weekly check-in
+  trackWeeklyCheckin(userId: string, weekNumber: number): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.weekly_checkin;
+    return this.trackActivity({
+      userId,
+      type: 'weekly_checkin',
+      points,
+      description: 'Weekly check-in post',
+      metadata: { weekNumber }
+    });
+  }
+
+  // === REFERRALS & GROWTH ===
 
   // Track referral
   trackReferral(userId: string, referredUserId: string): EngagementActivity {
@@ -99,8 +304,20 @@ export class EngagementTracker {
       userId,
       type: 'referral',
       points,
-      description: 'Referred a new member',
+      description: 'Referred a new member who joined',
       metadata: { referredUserId }
+    });
+  }
+
+  // Track referral tier bonus
+  trackReferralTierBonus(userId: string, referredUserId: string, tier: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.referral_tier_bonus;
+    return this.trackActivity({
+      userId,
+      type: 'referral_tier_bonus',
+      points,
+      description: `Referred member reached ${tier} tier`,
+      metadata: { referredUserId, tier }
     });
   }
 
@@ -201,23 +418,68 @@ export const engagementTracker = new EngagementTracker();
 
 // Helper functions for integration with Whop SDK
 export const trackWhopActivity = async (userId: string, activityType: string, metadata?: any) => {
-  // This would integrate with Whop's webhook system to track real activities
-  // For now, we'll simulate the tracking
+  // This integrates with Whop's webhook system to track real activities from external apps
   
   switch (activityType) {
+    // === CHAT & COMMUNICATION ===
     case 'chat_message':
       return engagementTracker.trackChatMessage(userId, metadata?.messageLength);
+    case 'chat_reply':
+      return engagementTracker.trackChatReply(userId, metadata?.originalMessageId);
+    case 'discussion_start':
+      return engagementTracker.trackDiscussionStart(userId, metadata?.discussionId);
+    case 'chat_reaction_bonus':
+      return engagementTracker.trackChatReactionBonus(userId, metadata?.messageId, metadata?.reactionCount);
+    case 'chat_streak_bonus':
+      return engagementTracker.trackChatStreakBonus(userId, metadata?.streakDays);
+    
+    // === FORUM ACTIVITY ===
     case 'forum_post':
       return engagementTracker.trackForumPost(userId, metadata?.postLength);
-    case 'forum_comment':
-      return engagementTracker.trackForumComment(userId);
+    case 'forum_reply':
+      return engagementTracker.trackForumReply(userId, metadata?.postId);
+    case 'forum_pinned':
+      return engagementTracker.trackForumPinned(userId, metadata?.postId);
+    case 'forum_helpful_bonus':
+      return engagementTracker.trackForumHelpfulBonus(userId, metadata?.postId, metadata?.helpfulCount);
+    case 'forum_engagement_bonus':
+      return engagementTracker.trackForumEngagementBonus(userId, metadata?.postId, metadata?.replyCount);
+    
+    // === COURSE & LEARNING ===
+    case 'course_module':
+      return engagementTracker.trackCourseModule(userId, metadata?.moduleId, metadata?.moduleName);
     case 'course_completion':
       return engagementTracker.trackCourseCompletion(userId, metadata?.courseId, metadata?.courseName);
-    case 'event_attendance':
-      return engagementTracker.trackEventAttendance(userId, metadata?.eventId, metadata?.eventName);
+    case 'quiz_excellence':
+      return engagementTracker.trackQuizExcellence(userId, metadata?.quizId, metadata?.score);
+    case 'course_progress_share':
+      return engagementTracker.trackCourseProgressShare(userId, metadata?.courseId);
+    
+    // === COMMUNITY VALUE ===
+    case 'member_help':
+      return engagementTracker.trackMemberHelp(userId, metadata?.helpedUserId, metadata?.helpType);
+    case 'resource_share':
+      return engagementTracker.trackResourceShare(userId, metadata?.resourceType);
+    case 'self_introduction':
+      return engagementTracker.trackSelfIntroduction(userId);
+    case 'live_event_attendance':
+      return engagementTracker.trackLiveEventAttendance(userId, metadata?.eventId, metadata?.eventName);
+    case 'weekly_checkin':
+      return engagementTracker.trackWeeklyCheckin(userId, metadata?.weekNumber);
+    
+    // === REFERRALS & GROWTH ===
     case 'referral':
       return engagementTracker.trackReferral(userId, metadata?.referredUserId);
+    case 'referral_tier_bonus':
+      return engagementTracker.trackReferralTierBonus(userId, metadata?.referredUserId, metadata?.tier);
+    
+    // === LEGACY SUPPORT ===
+    case 'forum_comment':
+      return engagementTracker.trackForumReply(userId, metadata?.postId);
+    case 'event_attendance':
+      return engagementTracker.trackLiveEventAttendance(userId, metadata?.eventId, metadata?.eventName);
+    
     default:
-      console.warn(`Unknown activity type: ${activityType}`);
+      console.warn(`Unknown activity type: ${activityType} from ${metadata?.sourceApp || 'unknown'}`);
   }
 };
