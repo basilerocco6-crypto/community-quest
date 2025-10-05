@@ -52,12 +52,6 @@ export default function CommunityQuest() {
 
             {/* Right side icons */}
             <div className="flex items-center space-x-1 sm:space-x-2">
-              <IconButton variant="ghost" size="2" title="Notifications">
-                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5-5 5-5h-5m-6 0v10a2 2 0 002 2h6a2 2 0 002-2V7a2 2 0 00-2-2H9a2 2 0 00-2 2v10z" />
-                </svg>
-              </IconButton>
-              
               <IconButton 
                 variant="ghost" 
                 size="2"
@@ -266,7 +260,7 @@ export default function CommunityQuest() {
       {/* Profile Panel */}
       {showProfilePanel && (
         <Sheet.Root open onOpenChange={() => setShowProfilePanel(false)}>
-          <Sheet.Content className="max-w-md">
+          <Sheet.Content className="max-w-md max-h-[80vh]">
             <div className="flex flex-col h-full">
               <div className="flex items-center justify-between p-4 border-b">
                 <Sheet.Title className="text-xl font-semibold">Profile</Sheet.Title>
