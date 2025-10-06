@@ -29,36 +29,77 @@ export default function CommunityQuestSimple() {
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
 
-  // Force desktop layout in Whop environment
+  // Force desktop layout in Whop environment - CONTINUOUS OVERRIDE
   useEffect(() => {
-    const isInWhop = window.location.href.includes('whop.com') || 
-                     window.parent !== window || 
-                     document.referrer.includes('whop.com');
+    const forceDesktopLayout = () => {
+      // Always force desktop layout regardless of environment detection
+      if (window.innerWidth >= 1024) {
+        // Inject CSS directly into the page
+        const style = document.createElement('style');
+        style.textContent = `
+          .grid.grid-cols-1.lg\\:grid-cols-3 {
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 2rem !important;
+          }
+          .lg\\:col-span-1 {
+            grid-column: span 1 / span 1 !important;
+          }
+          .lg\\:col-span-2 {
+            grid-column: span 2 / span 2 !important;
+          }
+          .grid.grid-cols-1.lg\\:grid-cols-2 {
+            grid-template-columns: repeat(2, 1fr) !important;
+          }
+        `;
+        document.head.appendChild(style);
+        
+        // Also force with direct element manipulation
+        const mainGrid = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-3') as HTMLElement;
+        if (mainGrid) {
+          mainGrid.style.setProperty('display', 'grid', 'important');
+          mainGrid.style.setProperty('grid-template-columns', 'repeat(3, 1fr)', 'important');
+          mainGrid.style.setProperty('gap', '2rem', 'important');
+        }
+        
+        const profileSection = document.querySelector('.lg\\:col-span-1') as HTMLElement;
+        if (profileSection) {
+          profileSection.style.setProperty('grid-column', 'span 1 / span 1', 'important');
+        }
+        
+        const levelSection = document.querySelector('.lg\\:col-span-2') as HTMLElement;
+        if (levelSection) {
+          levelSection.style.setProperty('grid-column', 'span 2 / span 2', 'important');
+        }
+        
+        const levelGrid = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-2') as HTMLElement;
+        if (levelGrid) {
+          levelGrid.style.setProperty('grid-template-columns', 'repeat(2, 1fr)', 'important');
+        }
+      }
+    };
+
+    // Run immediately
+    forceDesktopLayout();
     
-    if (isInWhop && window.innerWidth >= 1024) {
-      // Force desktop layout with inline styles
-      const mainGrid = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-3') as HTMLElement;
-      if (mainGrid) {
-        mainGrid.style.setProperty('display', 'grid', 'important');
-        mainGrid.style.setProperty('grid-template-columns', 'repeat(3, 1fr)', 'important');
-        mainGrid.style.setProperty('gap', '2rem', 'important');
-      }
-      
-      const profileSection = document.querySelector('.lg\\:col-span-1') as HTMLElement;
-      if (profileSection) {
-        profileSection.style.setProperty('grid-column', 'span 1 / span 1', 'important');
-      }
-      
-      const levelSection = document.querySelector('.lg\\:col-span-2') as HTMLElement;
-      if (levelSection) {
-        levelSection.style.setProperty('grid-column', 'span 2 / span 2', 'important');
-      }
-      
-      const levelGrid = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-2') as HTMLElement;
-      if (levelGrid) {
-        levelGrid.style.setProperty('grid-template-columns', 'repeat(2, 1fr)', 'important');
-      }
-    }
+    // Run again after a short delay to catch any late-loading elements
+    setTimeout(forceDesktopLayout, 100);
+    setTimeout(forceDesktopLayout, 500);
+    setTimeout(forceDesktopLayout, 1000);
+    
+    // Set up a mutation observer to catch any DOM changes
+    const observer = new MutationObserver(() => {
+      forceDesktopLayout();
+    });
+    
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['class', 'style']
+    });
+    
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -127,9 +168,21 @@ export default function CommunityQuestSimple() {
         <div className="space-y-6 sm:space-y-8">
           <div className="bg-card rounded-lg p-4 sm:p-6 shadow-lg border border-border">
             {/* Use CSS Grid for reliable responsive layout */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div 
+              className="grid grid-cols-1 lg:grid-cols-3 gap-8"
+              style={{
+                display: 'grid',
+                gridTemplateColumns: typeof window !== 'undefined' && window.innerWidth >= 1024 ? 'repeat(3, 1fr)' : '1fr',
+                gap: '2rem'
+              }}
+            >
               {/* User Profile Section - Takes full width on mobile, 1 column on desktop */}
-              <div className="lg:col-span-1 flex flex-col items-center gap-4">
+              <div 
+                className="lg:col-span-1 flex flex-col items-center gap-4"
+                style={{
+                  gridColumn: typeof window !== 'undefined' && window.innerWidth >= 1024 ? 'span 1 / span 1' : 'span 1 / span 1'
+                }}
+              >
                 {/* Profile Picture */}
                 <div className="relative">
                   <div className="p-3 rounded-full shadow-lg" style={{backgroundColor: '#FA4616'}}>
@@ -165,8 +218,20 @@ export default function CommunityQuestSimple() {
               </div>
 
               {/* Level Breakdown Section - Takes full width on mobile, 2 columns on desktop */}
-              <div className="lg:col-span-2">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8">
+              <div 
+                className="lg:col-span-2"
+                style={{
+                  gridColumn: typeof window !== 'undefined' && window.innerWidth >= 1024 ? 'span 2 / span 2' : 'span 1 / span 1'
+                }}
+              >
+                <div 
+                  className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-8"
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: typeof window !== 'undefined' && window.innerWidth >= 1024 ? 'repeat(2, 1fr)' : '1fr',
+                    gap: '2rem'
+                  }}
+                >
                   {/* Left Column - Levels 1-5 */}
                   <div className="space-y-3">
                     {MOCK_LEVELS.slice(0, 5).map((level) => (
