@@ -55,9 +55,10 @@ export default function CommunityQuestMobile() {
           flex-direction: column !important;
           align-items: center !important;
           padding: 1rem !important;
-          background-color: white !important;
+          background-color: var(--background) !important;
+          border: 1px solid var(--border) !important;
           border-radius: 0.5rem !important;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+          box-shadow: var(--shadow-sm) !important;
           margin-bottom: 1rem !important;
         }
         .mobile-levels-section {
@@ -67,16 +68,17 @@ export default function CommunityQuestMobile() {
           flex-direction: column !important;
           gap: 0.5rem !important;
           padding: 1rem !important;
-          background-color: white !important;
+          background-color: var(--background) !important;
+          border: 1px solid var(--border) !important;
           border-radius: 0.5rem !important;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+          box-shadow: var(--shadow-sm) !important;
         }
         .mobile-level-item {
           display: flex !important;
           align-items: center !important;
           gap: 0.75rem !important;
           padding: 0.75rem !important;
-          border-bottom: 1px solid #e5e7eb !important;
+          border-bottom: 1px solid var(--border) !important;
           width: 100% !important;
         }
         .mobile-level-item:last-child {
@@ -97,12 +99,12 @@ export default function CommunityQuestMobile() {
         .mobile-level-title {
           font-size: 0.875rem !important;
           font-weight: 500 !important;
-          color: #374151 !important;
+          color: var(--foreground) !important;
           margin-bottom: 0.25rem !important;
         }
         .mobile-level-percentage {
           font-size: 0.75rem !important;
-          color: #6b7280 !important;
+          color: var(--muted-foreground) !important;
         }
         /* Force mobile layout on ALL screen sizes */
         .mobile-main-container * {
@@ -137,9 +139,10 @@ export default function CommunityQuestMobile() {
           flex-direction: column !important;
           align-items: center !important;
           padding: 1rem !important;
-          background-color: white !important;
+          background-color: var(--background) !important;
+          border: 1px solid var(--border) !important;
           border-radius: 0.5rem !important;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+          box-shadow: var(--shadow-sm) !important;
           margin-bottom: 1rem !important;
         `;
       }
@@ -153,9 +156,10 @@ export default function CommunityQuestMobile() {
           flex-direction: column !important;
           gap: 0.5rem !important;
           padding: 1rem !important;
-          background-color: white !important;
+          background-color: var(--background) !important;
+          border: 1px solid var(--border) !important;
           border-radius: 0.5rem !important;
-          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+          box-shadow: var(--shadow-sm) !important;
         `;
       }
     };
