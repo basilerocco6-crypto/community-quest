@@ -219,6 +219,8 @@ export default function CommunityQuestSimple() {
       {/* Rewards Panel */}
       {showRewardsPanel && (
         <RewardsPanel 
+          user={MOCK_USER}
+          isOpen={showRewardsPanel}
           onClose={() => setShowRewardsPanel(false)}
         />
       )}
