@@ -40,3 +40,30 @@ body {
 	grid-template-columns: repeat(2, 1fr) !important;
 	gap: 2rem !important;
 }
+
+/* Additional Whop-specific overrides */
+[data-whop-app] .lg\\:hidden {
+	display: none !important;
+}
+
+[data-whop-app] .hidden.lg\\:block {
+	display: block !important;
+}
+
+/* Force desktop layout for Whop apps */
+[data-whop-app] .desktop-layout {
+	flex-direction: row !important;
+}
+
+[data-whop-app] .profile-section {
+	width: 33.333333% !important;
+}
+
+[data-whop-app] .level-breakdown-section {
+	width: 66.666667% !important;
+}
+
+[data-whop-app] .level-grid {
+	grid-template-columns: repeat(2, 1fr) !important;
+	gap: 2rem !important;
+}

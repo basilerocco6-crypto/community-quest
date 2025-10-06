@@ -27,6 +27,7 @@ export default function RootLayout({
 		<html lang="en" suppressHydrationWarning>
 			<body
 				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+				data-whop-app="community-quest"
 			>
 				<WhopApp>{children}</WhopApp>
 			</body>
