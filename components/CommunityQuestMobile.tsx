@@ -29,107 +29,158 @@ export default function CommunityQuestMobile() {
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
 
-  // Mobile-specific layout enforcement
+  // Aggressive mobile layout enforcement
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
-    const isMobile = window.innerWidth < 1024; // lg breakpoint
+    console.log('📱 Applying mobile layout fixes');
     
-    if (isMobile) {
-      console.log('📱 Mobile layout detected - applying mobile-specific fixes');
-      
-      const applyMobileLayout = () => {
-        // Force mobile layout with CSS injection
-        const style = document.createElement('style');
-        style.id = 'mobile-layout-fix';
-        style.textContent = `
-          /* Mobile-specific layout fixes */
-          @media (max-width: 1023px) {
-            .mobile-main-container {
-              display: flex !important;
-              flex-direction: column !important;
-              width: 100% !important;
-              gap: 1rem !important;
-            }
-            .mobile-profile-section {
-              width: 100% !important;
-              display: flex !important;
-              flex-direction: column !important;
-              align-items: center !important;
-              padding: 1rem !important;
-              background-color: white !important;
-              border-radius: 0.5rem !important;
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-            }
-            .mobile-levels-section {
-              width: 100% !important;
-              display: flex !important;
-              flex-direction: column !important;
-              gap: 0.5rem !important;
-              padding: 1rem !important;
-              background-color: white !important;
-              border-radius: 0.5rem !important;
-              box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
-            }
-            .mobile-level-item {
-              display: flex !important;
-              align-items: center !important;
-              gap: 0.75rem !important;
-              padding: 0.75rem !important;
-              border-bottom: 1px solid #e5e7eb !important;
-            }
-            .mobile-level-item:last-child {
-              border-bottom: none !important;
-            }
-            .mobile-level-icon {
-              width: 1.5rem !important;
-              height: 1.5rem !important;
-              display: flex !important;
-              align-items: center !important;
-              justify-content: center !important;
-              flex-shrink: 0 !important;
-            }
-            .mobile-level-content {
-              flex: 1 !important;
-              min-width: 0 !important;
-            }
-            .mobile-level-title {
-              font-size: 0.875rem !important;
-              font-weight: 500 !important;
-              color: #374151 !important;
-              margin-bottom: 0.25rem !important;
-            }
-            .mobile-level-percentage {
-              font-size: 0.75rem !important;
-              color: #6b7280 !important;
-            }
-          }
-        `;
-        
-        // Remove existing mobile fix if it exists
-        const existing = document.getElementById('mobile-layout-fix');
-        if (existing) existing.remove();
-        
-        document.head.appendChild(style);
-      };
-
-      applyMobileLayout();
-      
-      // Reapply on resize
-      const handleResize = () => {
-        if (window.innerWidth < 1024) {
-          applyMobileLayout();
+    const applyMobileLayout = () => {
+      // Force mobile layout with aggressive CSS injection
+      const style = document.createElement('style');
+      style.id = 'mobile-layout-fix';
+      style.textContent = `
+        /* AGGRESSIVE Mobile layout fixes - NO media queries */
+        .mobile-main-container {
+          display: flex !important;
+          flex-direction: column !important;
+          width: 100% !important;
+          gap: 1rem !important;
+          max-width: 100% !important;
         }
-      };
+        .mobile-profile-section {
+          width: 100% !important;
+          max-width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          padding: 1rem !important;
+          background-color: white !important;
+          border-radius: 0.5rem !important;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+          margin-bottom: 1rem !important;
+        }
+        .mobile-levels-section {
+          width: 100% !important;
+          max-width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 0.5rem !important;
+          padding: 1rem !important;
+          background-color: white !important;
+          border-radius: 0.5rem !important;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        }
+        .mobile-level-item {
+          display: flex !important;
+          align-items: center !important;
+          gap: 0.75rem !important;
+          padding: 0.75rem !important;
+          border-bottom: 1px solid #e5e7eb !important;
+          width: 100% !important;
+        }
+        .mobile-level-item:last-child {
+          border-bottom: none !important;
+        }
+        .mobile-level-icon {
+          width: 1.5rem !important;
+          height: 1.5rem !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          flex-shrink: 0 !important;
+        }
+        .mobile-level-content {
+          flex: 1 !important;
+          min-width: 0 !important;
+        }
+        .mobile-level-title {
+          font-size: 0.875rem !important;
+          font-weight: 500 !important;
+          color: #374151 !important;
+          margin-bottom: 0.25rem !important;
+        }
+        .mobile-level-percentage {
+          font-size: 0.75rem !important;
+          color: #6b7280 !important;
+        }
+        /* Force mobile layout on ALL screen sizes */
+        .mobile-main-container * {
+          max-width: 100% !important;
+        }
+      `;
       
-      window.addEventListener('resize', handleResize);
+      // Remove existing mobile fix if it exists
+      const existing = document.getElementById('mobile-layout-fix');
+      if (existing) existing.remove();
       
-      return () => {
-        window.removeEventListener('resize', handleResize);
-        const existing = document.getElementById('mobile-layout-fix');
-        if (existing) existing.remove();
-      };
-    }
+      document.head.appendChild(style);
+      
+      // Also force layout with direct DOM manipulation
+      const container = document.querySelector('.mobile-main-container') as HTMLElement;
+      if (container) {
+        container.style.cssText = `
+          display: flex !important;
+          flex-direction: column !important;
+          width: 100% !important;
+          gap: 1rem !important;
+          max-width: 100% !important;
+        `;
+      }
+      
+      const profile = document.querySelector('.mobile-profile-section') as HTMLElement;
+      if (profile) {
+        profile.style.cssText = `
+          width: 100% !important;
+          max-width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          padding: 1rem !important;
+          background-color: white !important;
+          border-radius: 0.5rem !important;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+          margin-bottom: 1rem !important;
+        `;
+      }
+      
+      const levels = document.querySelector('.mobile-levels-section') as HTMLElement;
+      if (levels) {
+        levels.style.cssText = `
+          width: 100% !important;
+          max-width: 100% !important;
+          display: flex !important;
+          flex-direction: column !important;
+          gap: 0.5rem !important;
+          padding: 1rem !important;
+          background-color: white !important;
+          border-radius: 0.5rem !important;
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+        `;
+      }
+    };
+
+    // Apply immediately
+    applyMobileLayout();
+    
+    // Reapply every 100ms to ensure it sticks
+    const interval = setInterval(applyMobileLayout, 100);
+    
+    // Watch for DOM changes
+    const observer = new MutationObserver(() => {
+      setTimeout(applyMobileLayout, 50);
+    });
+    observer.observe(document.body, { 
+      childList: true, 
+      subtree: true
+    });
+    
+    return () => {
+      clearInterval(interval);
+      observer.disconnect();
+      const existing = document.getElementById('mobile-layout-fix');
+      if (existing) existing.remove();
+    };
   }, []);
 
   return (
