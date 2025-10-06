@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   Button, 
   TextField, 
@@ -28,6 +28,139 @@ export default function CommunityQuestPixelPerfect() {
   const [showPointsGuide, setShowPointsGuide] = useState(false);
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
+
+  // Chrome-specific CSS injection to force desktop layout
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+    
+    if (isChrome) {
+      // Inject Chrome-specific CSS
+      const style = document.createElement('style');
+      style.textContent = `
+        /* Chrome-specific overrides */
+        .chrome-desktop-force {
+          display: grid !important;
+          grid-template-columns: 400px 800px !important;
+          grid-template-rows: 400px !important;
+          gap: 32px !important;
+          width: 100% !important;
+          height: 400px !important;
+          min-height: 400px !important;
+          max-height: 400px !important;
+        }
+        .chrome-profile-force {
+          width: 400px !important;
+          height: 400px !important;
+          display: flex !important;
+          flex-direction: column !important;
+          align-items: center !important;
+          justify-content: center !important;
+          gap: 16px !important;
+          padding: 16px !important;
+          box-sizing: border-box !important;
+          background-color: transparent !important;
+        }
+        .chrome-levels-force {
+          width: 800px !important;
+          height: 400px !important;
+          display: grid !important;
+          grid-template-columns: 400px 400px !important;
+          grid-template-rows: 400px !important;
+          gap: 32px !important;
+          padding: 16px !important;
+          box-sizing: border-box !important;
+          background-color: transparent !important;
+        }
+        .chrome-levels-left {
+          width: 400px !important;
+          height: 400px !important;
+          overflow-y: auto !important;
+          padding: 8px !important;
+          box-sizing: border-box !important;
+        }
+        .chrome-levels-right {
+          width: 400px !important;
+          height: 400px !important;
+          overflow-y: auto !important;
+          padding: 8px !important;
+          box-sizing: border-box !important;
+        }
+      `;
+      document.head.appendChild(style);
+
+      // Force Chrome layout with direct DOM manipulation
+      const forceChromeLayout = () => {
+        const container = document.querySelector('.chrome-main-container') as HTMLElement;
+        if (container) {
+          container.style.setProperty('display', 'grid', 'important');
+          container.style.setProperty('grid-template-columns', '400px 800px', 'important');
+          container.style.setProperty('grid-template-rows', '400px', 'important');
+          container.style.setProperty('gap', '32px', 'important');
+          container.style.setProperty('width', '100%', 'important');
+          container.style.setProperty('height', '400px', 'important');
+          container.style.setProperty('min-height', '400px', 'important');
+          container.style.setProperty('max-height', '400px', 'important');
+        }
+
+        const profile = document.querySelector('.chrome-profile-section') as HTMLElement;
+        if (profile) {
+          profile.style.setProperty('width', '400px', 'important');
+          profile.style.setProperty('height', '400px', 'important');
+          profile.style.setProperty('display', 'flex', 'important');
+          profile.style.setProperty('flex-direction', 'column', 'important');
+          profile.style.setProperty('align-items', 'center', 'important');
+          profile.style.setProperty('justify-content', 'center', 'important');
+          profile.style.setProperty('gap', '16px', 'important');
+          profile.style.setProperty('padding', '16px', 'important');
+          profile.style.setProperty('box-sizing', 'border-box', 'important');
+        }
+
+        const levels = document.querySelector('.chrome-levels-section') as HTMLElement;
+        if (levels) {
+          levels.style.setProperty('width', '800px', 'important');
+          levels.style.setProperty('height', '400px', 'important');
+          levels.style.setProperty('display', 'grid', 'important');
+          levels.style.setProperty('grid-template-columns', '400px 400px', 'important');
+          levels.style.setProperty('grid-template-rows', '400px', 'important');
+          levels.style.setProperty('gap', '32px', 'important');
+          levels.style.setProperty('padding', '16px', 'important');
+          levels.style.setProperty('box-sizing', 'border-box', 'important');
+        }
+
+        const leftCol = document.querySelector('.chrome-levels-left') as HTMLElement;
+        if (leftCol) {
+          leftCol.style.setProperty('width', '400px', 'important');
+          leftCol.style.setProperty('height', '400px', 'important');
+          leftCol.style.setProperty('overflow-y', 'auto', 'important');
+          leftCol.style.setProperty('padding', '8px', 'important');
+          leftCol.style.setProperty('box-sizing', 'border-box', 'important');
+        }
+
+        const rightCol = document.querySelector('.chrome-levels-right') as HTMLElement;
+        if (rightCol) {
+          rightCol.style.setProperty('width', '400px', 'important');
+          rightCol.style.setProperty('height', '400px', 'important');
+          rightCol.style.setProperty('overflow-y', 'auto', 'important');
+          rightCol.style.setProperty('padding', '8px', 'important');
+          rightCol.style.setProperty('box-sizing', 'border-box', 'important');
+        }
+      };
+
+      // Apply immediately and continuously for Chrome
+      forceChromeLayout();
+      const interval = setInterval(forceChromeLayout, 50); // More frequent for Chrome
+      
+      const observer = new MutationObserver(forceChromeLayout);
+      observer.observe(document.body, { childList: true, subtree: true });
+
+      return () => {
+        clearInterval(interval);
+        observer.disconnect();
+      };
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -95,6 +228,7 @@ export default function CommunityQuestPixelPerfect() {
           <div className="bg-card rounded-lg p-4 sm:p-6 shadow-lg border border-border">
             {/* PIXEL PERFECT DESKTOP LAYOUT - CSS GRID WITH EXPLICIT PIXELS */}
             <div 
+              className="chrome-main-container chrome-desktop-force"
               style={{
                 display: 'grid',
                 gridTemplateColumns: '400px 800px',
@@ -108,6 +242,7 @@ export default function CommunityQuestPixelPerfect() {
             >
               {/* Profile Section - Fixed 400px width */}
               <div 
+                className="chrome-profile-section chrome-profile-force"
                 style={{
                   width: '400px',
                   height: '400px',
@@ -155,6 +290,7 @@ export default function CommunityQuestPixelPerfect() {
 
               {/* Level Breakdown Section - Fixed 800px width */}
               <div 
+                className="chrome-levels-section chrome-levels-force"
                 style={{
                   width: '800px',
                   height: '400px',
@@ -169,6 +305,7 @@ export default function CommunityQuestPixelPerfect() {
               >
                 {/* Left Column - Levels 1-5 - Fixed 400px width */}
                 <div 
+                  className="chrome-levels-left"
                   style={{
                     width: '400px',
                     height: '400px',
@@ -204,6 +341,7 @@ export default function CommunityQuestPixelPerfect() {
 
                 {/* Right Column - Levels 6-9 - Fixed 400px width */}
                 <div 
+                  className="chrome-levels-right"
                   style={{
                     width: '400px',
                     height: '400px',
