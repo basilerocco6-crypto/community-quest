@@ -29,6 +29,39 @@ export default function CommunityQuest() {
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
 
+  // Safari dark theme fix
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    if (isSafari) {
+      // Force dark theme for Safari
+      const style = document.createElement('style');
+      style.id = 'safari-dark-theme';
+      style.textContent = `
+        .bg-card {
+          background-color: #1a1a1a !important;
+          border-color: #333333 !important;
+        }
+        .text-foreground {
+          color: #ffffff !important;
+        }
+        .text-muted-foreground {
+          color: #9ca3af !important;
+        }
+        .border-border {
+          border-color: #333333 !important;
+        }
+      `;
+      document.head.appendChild(style);
+      
+      return () => {
+        const existing = document.getElementById('safari-dark-theme');
+        if (existing) existing.remove();
+      };
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
@@ -119,6 +152,29 @@ export default function CommunityQuest() {
           .desktop-layout {
             display: none !important;
           }
+        }
+        
+        /* ULTRA AGGRESSIVE WHOP IFRAME OVERRIDES */
+        iframe[src*="whop.com"] .mobile-layout {
+          display: none !important;
+        }
+        iframe[src*="whop.com"] .desktop-layout {
+          display: block !important;
+        }
+        
+        body[data-whop-app] .mobile-layout {
+          display: none !important;
+        }
+        body[data-whop-app] .desktop-layout {
+          display: block !important;
+        }
+        
+        /* Force desktop layout for Whop apps */
+        .whop-embed .mobile-layout {
+          display: none !important;
+        }
+        .whop-embed .desktop-layout {
+          display: block !important;
         }
       `}</style>
 
