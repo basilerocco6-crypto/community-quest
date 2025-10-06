@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   Button, 
   TextField, 
@@ -28,6 +28,18 @@ export default function CommunityQuest() {
   const [showPointsGuide, setShowPointsGuide] = useState(false);
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+    
+    return () => window.removeEventListener('resize', checkScreenSize);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -106,7 +118,7 @@ export default function CommunityQuest() {
       <div className="lg:hidden">
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           <div className="space-y-6 sm:space-y-8">
-            <div className="bg-black rounded-lg p-4 sm:p-6 shadow-lg border border-gray-700">
+            <div className="bg-card rounded-lg p-4 sm:p-6 shadow-lg border border-border">
               <div className="flex flex-col gap-8">
                 {/* Mobile User Profile Section */}
                 <div className="flex flex-col items-center gap-4 w-full">
@@ -215,7 +227,7 @@ export default function CommunityQuest() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
             <div className="space-y-6 sm:space-y-8">
               {/* Combined User Profile and Level Breakdown Section */}
-              <div className="bg-black rounded-lg p-4 sm:p-6 shadow-lg border border-gray-700">
+              <div className="bg-card rounded-lg p-4 sm:p-6 shadow-lg border border-border">
                 <div className="flex flex-row gap-8 desktop-layout">
                   {/* Left side - User Profile Section (1/3 width) */}
                   <div className="flex flex-col items-center gap-4 w-1/3 profile-section">
