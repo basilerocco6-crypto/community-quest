@@ -181,93 +181,92 @@ export default function CommunityQuest() {
       {/* Mobile Layout */}
       <div className="mobile-layout">
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
-          <div className="space-y-6 sm:space-y-8">
-            <div className="bg-card rounded-lg p-4 sm:p-6 shadow-lg border border-border">
-              <div className="flex flex-col gap-8">
-                {/* Mobile User Profile Section */}
-                <div className="flex flex-col items-center gap-4 w-full">
-                  <div className="relative">
-                    <div className="p-3 rounded-full shadow-lg" style={{backgroundColor: '#FA4616'}}>
-                      <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
-                        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
-                          {MOCK_USER.avatar ? (
-                            <img 
-                              src={MOCK_USER.avatar} 
-                              alt={MOCK_USER.name}
-                              className="w-full h-full object-cover"
-                            />
-                          ) : (
-                            <img 
-                              src="/construction-illo.svg" 
-                              alt="Construction placeholder"
-                              className="w-16 h-16"
-                            />
-                          )}
-                        </div>
+          <div className="space-y-4">
+            {/* Mobile User Profile Card */}
+            <div className="bg-card rounded-lg p-4 shadow-lg border border-border">
+              <div className="flex flex-col items-center gap-4">
+                <div className="relative">
+                  <div className="p-3 rounded-full shadow-lg" style={{backgroundColor: '#FA4616'}}>
+                    <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
+                      <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                        {MOCK_USER.avatar ? (
+                          <img 
+                            src={MOCK_USER.avatar} 
+                            alt={MOCK_USER.name}
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <img 
+                            src="/construction-illo.svg" 
+                            alt="Construction placeholder"
+                            className="w-16 h-16"
+                          />
+                        )}
                       </div>
                     </div>
-                    <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full flex items-center justify-center border-2 shadow-xl" style={{backgroundColor: '#1754D8', borderColor: 'white'}}>
-                      <span className="text-sm font-extrabold" style={{color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>{MOCK_USER.currentLevel}</span>
-                    </div>
                   </div>
-                  <div className="flex flex-col gap-2 text-center">
-                    <div className="text-sm font-medium text-foreground">Community Member</div>
-                    <div className="text-sm font-semibold" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
-                    <div className="text-xs text-muted-foreground">{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
+                  <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full flex items-center justify-center border-2 shadow-xl" style={{backgroundColor: '#1754D8', borderColor: 'white'}}>
+                    <span className="text-sm font-extrabold" style={{color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>{MOCK_USER.currentLevel}</span>
                   </div>
                 </div>
-                {/* Mobile Level Breakdown - Single Column */}
-                <div className="w-full">
-                  <div className="space-y-3">
-                    {MOCK_LEVELS.map((level) => (
-                      <div key={level.level} className="flex items-center gap-3 w-full">
-                        <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
-                          {level.level === 1 ? (
-                            <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
-                              <span className="text-sm font-bold text-white">{level.level}</span>
-                            </div>
-                          ) : (
-                            <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                              <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                            </svg>
-                          )}
-                        </div>
-                        <div className="flex-1 min-w-0">
-                          <div className="text-sm font-medium text-foreground">
-                            Level {level.level} - {level.name}
-                          </div>
-                          <div className="text-xs text-muted-foreground">
-                            {level.memberPercentage}% of members
-                          </div>
-                        </div>
-                        <div className="flex-shrink-0">
-                          <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                <div className="flex flex-col gap-2 text-center">
+                  <div className="text-sm font-medium text-foreground">Community Member</div>
+                  <div className="text-sm font-semibold" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
+                  <div className="text-xs text-muted-foreground">{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
                 </div>
               </div>
-
-              {/* Learn How Points Work Link */}
-              <div className="text-center">
-                <button 
-                  onClick={() => setShowPointsGuide(true)}
-                  className="text-sm text-blue-600 hover:text-blue-800 underline cursor-pointer"
-                >
-                  Learn how points work
-                </button>
-              </div>
-
-              {/* Leaderboard Section */}
-              <LeaderboardSection 
-                weeklyLeaderboard={MOCK_LEADERBOARD_WEEKLY}
-                monthlyLeaderboard={MOCK_LEADERBOARD_MONTHLY}
-                allTimeLeaderboard={MOCK_LEADERBOARD_ALLTIME}
-              />
             </div>
+
+            {/* Mobile Levels Card */}
+            <div className="bg-card rounded-lg p-4 shadow-lg border border-border">
+              <div className="space-y-3">
+                {MOCK_LEVELS.map((level) => (
+                  <div key={level.level} className="flex items-center gap-3 w-full">
+                    <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
+                      {level.level === 1 ? (
+                        <div className="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center">
+                          <span className="text-sm font-bold text-white">{level.level}</span>
+                        </div>
+                      ) : (
+                        <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                        </svg>
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <div className="text-sm font-medium text-foreground">
+                        Level {level.level} - {level.name}
+                      </div>
+                      <div className="text-xs text-muted-foreground">
+                        {level.memberPercentage}% of members
+                      </div>
+                    </div>
+                    <div className="flex-shrink-0">
+                      <svg className="w-4 h-4 text-blue-500" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                      </svg>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Learn How Points Work Link */}
+            <div className="text-center">
+              <button 
+                onClick={() => setShowPointsGuide(true)}
+                className="text-sm text-blue-600 hover:text-blue-800 underline cursor-pointer"
+              >
+                Learn how points work
+              </button>
+            </div>
+
+            {/* Leaderboard Section */}
+            <LeaderboardSection 
+              weeklyLeaderboard={MOCK_LEADERBOARD_WEEKLY}
+              monthlyLeaderboard={MOCK_LEADERBOARD_MONTHLY}
+              allTimeLeaderboard={MOCK_LEADERBOARD_ALLTIME}
+            />
           </div>
         </main>
       </div>
