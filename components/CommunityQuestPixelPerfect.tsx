@@ -36,115 +36,155 @@ export default function CommunityQuestPixelPerfect() {
     const isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
     
     if (isChrome) {
-      // Inject Chrome-specific CSS
+      // Inject Chrome-specific CSS with viewport units and transforms
       const style = document.createElement('style');
       style.textContent = `
-        /* Chrome-specific overrides */
+        /* Chrome-specific overrides with viewport units */
         .chrome-desktop-force {
-          display: grid !important;
-          grid-template-columns: 400px 800px !important;
-          grid-template-rows: 400px !important;
-          gap: 32px !important;
-          width: 100% !important;
-          height: 400px !important;
-          min-height: 400px !important;
-          max-height: 400px !important;
+          display: flex !important;
+          flex-direction: row !important;
+          width: 100vw !important;
+          height: 50vh !important;
+          min-height: 50vh !important;
+          max-height: 50vh !important;
+          gap: 2vw !important;
+          position: relative !important;
+          transform: none !important;
         }
         .chrome-profile-force {
-          width: 400px !important;
-          height: 400px !important;
+          width: 33.333vw !important;
+          min-width: 33.333vw !important;
+          max-width: 33.333vw !important;
+          height: 50vh !important;
+          min-height: 50vh !important;
+          max-height: 50vh !important;
           display: flex !important;
           flex-direction: column !important;
           align-items: center !important;
           justify-content: center !important;
-          gap: 16px !important;
-          padding: 16px !important;
+          gap: 1vh !important;
+          padding: 1vh !important;
           box-sizing: border-box !important;
           background-color: transparent !important;
+          flex-shrink: 0 !important;
+          transform: translateX(0) !important;
         }
         .chrome-levels-force {
-          width: 800px !important;
-          height: 400px !important;
-          display: grid !important;
-          grid-template-columns: 400px 400px !important;
-          grid-template-rows: 400px !important;
-          gap: 32px !important;
-          padding: 16px !important;
+          width: 66.666vw !important;
+          min-width: 66.666vw !important;
+          max-width: 66.666vw !important;
+          height: 50vh !important;
+          min-height: 50vh !important;
+          max-height: 50vh !important;
+          display: flex !important;
+          flex-direction: row !important;
+          gap: 2vw !important;
+          padding: 1vh !important;
           box-sizing: border-box !important;
           background-color: transparent !important;
+          flex-shrink: 0 !important;
+          transform: translateX(0) !important;
         }
         .chrome-levels-left {
-          width: 400px !important;
-          height: 400px !important;
+          width: 50% !important;
+          min-width: 50% !important;
+          max-width: 50% !important;
+          height: 100% !important;
           overflow-y: auto !important;
-          padding: 8px !important;
+          padding: 0.5vh !important;
           box-sizing: border-box !important;
+          flex-shrink: 0 !important;
         }
         .chrome-levels-right {
-          width: 400px !important;
-          height: 400px !important;
+          width: 50% !important;
+          min-width: 50% !important;
+          max-width: 50% !important;
+          height: 100% !important;
           overflow-y: auto !important;
-          padding: 8px !important;
+          padding: 0.5vh !important;
           box-sizing: border-box !important;
+          flex-shrink: 0 !important;
+        }
+        /* Force Chrome to respect our layout */
+        * {
+          box-sizing: border-box !important;
+        }
+        .chrome-main-container * {
+          display: inherit !important;
         }
       `;
       document.head.appendChild(style);
 
-      // Force Chrome layout with direct DOM manipulation
+      // Force Chrome layout with direct DOM manipulation using viewport units
       const forceChromeLayout = () => {
         const container = document.querySelector('.chrome-main-container') as HTMLElement;
         if (container) {
-          container.style.setProperty('display', 'grid', 'important');
-          container.style.setProperty('grid-template-columns', '400px 800px', 'important');
-          container.style.setProperty('grid-template-rows', '400px', 'important');
-          container.style.setProperty('gap', '32px', 'important');
-          container.style.setProperty('width', '100%', 'important');
-          container.style.setProperty('height', '400px', 'important');
-          container.style.setProperty('min-height', '400px', 'important');
-          container.style.setProperty('max-height', '400px', 'important');
+          container.style.setProperty('display', 'flex', 'important');
+          container.style.setProperty('flex-direction', 'row', 'important');
+          container.style.setProperty('width', '100vw', 'important');
+          container.style.setProperty('height', '50vh', 'important');
+          container.style.setProperty('min-height', '50vh', 'important');
+          container.style.setProperty('max-height', '50vh', 'important');
+          container.style.setProperty('gap', '2vw', 'important');
+          container.style.setProperty('position', 'relative', 'important');
         }
 
         const profile = document.querySelector('.chrome-profile-section') as HTMLElement;
         if (profile) {
-          profile.style.setProperty('width', '400px', 'important');
-          profile.style.setProperty('height', '400px', 'important');
+          profile.style.setProperty('width', '33.333vw', 'important');
+          profile.style.setProperty('min-width', '33.333vw', 'important');
+          profile.style.setProperty('max-width', '33.333vw', 'important');
+          profile.style.setProperty('height', '50vh', 'important');
+          profile.style.setProperty('min-height', '50vh', 'important');
+          profile.style.setProperty('max-height', '50vh', 'important');
           profile.style.setProperty('display', 'flex', 'important');
           profile.style.setProperty('flex-direction', 'column', 'important');
           profile.style.setProperty('align-items', 'center', 'important');
           profile.style.setProperty('justify-content', 'center', 'important');
-          profile.style.setProperty('gap', '16px', 'important');
-          profile.style.setProperty('padding', '16px', 'important');
+          profile.style.setProperty('gap', '1vh', 'important');
+          profile.style.setProperty('padding', '1vh', 'important');
           profile.style.setProperty('box-sizing', 'border-box', 'important');
+          profile.style.setProperty('flex-shrink', '0', 'important');
         }
 
         const levels = document.querySelector('.chrome-levels-section') as HTMLElement;
         if (levels) {
-          levels.style.setProperty('width', '800px', 'important');
-          levels.style.setProperty('height', '400px', 'important');
-          levels.style.setProperty('display', 'grid', 'important');
-          levels.style.setProperty('grid-template-columns', '400px 400px', 'important');
-          levels.style.setProperty('grid-template-rows', '400px', 'important');
-          levels.style.setProperty('gap', '32px', 'important');
-          levels.style.setProperty('padding', '16px', 'important');
+          levels.style.setProperty('width', '66.666vw', 'important');
+          levels.style.setProperty('min-width', '66.666vw', 'important');
+          levels.style.setProperty('max-width', '66.666vw', 'important');
+          levels.style.setProperty('height', '50vh', 'important');
+          levels.style.setProperty('min-height', '50vh', 'important');
+          levels.style.setProperty('max-height', '50vh', 'important');
+          levels.style.setProperty('display', 'flex', 'important');
+          levels.style.setProperty('flex-direction', 'row', 'important');
+          levels.style.setProperty('gap', '2vw', 'important');
+          levels.style.setProperty('padding', '1vh', 'important');
           levels.style.setProperty('box-sizing', 'border-box', 'important');
+          levels.style.setProperty('flex-shrink', '0', 'important');
         }
 
         const leftCol = document.querySelector('.chrome-levels-left') as HTMLElement;
         if (leftCol) {
-          leftCol.style.setProperty('width', '400px', 'important');
-          leftCol.style.setProperty('height', '400px', 'important');
+          leftCol.style.setProperty('width', '50%', 'important');
+          leftCol.style.setProperty('min-width', '50%', 'important');
+          leftCol.style.setProperty('max-width', '50%', 'important');
+          leftCol.style.setProperty('height', '100%', 'important');
           leftCol.style.setProperty('overflow-y', 'auto', 'important');
-          leftCol.style.setProperty('padding', '8px', 'important');
+          leftCol.style.setProperty('padding', '0.5vh', 'important');
           leftCol.style.setProperty('box-sizing', 'border-box', 'important');
+          leftCol.style.setProperty('flex-shrink', '0', 'important');
         }
 
         const rightCol = document.querySelector('.chrome-levels-right') as HTMLElement;
         if (rightCol) {
-          rightCol.style.setProperty('width', '400px', 'important');
-          rightCol.style.setProperty('height', '400px', 'important');
+          rightCol.style.setProperty('width', '50%', 'important');
+          rightCol.style.setProperty('min-width', '50%', 'important');
+          rightCol.style.setProperty('max-width', '50%', 'important');
+          rightCol.style.setProperty('height', '100%', 'important');
           rightCol.style.setProperty('overflow-y', 'auto', 'important');
-          rightCol.style.setProperty('padding', '8px', 'important');
+          rightCol.style.setProperty('padding', '0.5vh', 'important');
           rightCol.style.setProperty('box-sizing', 'border-box', 'important');
+          rightCol.style.setProperty('flex-shrink', '0', 'important');
         }
       };
 
@@ -230,30 +270,35 @@ export default function CommunityQuestPixelPerfect() {
             <div 
               className="chrome-main-container chrome-desktop-force"
               style={{
-                display: 'grid',
-                gridTemplateColumns: '400px 800px',
-                gridTemplateRows: '400px',
-                gap: '32px',
-                width: '100%',
-                height: '400px',
-                minHeight: '400px',
-                maxHeight: '400px'
+                display: 'flex',
+                flexDirection: 'row',
+                width: '100vw',
+                height: '50vh',
+                minHeight: '50vh',
+                maxHeight: '50vh',
+                gap: '2vw',
+                position: 'relative'
               }}
             >
               {/* Profile Section - Fixed 400px width */}
               <div 
                 className="chrome-profile-section chrome-profile-force"
                 style={{
-                  width: '400px',
-                  height: '400px',
+                  width: '33.333vw',
+                  minWidth: '33.333vw',
+                  maxWidth: '33.333vw',
+                  height: '50vh',
+                  minHeight: '50vh',
+                  maxHeight: '50vh',
                   display: 'flex',
                   flexDirection: 'column',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  gap: '16px',
-                  padding: '16px',
+                  gap: '1vh',
+                  padding: '1vh',
                   boxSizing: 'border-box',
-                  backgroundColor: 'transparent'
+                  backgroundColor: 'transparent',
+                  flexShrink: 0
                 }}
               >
                 {/* Profile Picture */}
@@ -292,26 +337,33 @@ export default function CommunityQuestPixelPerfect() {
               <div 
                 className="chrome-levels-section chrome-levels-force"
                 style={{
-                  width: '800px',
-                  height: '400px',
-                  display: 'grid',
-                  gridTemplateColumns: '400px 400px',
-                  gridTemplateRows: '400px',
-                  gap: '32px',
-                  padding: '16px',
+                  width: '66.666vw',
+                  minWidth: '66.666vw',
+                  maxWidth: '66.666vw',
+                  height: '50vh',
+                  minHeight: '50vh',
+                  maxHeight: '50vh',
+                  display: 'flex',
+                  flexDirection: 'row',
+                  gap: '2vw',
+                  padding: '1vh',
                   boxSizing: 'border-box',
-                  backgroundColor: 'transparent'
+                  backgroundColor: 'transparent',
+                  flexShrink: 0
                 }}
               >
                 {/* Left Column - Levels 1-5 - Fixed 400px width */}
                 <div 
                   className="chrome-levels-left"
                   style={{
-                    width: '400px',
-                    height: '400px',
+                    width: '50%',
+                    minWidth: '50%',
+                    maxWidth: '50%',
+                    height: '100%',
                     overflowY: 'auto',
-                    padding: '8px',
-                    boxSizing: 'border-box'
+                    padding: '0.5vh',
+                    boxSizing: 'border-box',
+                    flexShrink: 0
                   }}
                 >
                   <div className="space-y-3">
@@ -343,11 +395,14 @@ export default function CommunityQuestPixelPerfect() {
                 <div 
                   className="chrome-levels-right"
                   style={{
-                    width: '400px',
-                    height: '400px',
+                    width: '50%',
+                    minWidth: '50%',
+                    maxWidth: '50%',
+                    height: '100%',
                     overflowY: 'auto',
-                    padding: '8px',
-                    boxSizing: 'border-box'
+                    padding: '0.5vh',
+                    boxSizing: 'border-box',
+                    flexShrink: 0
                   }}
                 >
                   <div className="space-y-3">
