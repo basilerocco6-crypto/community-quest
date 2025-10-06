@@ -37,17 +37,39 @@ export default function CommunityQuestMobile() {
     
     // Detect browser and theme
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    
+    // More aggressive dark mode detection for Safari
     const isDarkMode = document.documentElement.classList.contains('dark') || 
                       window.matchMedia('(prefers-color-scheme: dark)').matches ||
                       document.body.style.backgroundColor === 'rgb(0, 0, 0)' ||
-                      document.body.style.backgroundColor === '#000000';
+                      document.body.style.backgroundColor === '#000000' ||
+                      document.body.style.backgroundColor === 'black' ||
+                      getComputedStyle(document.body).backgroundColor === 'rgb(0, 0, 0)' ||
+                      getComputedStyle(document.documentElement).backgroundColor === 'rgb(0, 0, 0)' ||
+                      document.body.getAttribute('data-theme') === 'dark' ||
+                      document.documentElement.getAttribute('data-theme') === 'dark';
     
-    console.log('🌙 Theme detection:', { isSafari, isDarkMode });
+    console.log('🌙 Theme detection:', { 
+      isSafari, 
+      isDarkMode,
+      bodyBg: document.body.style.backgroundColor,
+      computedBodyBg: getComputedStyle(document.body).backgroundColor,
+      htmlClass: document.documentElement.className,
+      bodyClass: document.body.className,
+      prefersDark: window.matchMedia('(prefers-color-scheme: dark)').matches
+    });
     
     const applyMobileLayout = () => {
       // Force mobile layout with aggressive CSS injection
       const style = document.createElement('style');
       style.id = 'mobile-layout-fix';
+      
+      // For Safari, force dark mode if we detect Safari
+      const forceDarkForSafari = isSafari;
+      const effectiveDarkMode = isDarkMode || forceDarkForSafari;
+      
+      console.log('🎨 Applying colors:', { isSafari, forceDarkForSafari, effectiveDarkMode });
+      
       style.textContent = `
         /* AGGRESSIVE Mobile layout fixes - NO media queries */
         .mobile-main-container {
@@ -64,10 +86,10 @@ export default function CommunityQuestMobile() {
           flex-direction: column !important;
           align-items: center !important;
           padding: 1rem !important;
-          background-color: ${isDarkMode ? '#1a1a1a' : '#ffffff'} !important;
-          border: 1px solid ${isDarkMode ? '#333333' : '#e5e7eb'} !important;
+          background-color: ${effectiveDarkMode ? '#1a1a1a' : '#ffffff'} !important;
+          border: 1px solid ${effectiveDarkMode ? '#333333' : '#e5e7eb'} !important;
           border-radius: 0.5rem !important;
-          box-shadow: ${isDarkMode ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'} !important;
+          box-shadow: ${effectiveDarkMode ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'} !important;
           margin-bottom: 1rem !important;
         }
         .mobile-levels-section {
@@ -77,17 +99,17 @@ export default function CommunityQuestMobile() {
           flex-direction: column !important;
           gap: 0.5rem !important;
           padding: 1rem !important;
-          background-color: ${isDarkMode ? '#1a1a1a' : '#ffffff'} !important;
-          border: 1px solid ${isDarkMode ? '#333333' : '#e5e7eb'} !important;
+          background-color: ${effectiveDarkMode ? '#1a1a1a' : '#ffffff'} !important;
+          border: 1px solid ${effectiveDarkMode ? '#333333' : '#e5e7eb'} !important;
           border-radius: 0.5rem !important;
-          box-shadow: ${isDarkMode ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'} !important;
+          box-shadow: ${effectiveDarkMode ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'} !important;
         }
         .mobile-level-item {
           display: flex !important;
           align-items: center !important;
           gap: 0.75rem !important;
           padding: 0.75rem !important;
-          border-bottom: 1px solid ${isDarkMode ? '#333333' : '#e5e7eb'} !important;
+          border-bottom: 1px solid ${effectiveDarkMode ? '#333333' : '#e5e7eb'} !important;
           width: 100% !important;
         }
         .mobile-level-item:last-child {
@@ -108,12 +130,12 @@ export default function CommunityQuestMobile() {
         .mobile-level-title {
           font-size: 0.875rem !important;
           font-weight: 500 !important;
-          color: ${isDarkMode ? '#ffffff' : '#374151'} !important;
+          color: ${effectiveDarkMode ? '#ffffff' : '#374151'} !important;
           margin-bottom: 0.25rem !important;
         }
         .mobile-level-percentage {
           font-size: 0.75rem !important;
-          color: ${isDarkMode ? '#9ca3af' : '#6b7280'} !important;
+          color: ${effectiveDarkMode ? '#9ca3af' : '#6b7280'} !important;
         }
         /* Force mobile layout on ALL screen sizes */
         .mobile-main-container * {
@@ -148,10 +170,10 @@ export default function CommunityQuestMobile() {
           flex-direction: column !important;
           align-items: center !important;
           padding: 1rem !important;
-          background-color: ${isDarkMode ? '#1a1a1a' : '#ffffff'} !important;
-          border: 1px solid ${isDarkMode ? '#333333' : '#e5e7eb'} !important;
+          background-color: ${effectiveDarkMode ? '#1a1a1a' : '#ffffff'} !important;
+          border: 1px solid ${effectiveDarkMode ? '#333333' : '#e5e7eb'} !important;
           border-radius: 0.5rem !important;
-          box-shadow: ${isDarkMode ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'} !important;
+          box-shadow: ${effectiveDarkMode ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'} !important;
           margin-bottom: 1rem !important;
         `;
       }
@@ -165,10 +187,10 @@ export default function CommunityQuestMobile() {
           flex-direction: column !important;
           gap: 0.5rem !important;
           padding: 1rem !important;
-          background-color: ${isDarkMode ? '#1a1a1a' : '#ffffff'} !important;
-          border: 1px solid ${isDarkMode ? '#333333' : '#e5e7eb'} !important;
+          background-color: ${effectiveDarkMode ? '#1a1a1a' : '#ffffff'} !important;
+          border: 1px solid ${effectiveDarkMode ? '#333333' : '#e5e7eb'} !important;
           border-radius: 0.5rem !important;
-          box-shadow: ${isDarkMode ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'} !important;
+          box-shadow: ${effectiveDarkMode ? '0 1px 3px rgba(0, 0, 0, 0.3)' : '0 1px 3px rgba(0, 0, 0, 0.1)'} !important;
         `;
       }
     };
