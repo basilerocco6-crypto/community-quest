@@ -336,7 +336,10 @@ export default function CommunityQuestSimple() {
 
       {/* Admin Panel */}
       {showAdminPanel && (
-        <AdminPanel onClose={() => setShowAdminPanel(false)} />
+        <AdminPanel 
+          isOpen={showAdminPanel}
+          onClose={() => setShowAdminPanel(false)} 
+        />
       )}
     </div>
   );
