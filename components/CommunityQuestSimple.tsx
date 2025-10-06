@@ -324,7 +324,11 @@ export default function CommunityQuestSimple() {
               <Sheet.Close />
             </div>
             <div className="flex-1 p-4 overflow-y-auto min-h-0">
-              <UserProfile />
+              <UserProfile 
+                user={MOCK_USER}
+                levels={MOCK_LEVELS}
+                onShowLevelBreakdown={() => setShowLevelBreakdown(true)}
+              />
             </div>
           </Sheet.Content>
         </Sheet.Root>
