@@ -67,3 +67,54 @@ body {
 	grid-template-columns: repeat(2, 1fr) !important;
 	gap: 2rem !important;
 }
+
+/* ULTRA AGGRESSIVE WHOP IFRAME OVERRIDES */
+iframe[src*="whop.com"] body,
+iframe[src*="whop.com"] #__next,
+iframe[src*="whop.com"] .min-h-screen,
+iframe[src*="whop.com"] main,
+iframe[src*="whop.com"] .grid {
+	/* Force desktop grid layout */
+	display: grid !important;
+	grid-template-columns: repeat(3, 1fr) !important;
+	gap: 2rem !important;
+}
+
+/* Target the specific grid container */
+iframe[src*="whop.com"] .grid.grid-cols-1.lg\\:grid-cols-3 {
+	grid-template-columns: repeat(3, 1fr) !important;
+	display: grid !important;
+}
+
+/* Force profile section to take 1 column */
+iframe[src*="whop.com"] .lg\\:col-span-1 {
+	grid-column: span 1 / span 1 !important;
+}
+
+/* Force level breakdown to take 2 columns */
+iframe[src*="whop.com"] .lg\\:col-span-2 {
+	grid-column: span 2 / span 2 !important;
+}
+
+/* Force level sub-grid to be 2 columns */
+iframe[src*="whop.com"] .grid.grid-cols-1.lg\\:grid-cols-2 {
+	grid-template-columns: repeat(2, 1fr) !important;
+}
+
+/* Additional iframe targeting */
+body[data-whop-app] .grid.grid-cols-1.lg\\:grid-cols-3 {
+	grid-template-columns: repeat(3, 1fr) !important;
+	display: grid !important;
+}
+
+body[data-whop-app] .lg\\:col-span-1 {
+	grid-column: span 1 / span 1 !important;
+}
+
+body[data-whop-app] .lg\\:col-span-2 {
+	grid-column: span 2 / span 2 !important;
+}
+
+body[data-whop-app] .grid.grid-cols-1.lg\\:grid-cols-2 {
+	grid-template-columns: repeat(2, 1fr) !important;
+}

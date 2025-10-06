@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { 
   Button, 
   TextField, 
@@ -28,6 +28,38 @@ export default function CommunityQuestSimple() {
   const [showPointsGuide, setShowPointsGuide] = useState(false);
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
+
+  // Force desktop layout in Whop environment
+  useEffect(() => {
+    const isInWhop = window.location.href.includes('whop.com') || 
+                     window.parent !== window || 
+                     document.referrer.includes('whop.com');
+    
+    if (isInWhop && window.innerWidth >= 1024) {
+      // Force desktop layout with inline styles
+      const mainGrid = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-3') as HTMLElement;
+      if (mainGrid) {
+        mainGrid.style.setProperty('display', 'grid', 'important');
+        mainGrid.style.setProperty('grid-template-columns', 'repeat(3, 1fr)', 'important');
+        mainGrid.style.setProperty('gap', '2rem', 'important');
+      }
+      
+      const profileSection = document.querySelector('.lg\\:col-span-1') as HTMLElement;
+      if (profileSection) {
+        profileSection.style.setProperty('grid-column', 'span 1 / span 1', 'important');
+      }
+      
+      const levelSection = document.querySelector('.lg\\:col-span-2') as HTMLElement;
+      if (levelSection) {
+        levelSection.style.setProperty('grid-column', 'span 2 / span 2', 'important');
+      }
+      
+      const levelGrid = document.querySelector('.grid.grid-cols-1.lg\\:grid-cols-2') as HTMLElement;
+      if (levelGrid) {
+        levelGrid.style.setProperty('grid-template-columns', 'repeat(2, 1fr)', 'important');
+      }
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
