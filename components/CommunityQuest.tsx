@@ -102,8 +102,28 @@ export default function CommunityQuest() {
       </header>
 
 
-      {/* Mobile Layout - Hidden on Desktop */}
-      <div className="lg:hidden">
+      {/* Force Desktop Layout with Inline Styles */}
+      <style jsx global>{`
+        @media (min-width: 1024px) {
+          .mobile-layout {
+            display: none !important;
+          }
+          .desktop-layout {
+            display: block !important;
+          }
+        }
+        @media (max-width: 1023px) {
+          .mobile-layout {
+            display: block !important;
+          }
+          .desktop-layout {
+            display: none !important;
+          }
+        }
+      `}</style>
+
+      {/* Mobile Layout */}
+      <div className="mobile-layout">
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
           <div className="space-y-6 sm:space-y-8">
             <div className="bg-card rounded-lg p-4 sm:p-6 shadow-lg border border-border">
@@ -210,15 +230,15 @@ export default function CommunityQuest() {
         </main>
       </div>
 
-      {/* Desktop Layout - Hidden on Mobile */}
-      <div className="hidden lg:block">
+      {/* Desktop Layout */}
+      <div className="desktop-layout">
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-8">
             <div className="space-y-6 sm:space-y-8">
               {/* Combined User Profile and Level Breakdown Section */}
               <div className="bg-card rounded-lg p-4 sm:p-6 shadow-lg border border-border">
-                <div className="flex flex-row gap-8 desktop-layout">
+                <div className="flex flex-row gap-8" style={{display: 'flex', flexDirection: 'row', gap: '2rem'}}>
                   {/* Left side - User Profile Section (1/3 width) */}
-                  <div className="flex flex-col items-center gap-4 w-1/3 profile-section">
+                  <div className="flex flex-col items-center gap-4" style={{width: '33.333333%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem'}}>
                     {/* MUCH BIGGER Profile Picture */}
                     <div className="relative">
                       {/* Outer gradient ring - Made much bigger */}
@@ -259,8 +279,8 @@ export default function CommunityQuest() {
                   </div>
 
                   {/* Right side - Level Breakdown in List Format (2/3 width) */}
-                  <div className="w-2/3 level-breakdown-section">
-                    <div className="grid grid-cols-2 gap-8 level-grid">
+                  <div style={{width: '66.666667%'}}>
+                    <div className="grid grid-cols-2 gap-8" style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem'}}>
                       {/* Left Column - Levels 1-5 */}
                       <div className="space-y-3">
                         {MOCK_LEVELS.slice(0, 5).map((level) => (
