@@ -29,11 +29,13 @@ export default function CommunityQuest() {
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
 
-  // Safari dark theme fix
+  // Safari dark theme fix + Chrome desktop layout fix
   useEffect(() => {
     if (typeof window === 'undefined') return;
     
     const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+    const isChrome = /chrome/i.test(navigator.userAgent) && !/edge/i.test(navigator.userAgent);
+    
     if (isSafari) {
       // Force dark theme for Safari
       const style = document.createElement('style');
@@ -57,6 +59,26 @@ export default function CommunityQuest() {
       
       return () => {
         const existing = document.getElementById('safari-dark-theme');
+        if (existing) existing.remove();
+      };
+    }
+    
+    if (isChrome && window.innerWidth >= 1024) {
+      // Force desktop layout for Chrome on desktop
+      const style = document.createElement('style');
+      style.id = 'chrome-desktop-layout';
+      style.textContent = `
+        .mobile-layout {
+          display: none !important;
+        }
+        .desktop-layout {
+          display: block !important;
+        }
+      `;
+      document.head.appendChild(style);
+      
+      return () => {
+        const existing = document.getElementById('chrome-desktop-layout');
         if (existing) existing.remove();
       };
     }
