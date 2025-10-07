@@ -37,30 +37,39 @@ export default function CommunityQuest() {
     const isChrome = /chrome/i.test(navigator.userAgent) && !/edge/i.test(navigator.userAgent);
     
     if (isSafari) {
-      // Force dark theme for Safari
-      const style = document.createElement('style');
-      style.id = 'safari-dark-theme';
-      style.textContent = `
-        .bg-card {
-          background-color: #1a1a1a !important;
-          border-color: #333333 !important;
-        }
-        .text-foreground {
-          color: #ffffff !important;
-        }
-        .text-muted-foreground {
-          color: #9ca3af !important;
-        }
-        .border-border {
-          border-color: #333333 !important;
-        }
-      `;
-      document.head.appendChild(style);
+      // Only apply dark theme for Safari if it's actually in dark mode
+      const isDarkMode = document.documentElement.classList.contains('dark') || 
+                        window.matchMedia('(prefers-color-scheme: dark)').matches ||
+                        document.body.style.backgroundColor === 'rgb(0, 0, 0)' ||
+                        document.body.style.backgroundColor === '#000000' ||
+                        getComputedStyle(document.body).backgroundColor === 'rgb(0, 0, 0)';
       
-      return () => {
-        const existing = document.getElementById('safari-dark-theme');
-        if (existing) existing.remove();
-      };
+      if (isDarkMode) {
+        // Force dark theme for Safari only when in dark mode
+        const style = document.createElement('style');
+        style.id = 'safari-dark-theme';
+        style.textContent = `
+          .bg-card {
+            background-color: #1a1a1a !important;
+            border-color: #333333 !important;
+          }
+          .text-foreground {
+            color: #ffffff !important;
+          }
+          .text-muted-foreground {
+            color: #9ca3af !important;
+          }
+          .border-border {
+            border-color: #333333 !important;
+          }
+        `;
+        document.head.appendChild(style);
+        
+        return () => {
+          const existing = document.getElementById('safari-dark-theme');
+          if (existing) existing.remove();
+        };
+      }
     }
     
     if (isChrome && window.innerWidth >= 1024) {
