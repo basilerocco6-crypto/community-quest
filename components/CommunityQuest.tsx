@@ -154,27 +154,52 @@ export default function CommunityQuest() {
           }
         }
         
-        /* ULTRA AGGRESSIVE WHOP IFRAME OVERRIDES */
-        iframe[src*="whop.com"] .mobile-layout {
-          display: none !important;
-        }
-        iframe[src*="whop.com"] .desktop-layout {
-          display: block !important;
+        /* ULTRA AGGRESSIVE WHOP IFRAME OVERRIDES - ONLY FOR DESKTOP */
+        @media (min-width: 1024px) {
+          iframe[src*="whop.com"] .mobile-layout {
+            display: none !important;
+          }
+          iframe[src*="whop.com"] .desktop-layout {
+            display: block !important;
+          }
+          
+          body[data-whop-app] .mobile-layout {
+            display: none !important;
+          }
+          body[data-whop-app] .desktop-layout {
+            display: block !important;
+          }
+          
+          .whop-embed .mobile-layout {
+            display: none !important;
+          }
+          .whop-embed .desktop-layout {
+            display: block !important;
+          }
         }
         
-        body[data-whop-app] .mobile-layout {
-          display: none !important;
-        }
-        body[data-whop-app] .desktop-layout {
-          display: block !important;
-        }
-        
-        /* Force desktop layout for Whop apps */
-        .whop-embed .mobile-layout {
-          display: none !important;
-        }
-        .whop-embed .desktop-layout {
-          display: block !important;
+        /* FORCE MOBILE LAYOUT ON MOBILE - EVEN IN WHOP */
+        @media (max-width: 1023px) {
+          iframe[src*="whop.com"] .mobile-layout {
+            display: block !important;
+          }
+          iframe[src*="whop.com"] .desktop-layout {
+            display: none !important;
+          }
+          
+          body[data-whop-app] .mobile-layout {
+            display: block !important;
+          }
+          body[data-whop-app] .desktop-layout {
+            display: none !important;
+          }
+          
+          .whop-embed .mobile-layout {
+            display: block !important;
+          }
+          .whop-embed .desktop-layout {
+            display: none !important;
+          }
         }
       `}</style>
 
