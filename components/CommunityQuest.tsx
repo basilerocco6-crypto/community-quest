@@ -64,7 +64,7 @@ export default function CommunityQuest() {
     }
     
     if (isChrome && window.innerWidth >= 1024) {
-      // Force desktop layout for Chrome on desktop
+      // Force desktop layout for Chrome on desktop - including Whop dev dashboard
       const style = document.createElement('style');
       style.id = 'chrome-desktop-layout';
       style.textContent = `
@@ -72,6 +72,46 @@ export default function CommunityQuest() {
           display: none !important;
         }
         .desktop-layout {
+          display: block !important;
+        }
+        
+        /* ULTRA AGGRESSIVE CHROME DESKTOP OVERRIDES */
+        @media (min-width: 1024px) {
+          .mobile-layout {
+            display: none !important;
+          }
+          .desktop-layout {
+            display: block !important;
+          }
+        }
+        
+        /* Force desktop layout in all contexts for Chrome desktop */
+        body .mobile-layout {
+          display: none !important;
+        }
+        body .desktop-layout {
+          display: block !important;
+        }
+        
+        /* Whop dev dashboard specific overrides */
+        iframe[src*="whop.com"] .mobile-layout {
+          display: none !important;
+        }
+        iframe[src*="whop.com"] .desktop-layout {
+          display: block !important;
+        }
+        
+        body[data-whop-app] .mobile-layout {
+          display: none !important;
+        }
+        body[data-whop-app] .desktop-layout {
+          display: block !important;
+        }
+        
+        .whop-embed .mobile-layout {
+          display: none !important;
+        }
+        .whop-embed .desktop-layout {
           display: block !important;
         }
       `;
