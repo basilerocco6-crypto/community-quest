@@ -72,111 +72,6 @@ export default function CommunityQuest() {
       }
     }
     
-    if (isChrome && window.innerWidth >= 1024) {
-      // ULTRA AGGRESSIVE Chrome desktop layout fix for Whop dashboard
-      const applyChromeDesktopFix = () => {
-        // Remove existing fix
-        const existing = document.getElementById('chrome-desktop-layout');
-        if (existing) existing.remove();
-        
-        // Create new ultra-aggressive fix
-        const style = document.createElement('style');
-        style.id = 'chrome-desktop-layout';
-        style.textContent = `
-          .mobile-layout {
-            display: none !important;
-          }
-          .desktop-layout {
-            display: block !important;
-          }
-          
-          /* ULTRA AGGRESSIVE CHROME DESKTOP OVERRIDES */
-          @media (min-width: 1024px) {
-            .mobile-layout {
-              display: none !important;
-            }
-            .desktop-layout {
-              display: block !important;
-            }
-          }
-          
-          /* Force desktop layout in all contexts for Chrome desktop */
-          body .mobile-layout {
-            display: none !important;
-          }
-          body .desktop-layout {
-            display: block !important;
-          }
-          
-          /* Whop dev dashboard specific overrides */
-          iframe[src*="whop.com"] .mobile-layout {
-            display: none !important;
-          }
-          iframe[src*="whop.com"] .desktop-layout {
-            display: block !important;
-          }
-          
-          body[data-whop-app] .mobile-layout {
-            display: none !important;
-          }
-          body[data-whop-app] .desktop-layout {
-            display: block !important;
-          }
-          
-          .whop-embed .mobile-layout {
-            display: none !important;
-          }
-          .whop-embed .desktop-layout {
-            display: block !important;
-          }
-          
-          /* NUCLEAR OPTION - Direct DOM manipulation */
-          * .mobile-layout {
-            display: none !important;
-          }
-          * .desktop-layout {
-            display: block !important;
-          }
-        `;
-        document.head.appendChild(style);
-        
-        // Also force with direct DOM manipulation
-        const mobileLayout = document.querySelector('.mobile-layout') as HTMLElement;
-        const desktopLayout = document.querySelector('.desktop-layout') as HTMLElement;
-        
-        if (mobileLayout) {
-          mobileLayout.style.display = 'none';
-          mobileLayout.style.setProperty('display', 'none', 'important');
-        }
-        
-        if (desktopLayout) {
-          desktopLayout.style.display = 'block';
-          desktopLayout.style.setProperty('display', 'block', 'important');
-        }
-      };
-      
-      // Apply immediately
-      applyChromeDesktopFix();
-      
-      // Reapply every 100ms to ensure it sticks
-      const interval = setInterval(applyChromeDesktopFix, 100);
-      
-      // Watch for DOM changes
-      const observer = new MutationObserver(() => {
-        setTimeout(applyChromeDesktopFix, 50);
-      });
-      observer.observe(document.body, { 
-        childList: true, 
-        subtree: true
-      });
-      
-      return () => {
-        clearInterval(interval);
-        observer.disconnect();
-        const existing = document.getElementById('chrome-desktop-layout');
-        if (existing) existing.remove();
-      };
-    }
   }, []);
 
   return (
@@ -316,6 +211,24 @@ export default function CommunityQuest() {
           }
           .whop-embed .desktop-layout {
             display: none !important;
+          }
+        }
+        
+        /* CHROME DESKTOP NUCLEAR OPTION - FORCE DESKTOP LAYOUT */
+        @media (min-width: 1024px) {
+          .mobile-layout {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+          }
+          .desktop-layout {
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            height: auto !important;
+            overflow: visible !important;
           }
         }
       `}</style>
