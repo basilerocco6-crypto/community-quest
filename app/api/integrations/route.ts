@@ -30,7 +30,7 @@ export async function POST(request: NextRequest): Promise<Response> {
 			'event_app': process.env.EVENT_APP_SECRET,
 			'livestreaming_app': process.env.LIVESTREAMING_APP_SECRET,
 			// Custom app integrations (if you have custom apps)
-			'custom_referral': process.env.CUSTOM_REFERRAL_SECRET,
+			'whop_affiliates': process.env.WHOP_AFFILIATES_SECRET,
 		};
 
 		if (!validApps[app_id as keyof typeof validApps] || validApps[app_id as keyof typeof validApps] !== app_secret) {
@@ -174,7 +174,7 @@ export async function GET(request: NextRequest): Promise<Response> {
 				'event_app',     // Whop Events App
 				'livestreaming_app', // Whop Livestreaming App
 				// Custom integrations (require setup):
-				'custom_referral'        // Custom referral system
+				'whop_affiliates'        // Whop Consumer Affiliates program
 			],
 			documentation: {
 				endpoint: "/api/integrations",
@@ -187,7 +187,7 @@ export async function GET(request: NextRequest): Promise<Response> {
 					event_app: ["event_attended"],
 					livestreaming_app: ["stream_started", "stream_attended", "stream_chat_message", "stream_reaction", "speaker_joined", "raised_hand"],
 					// Custom integrations (require custom app setup):
-					custom_referral: ["user_referred", "tier_achieved"]
+					whop_affiliates: ["user_referred", "tier_achieved"]
 				}
 			}
 		});

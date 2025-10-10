@@ -746,7 +746,12 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
 
                     {/* Referrals & Growth */}
                     <div>
-                      <Heading size="3" className="mb-3 text-red-600">🚀 Referrals & Growth - via Custom System</Heading>
+                      <Heading size="3" className="mb-3 text-red-600">🚀 Referrals & Growth - via Whop Affiliates</Heading>
+                      <div className="mb-3 p-3 bg-red-50 rounded-lg">
+                        <Text size="2" color="red" className="font-medium">
+                          💡 These activities are tracked via Whop's Consumer Affiliates program
+                        </Text>
+                      </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
                           <span className="font-medium">Refer a new member who joins</span>
