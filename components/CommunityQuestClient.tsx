@@ -719,7 +719,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
 
                     {/* Community Value */}
                     <div>
-                      <Heading size="3" className="mb-3 text-green-600">🤝 Community Value (Quality over Quantity) - via Events App & Custom</Heading>
+                      <Heading size="3" className="mb-3 text-green-600">🤝 Community Value (Quality over Quantity) - via Chat App & Custom</Heading>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
                           <span className="font-medium">Help another member (verified by admin)</span>
