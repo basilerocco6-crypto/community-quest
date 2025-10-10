@@ -1,5 +1,5 @@
-import CommunityQuest from "@/components/CommunityQuest";
+import CommunityQuestWrapper from "@/components/CommunityQuestWrapper";
 
 export default function ExperiencePage() {
-	return <CommunityQuest />;
+	return <CommunityQuestWrapper />;
 }

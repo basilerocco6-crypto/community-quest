@@ -20,9 +20,13 @@ import LevelBreakdown from "./LevelBreakdown";
 import RewardsPanel from "./RewardsPanel";
 import CommunityLevelsBreakdown from "./CommunityLevelsBreakdown";
 import AdminPanel from "./AdminPanel";
-import { MOCK_USER, MOCK_LEADERBOARD_WEEKLY, MOCK_LEADERBOARD_MONTHLY, MOCK_LEADERBOARD_ALLTIME, MOCK_LEVELS } from "@/lib/types";
+import { user, MOCK_LEADERBOARD_WEEKLY, MOCK_LEADERBOARD_MONTHLY, MOCK_LEADERBOARD_ALLTIME, MOCK_LEVELS, User } from "@/lib/types";
 
-export default function CommunityQuest() {
+interface CommunityQuestProps {
+  user: User;
+}
+
+export default function CommunityQuestClient({ user }: CommunityQuestProps) {
   const [showLevelBreakdown, setShowLevelBreakdown] = useState(false);
   const [showRewardsPanel, setShowRewardsPanel] = useState(false);
   const [showPointsGuide, setShowPointsGuide] = useState(false);
@@ -135,9 +139,9 @@ export default function CommunityQuest() {
                 title="Open Profile"
               >
               <Avatar 
-                src={MOCK_USER.avatar} 
-                alt={MOCK_USER.name} 
-                fallback={MOCK_USER.name.charAt(0)}
+                src={user.avatar} 
+                alt={user.name} 
+                fallback={user.name.charAt(0)}
                 size="2"
               />
               </button>
@@ -246,10 +250,10 @@ export default function CommunityQuest() {
                     <div className="p-3 rounded-full shadow-lg" style={{backgroundColor: '#FA4616'}}>
                       <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
                         <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
-                          {MOCK_USER.avatar ? (
+                          {user.avatar ? (
                             <img 
-                              src={MOCK_USER.avatar} 
-                              alt={MOCK_USER.name}
+                              src={user.avatar} 
+                              alt={user.name}
                               className="w-full h-full object-cover"
                             />
                           ) : (
@@ -263,13 +267,13 @@ export default function CommunityQuest() {
                       </div>
                     </div>
                     <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full flex items-center justify-center border-2 shadow-xl" style={{backgroundColor: '#1754D8', borderColor: 'white'}}>
-                      <span className="text-sm font-extrabold" style={{color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>{MOCK_USER.currentLevel}</span>
+                      <span className="text-sm font-extrabold" style={{color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>{user.currentLevel}</span>
                     </div>
                   </div>
                   <div className="flex flex-col gap-2 text-center">
                     <div className="text-sm font-medium text-foreground">Community Member</div>
-                    <div className="text-sm font-semibold" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
-                    <div className="text-xs text-muted-foreground">{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
+                    <div className="text-sm font-semibold" style={{color: '#2563EB'}}>Level {user.currentLevel}</div>
+                    <div className="text-xs text-muted-foreground">{((MOCK_LEVELS.find(l => l.level === user.currentLevel + 1)?.requiredPoints || user.totalPoints) - user.totalPoints)} points to level up</div>
                   </div>
                 </div>
 
@@ -344,10 +348,10 @@ export default function CommunityQuest() {
                         <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
                           {/* Custom large avatar */}
                           <div className="w-40 h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
-                            {MOCK_USER.avatar ? (
+                            {user.avatar ? (
                               <img 
-                                src={MOCK_USER.avatar} 
-                                alt={MOCK_USER.name}
+                                src={user.avatar} 
+                                alt={user.name}
                                 className="w-full h-full object-cover"
                               />
                             ) : (
@@ -362,15 +366,15 @@ export default function CommunityQuest() {
                       </div>
                       {/* Level Badge - positioned like Skool with better visibility */}
                       <div className="absolute -bottom-1 -right-1 lg:-bottom-2 lg:-right-2 w-10 h-10 lg:w-12 lg:h-12 rounded-full flex items-center justify-center border-3 shadow-xl" style={{backgroundColor: '#1754D8', borderColor: 'white'}}>
-                        <span className="text-lg lg:text-xl font-extrabold" style={{color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>{MOCK_USER.currentLevel}</span>
+                        <span className="text-lg lg:text-xl font-extrabold" style={{color: '#FFFFFF', textShadow: '1px 1px 2px rgba(0,0,0,0.5)'}}>{user.currentLevel}</span>
                       </div>
                     </div>
 
                     {/* User Info */}
                     <div className="flex flex-col gap-2 text-center">
-                      <div className="text-xl lg:text-2xl font-bold text-foreground">{MOCK_USER.name}</div>
-                      <div className="text-base lg:text-lg" style={{color: '#2563EB'}}>Level {MOCK_USER.currentLevel}</div>
-                      <div className="text-xs lg:text-sm" style={{color: '#9CA3AF'}}>{((MOCK_LEVELS.find(l => l.level === MOCK_USER.currentLevel + 1)?.requiredPoints || MOCK_USER.totalPoints) - MOCK_USER.totalPoints)} points to level up</div>
+                      <div className="text-xl lg:text-2xl font-bold text-foreground">{user.name}</div>
+                      <div className="text-base lg:text-lg" style={{color: '#2563EB'}}>Level {user.currentLevel}</div>
+                      <div className="text-xs lg:text-sm" style={{color: '#9CA3AF'}}>{((MOCK_LEVELS.find(l => l.level === user.currentLevel + 1)?.requiredPoints || user.totalPoints) - user.totalPoints)} points to level up</div>
                     </div>
 
                   </div>
@@ -474,7 +478,7 @@ export default function CommunityQuest() {
 
       {/* Rewards Panel */}
       <RewardsPanel 
-        user={MOCK_USER}
+        user={user}
         isOpen={showRewardsPanel}
         onClose={() => setShowRewardsPanel(false)}
       />
@@ -498,14 +502,14 @@ export default function CommunityQuest() {
                 <div className="text-center mb-6">
                   <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Avatar 
-                      src={MOCK_USER.avatar} 
-                      alt={MOCK_USER.name} 
-                      fallback={MOCK_USER.name.charAt(0)}
+                      src={user.avatar} 
+                      alt={user.name} 
+                      fallback={user.name.charAt(0)}
                       size="5"
                     />
                   </div>
-                  <Heading size="4" className="mb-2">{MOCK_USER.name}</Heading>
-                  <Badge color="blue">Level {MOCK_USER.currentLevel} • {MOCK_USER.totalPoints} points</Badge>
+                  <Heading size="4" className="mb-2">{user.name}</Heading>
+                  <Badge color="blue">Level {user.currentLevel} • {user.totalPoints} points</Badge>
                 </div>
                 
                 <div className="space-y-4">
@@ -515,11 +519,11 @@ export default function CommunityQuest() {
                       <div className="space-y-2">
                         <div className="flex justify-between">
                           <Text>Current Level</Text>
-                          <Badge color="blue">Level {MOCK_USER.currentLevel}</Badge>
+                          <Badge color="blue">Level {user.currentLevel}</Badge>
                         </div>
                         <div className="flex justify-between">
                           <Text>Total Points</Text>
-                          <Text weight="medium">{MOCK_USER.totalPoints}</Text>
+                          <Text weight="medium">{user.totalPoints}</Text>
                         </div>
                         <div className="flex justify-between">
                           <Text>Join Date</Text>
