@@ -833,14 +833,14 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                       <Badge color="gray">Level 5</Badge>
                       <div>
                         <span className="font-medium">Expert (1,000-1,999 points)</span>
-                        <Text size="1" color="gray"> Access to Expert-only masterminds, Monthly group coaching call access, "Expert" role with special color/badge, Ability to host community events, Free access to one premium course/month</Text>
+                        <Text size="1" color="gray">20% discount on all products, Access to Expert-only masterminds, Monthly group coaching call access, Free access to one premium course/month</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                       <Badge color="gray">Level 6-9</Badge>
                       <div>
                         <span className="font-medium">Grandmaster → GOAT (2,000+ points)</span>
-                        <Text size="1" color="gray"> Revenue sharing, Beta access, Moderator privileges, 15% discount, Monthly 1:1 coaching, Equity opportunities</Text>
+                        <Text size="1" color="gray">25-50% product discounts, Revenue sharing on referrals, Access to founder's private content, Monthly 1:1 coaching, Equity opportunities, Co-founder consideration</Text>
                       </div>
                     </div>
                   </div>

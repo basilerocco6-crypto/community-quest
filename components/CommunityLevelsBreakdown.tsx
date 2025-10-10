@@ -19,7 +19,7 @@ export default function CommunityLevelsBreakdown({ levels, user }: CommunityLeve
             {/* Level Badge */}
             <div className={`w-8 h-8 rounded-full flex items-center justify-center ${
               level.level <= user.currentLevel 
-                ? 'bg-yellow-400' 
+                ? level.badgeColor || 'bg-yellow-400' 
                 : 'bg-gray-600'
             }`}>
               {level.level <= user.currentLevel ? (
@@ -35,10 +35,7 @@ export default function CommunityLevelsBreakdown({ levels, user }: CommunityLeve
             <div className="flex flex-col">
               <Text size="2" className="text-white">Level {level.level}</Text>
               <Text size="1" color="gray" className="text-gray-400">
-                {level.level === 1 ? '94%' : 
-                 level.level === 2 ? '2%' : 
-                 level.level === 3 ? '1%' : 
-                 level.level <= 5 ? '1%' : '0%'} of members
+                {level.memberPercentage}% of members
               </Text>
             </div>
           </div>

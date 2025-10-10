@@ -72,91 +72,91 @@ export interface Reward {
 export const MOCK_LEVELS: Level[] = [
   {
     level: 1,
-    name: "Noob",
+    name: "Newcomer",
     requiredPoints: 0,
-    perks: ["Access to basic community channels", "View leaderboard rankings", "Access to welcome resources"],
+    perks: ["Access to community chat", "View leaderboard rankings", "Access to welcome resources and guides"],
     memberPercentage: 100, // Automatically unlocked for all members
-    badgeColor: "bg-yellow-400",
+    badgeColor: "bg-blue-400",
     isUnlocked: true
   },
   {
     level: 2,
     name: "Contributor",
     requiredPoints: 100,
-    perks: ["Access to exclusive 'Contributors Only' chat", "Custom 'Contributor' badge"],
-    discountPercentage: 0,
-    memberPercentage: 5, // Match original Skool percentages
-    badgeColor: "bg-yellow-400",
+    perks: ["5% discount on all products", "Early access to new content", "Priority support response"],
+    discountPercentage: 5,
+    memberPercentage: 25,
+    badgeColor: "bg-green-400",
     isUnlocked: false
   },
   {
     level: 3,
-    name: "Action Taker",
+    name: "Active Member",
     requiredPoints: 300,
-    perks: ["Early access to new content/courses", "Priority support response", "Monthly spotlight feature opportunity"],
-    discountPercentage: 0,
-    memberPercentage: 2, // Match original Skool percentages
-    badgeColor: "bg-yellow-400",
+    perks: ["10% discount on all products", "Access to exclusive community polls", "Monthly featured member opportunity"],
+    discountPercentage: 10,
+    memberPercentage: 15,
+    badgeColor: "bg-purple-400",
     isUnlocked: false
   },
   {
     level: 4,
-    name: "Builder",
+    name: "Community Builder",
     requiredPoints: 600,
-    perks: ["Featured member profile", "Double points on weekend activities"],
-    discountPercentage: 0,
-    memberPercentage: 1, // Match original Skool percentages
-    badgeColor: "bg-gray-400",
+    perks: ["15% discount on all products", "Access to beta features", "Double points on weekend activities"],
+    discountPercentage: 15,
+    memberPercentage: 8,
+    badgeColor: "bg-orange-400",
     isUnlocked: false
   },
   {
     level: 5,
     name: "Expert",
     requiredPoints: 1000,
-    perks: ["Access to Expert-only masterminds", "Monthly group coaching call access", "\"Expert\" role with special color/badge", "Ability to host community events", "Free access to one premium course/month"],
-    discountPercentage: 0,
-    memberPercentage: 1, // Match original Skool percentages
-    badgeColor: "bg-gray-400",
+    perks: ["20% discount on all products", "Access to Expert-only masterminds", "Monthly group coaching call access", "Free access to one premium course/month"],
+    discountPercentage: 20,
+    memberPercentage: 5,
+    badgeColor: "bg-red-400",
     isUnlocked: false
   },
   {
     level: 6,
     name: "Grandmaster",
     requiredPoints: 2000,
-    perks: ["Access to beta features first", "Revenue share on referrals (5%)", "Custom profile banner"],
-    discountPercentage: 0,
-    memberPercentage: 1, // Match original Skool percentages
-    badgeColor: "bg-gray-400",
+    perks: ["25% discount on all products", "Revenue share on referrals (5%)", "Access to founder's private content"],
+    discountPercentage: 25,
+    memberPercentage: 3,
+    badgeColor: "bg-indigo-400",
     isUnlocked: false
   },
   {
     level: 7,
-    name: "Leader",
+    name: "Community Leader",
     requiredPoints: 3500,
-    perks: ["Co-host community events", "Moderator privileges (if desired)", "Revenue share on referrals (10%)"],
-    discountPercentage: 0,
-    memberPercentage: 1, // Match original Skool percentages
-    badgeColor: "bg-gray-400",
+    perks: ["30% discount on all products", "Co-host community events", "Revenue share on referrals (10%)", "Direct access to founder"],
+    discountPercentage: 30,
+    memberPercentage: 2,
+    badgeColor: "bg-pink-400",
     isUnlocked: false
   },
   {
     level: 8,
     name: "Wizard",
     requiredPoints: 5500,
-    perks: ["15% discount on all products", "Monthly private mastermind with owner", "Revenue share on referrals (15%)", "Exclusive \"Wizard Council\" access"],
-    discountPercentage: 15,
-    memberPercentage: 1, // Match original Skool percentages
-    badgeColor: "bg-gray-400",
+    perks: ["35% discount on all products", "Monthly private mastermind with founder", "Revenue share on referrals (15%)", "Exclusive \"Wizard Council\" access", "Free lifetime access to all products"],
+    discountPercentage: 35,
+    memberPercentage: 1,
+    badgeColor: "bg-yellow-400",
     isUnlocked: false
   },
   {
     level: 9,
     name: "GOAT",
     requiredPoints: 8000,
-    perks: ["Monthly 1:1 coaching session with owner (30 min)", "Revenue share on referrals (20%)", "Equity/partnership opportunities discussed", "Free ticket to annual in-person event"],
-    discountPercentage: 0,
-    memberPercentage: 0, // Match original Skool percentages
-    badgeColor: "bg-gray-400",
+    perks: ["50% discount on all products", "Monthly 1:1 coaching session with founder (30 min)", "Revenue share on referrals (20%)", "Equity/partnership opportunities discussed", "Free ticket to annual in-person event", "Co-founder status consideration"],
+    discountPercentage: 50,
+    memberPercentage: 0.1,
+    badgeColor: "bg-gradient-to-r from-purple-400 to-pink-400",
     isUnlocked: false
   }
 ];
