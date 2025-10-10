@@ -2,6 +2,21 @@
 
 Your Community Quest app is running locally, but to see it in your Whop dashboard, you need to complete the setup process.
 
+## 📱 Available Whop Apps
+
+**Important:** Whop provides these standard apps that work with Community Quest:
+
+✅ **Actually Available:**
+- **Chat App** - Real-time group discussions
+- **Forum App** - Threaded conversations  
+- **Course App** - Multi-lesson learning with videos and quizzes
+- **Events App** - Live or in-person events with ticketing
+- **Livestreaming App** - Live streaming with OBS integration ([View App](https://whop.com/apps/app_WykcI6ivb5fOlz))
+
+❌ **Not Available (Don't Exist):**
+- "Community App" - This is not a separate Whop app
+- "Referral App" - Not a standard Whop app
+
 ## 🔧 Step 1: Create Your Whop App
 
 1. **Go to Whop Dashboard**: Visit [dashboard.whop.com](https://dashboard.whop.com)
@@ -65,12 +80,24 @@ WHOP_WEBHOOK_SECRET=whsec_mno345pqr678...
 2. **Set Webhook URL** to: `https://your-domain.com/api/webhooks`
    - For development: Use ngrok or similar service to expose localhost
    - For production: Use your deployed domain
-3. **Enable these webhook events**:
-   - `chat.message`
-   - `forum.post`
-   - `forum.comment`
+3. **Enable these webhook events** (from actual Whop apps):
+   - `chat.message_sent`
+   - `chat.message_replied`
+   - `chat.discussion_started`
+   - `chat.reaction_received`
+   - `chat.streak_achieved`
+   - `forum.post_created`
+   - `forum.post_replied`
+   - `forum.post_pinned`
+   - `course.module_completed`
    - `course.completed`
    - `event.attended`
+   - `livestream.started`
+   - `livestream.attended`
+   - `livestream.chat_message`
+   - `livestream.reaction`
+   - `livestream.speaker_joined`
+   - `livestream.raised_hand`
    - `user.created`
 
 ## 🌐 Step 5: Expose Your Local Development Server
@@ -91,7 +118,21 @@ This will give you a public URL like `https://abc123.ngrok.io` that you can use 
 ### Option B: Deploy to production
 Deploy your app to Vercel, Netlify, or similar platform.
 
-## 📱 Step 6: Install Your App
+## 📱 Step 6: Install Standard Whop Apps
+
+**Before installing Community Quest, add the standard Whop apps to your community:**
+
+1. **Go to your Whop Dashboard**
+2. **Navigate to your community/company**
+3. **Click "Add app"** to open the Whop App Store
+4. **Install these standard apps**:
+   - **Chat** - For real-time discussions
+   - **Forums** - For threaded conversations
+   - **Course** - For learning content (if needed)
+   - **Events** - For live events (if needed)
+   - **Livestreaming** - For live streaming content (if needed)
+
+## 📱 Step 7: Install Your Community Quest App
 
 1. **Go to your Whop Dashboard**
 2. **Navigate to Apps**
@@ -100,7 +141,7 @@ Deploy your app to Vercel, Netlify, or similar platform.
 5. **Select your company/community**
 6. **Complete the installation**
 
-## ✅ Step 7: Verify Installation
+## ✅ Step 8: Verify Installation
 
 After completing all steps:
 

@@ -1,24 +1,28 @@
 import { NextResponse } from 'next/server';
 
 export async function GET() {
+  const hasAppUrl = process.env.NEXT_PUBLIC_APP_URL;
+  const webhookUrl = hasAppUrl ? `${process.env.NEXT_PUBLIC_APP_URL}/api/webhooks` : null;
+  
   const status = {
     environment: {
-      appId: process.env.NEXT_PUBLIC_WHOP_APP_ID ? '✅ Configured' : '❌ Missing',
-      apiKey: process.env.WHOP_API_KEY ? '✅ Configured' : '❌ Missing',
-      agentUserId: process.env.NEXT_PUBLIC_WHOP_AGENT_USER_ID ? '✅ Configured' : '❌ Missing',
-      companyId: process.env.NEXT_PUBLIC_WHOP_COMPANY_ID ? '✅ Configured' : '❌ Missing',
-      webhookSecret: process.env.WHOP_WEBHOOK_SECRET ? '✅ Configured' : '❌ Missing',
+      appId: process.env.NEXT_PUBLIC_WHOP_APP_ID ? '✅ Configured' : '❌ Missing (NEXT_PUBLIC_WHOP_APP_ID)',
+      apiKey: process.env.WHOP_API_KEY ? '✅ Configured' : '❌ Missing (WHOP_API_KEY)',
+      agentUserId: process.env.NEXT_PUBLIC_WHOP_AGENT_USER_ID ? '✅ Configured' : '❌ Missing (NEXT_PUBLIC_WHOP_AGENT_USER_ID)',
+      companyId: process.env.NEXT_PUBLIC_WHOP_COMPANY_ID ? '✅ Configured' : '❌ Missing (NEXT_PUBLIC_WHOP_COMPANY_ID)',
+      webhookSecret: process.env.WHOP_WEBHOOK_SECRET ? '✅ Configured' : '❌ Missing (WHOP_WEBHOOK_SECRET)',
+      appUrl: hasAppUrl ? '✅ Configured' : '❌ Missing (NEXT_PUBLIC_APP_URL)',
     },
     webhook: {
-      url: process.env.NEXT_PUBLIC_APP_URL ? 
-        `${process.env.NEXT_PUBLIC_APP_URL}/api/webhooks` : 
-        '⚠️ Not configured (use ngrok for development)',
-      status: 'Active'
+      url: webhookUrl || '⚠️ Not configured - Set NEXT_PUBLIC_APP_URL environment variable',
+      status: webhookUrl ? 'Ready' : 'Needs Configuration',
+      configured: !!webhookUrl
     },
     instructions: {
-      setup: 'Run `npm run setup` to configure environment variables',
-      webhook: 'Configure webhook URL in Whop Dashboard → Apps → Your App → Webhooks',
-      documentation: 'See WEBHOOK_SETUP.md for detailed instructions'
+      setup: 'Create .env.local file with required environment variables (see WEBHOOK_SETUP.md)',
+      webhook: 'Set NEXT_PUBLIC_APP_URL in .env.local, then configure webhook URL in Whop Dashboard',
+      documentation: 'See WEBHOOK_SETUP.md for detailed instructions',
+      development: 'For development, use ngrok: ngrok http 3000, then set NEXT_PUBLIC_APP_URL to your ngrok URL'
     }
   };
 

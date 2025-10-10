@@ -12,6 +12,7 @@ Community Quest is a comprehensive engagement tracking and gamification system b
 - **Forum Comments**: Reward engagement with existing posts
 - **Course Completion**: Integrate with Whop's native Courses app
 - **Event Attendance**: Track participation in community events
+- **Livestreaming**: Track livestream hosting, attendance, and interaction
 - **Referrals**: Reward members for bringing in new community members
 
 ### 🎯 Gamification System
@@ -59,16 +60,33 @@ Community Quest is a comprehensive engagement tracking and gamification system b
 
 | Activity | Points | Notes |
 |----------|--------|-------|
-| Chat Message | 1-2 | More points for detailed messages |
-| Forum Comment | 2 | Encouraging discussion |
-| Forum Post | 5-7 | More points for detailed posts |
-| Course Completion | 10 | Major learning milestone |
-| Event Attendance | 3 | Community participation |
-| Referral | 15 | Community growth |
-| Daily Login | 1 | Consistency reward |
-| Profile Completion | 5 | Onboarding completion |
-| First Post | 10 | New member encouragement |
-| Milestone Achievement | 25 | Special recognition |
+| Chat Message | 2 | Encouraging discussion |
+| Chat Reply | 3 | Engaging with others |
+| Discussion Started | 10 | Starting conversations |
+| Chat Reaction | 5 | Reacting to messages |
+| Chat Streak | 20 | Consistent participation |
+| Forum Post | 15 | Creating content |
+| Forum Reply | 8 | Engaging with posts |
+| Forum Pinned | 50 | High-quality content |
+| Forum Helpful | 15 | Being helpful |
+| Forum Engagement | 25 | High engagement posts |
+| Course Module | 50 | Learning progress |
+| Course Completion | 200 | Major learning milestone |
+| Quiz Excellence | 30 | Outstanding performance |
+| Course Progress Share | 20 | Sharing progress |
+| Event Attendance | 75 | Community participation |
+| Livestream Started | 75 | Hosting content |
+| Livestream Attended | 75 | Attending streams |
+| Stream Chat Message | 2 | Engaging during streams |
+| Stream Reaction | 5 | Reacting during streams |
+| Speaker Joined | 75 | Participating as speaker |
+| Raised Hand | 75 | Active participation |
+| Member Help | 40 | Helping other members |
+| Resource Share | 25 | Sharing valuable resources |
+| Self Introduction | 10 | New member introduction |
+| Weekly Checkin | 15 | Consistent engagement |
+| Referral | 100 | Community growth |
+| Referral Tier Bonus | 50 | Referral milestones |
 
 ## Level System
 

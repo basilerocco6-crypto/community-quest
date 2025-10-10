@@ -26,6 +26,11 @@ NEXT_PUBLIC_WHOP_COMPANY_ID=company_your_company_id_here
 # Required: Webhook Secret for validating webhooks
 # Get this from: Whop Dashboard → Apps → Your App → Webhooks
 WHOP_WEBHOOK_SECRET=whsec_your_webhook_secret_here
+
+# Required: Your app's public URL (for webhook configuration)
+# For development with ngrok: https://your-ngrok-url.ngrok.io
+# For production: https://your-domain.com
+NEXT_PUBLIC_APP_URL=https://your-app-url.ngrok.io
 ```
 
 ## 🔑 Step 2: Get Your Credentials from Whop Dashboard
@@ -56,6 +61,11 @@ WHOP_WEBHOOK_SECRET=whsec_your_webhook_secret_here
 - Create a new webhook or copy existing secret
 - Format: `whsec_1234567890abcdef...`
 
+### 6. App URL (`NEXT_PUBLIC_APP_URL`)
+- This is your app's public URL that Whop will use to send webhooks
+- For development: Use ngrok URL (e.g., `https://abc123.ngrok.io`)
+- For production: Use your domain (e.g., `https://your-app.vercel.app`)
+
 ## 🌐 Step 3: Configure Webhook URL
 
 ### For Development (using ngrok):
@@ -71,18 +81,28 @@ Set the webhook URL to: `https://your-domain.com/api/webhooks`
 ## 📋 Step 4: Enable Webhook Events
 
 In your Whop app's webhook settings, enable these events:
-- `chat.message_sent`
-- `chat.message_replied`
-- `chat.discussion_started`
-- `chat.reaction_received`
-- `chat.streak_achieved`
-- `forum.post_created`
-- `forum.post_replied`
-- `forum.post_pinned`
-- `course.module_completed`
-- `course.completed`
-- `event.attended`
-- `user.created`
+
+### Available Events (from actual Whop apps):
+- `chat.message_sent` - User sends a chat message
+- `chat.message_replied` - User replies to a chat message  
+- `chat.discussion_started` - User starts a new discussion
+- `chat.reaction_received` - User receives a reaction on their message
+- `chat.streak_achieved` - User achieves a chat streak
+- `forum.post_created` - User creates a forum post
+- `forum.post_replied` - User replies to a forum post
+- `forum.post_pinned` - User's post gets pinned
+- `course.module_completed` - User completes a course module
+- `course.completed` - User completes an entire course
+- `event.attended` - User attends an event
+- `livestream.started` - User starts a livestream
+- `livestream.attended` - User attends a livestream
+- `livestream.chat_message` - User sends chat message during livestream
+- `livestream.reaction` - User reacts during livestream
+- `livestream.speaker_joined` - User joins as speaker in livestream
+- `livestream.raised_hand` - User raises hand during livestream
+- `user.created` - New user joins your community
+
+**Note:** These events come from Whop's standard apps (Chat, Forum, Course, Events, Livestreaming). Make sure these apps are installed in your Whop community first.
 
 ## ✅ Step 5: Verify Setup
 
@@ -96,6 +116,7 @@ In your Whop app's webhook settings, enable these events:
 ### "Environment variables not configured" error:
 - ✅ Make sure `.env.local` file exists in project root
 - ✅ Verify all required variables are set (no "your_*_here" placeholders)
+- ✅ Include NEXT_PUBLIC_APP_URL in your .env.local file
 - ✅ Restart your development server after adding variables
 
 ### Webhook not receiving events:

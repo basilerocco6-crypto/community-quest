@@ -35,5 +35,11 @@ a
 
 
 For more info, see our docs at https://dev.whop.com/introduction
+
+## 🔗 App Integration
+
+This app integrates with standard Whop apps (Chat, Forum, Course, Events, Livestreaming) to track community engagement. 
+
+**Important:** Some apps referenced in older documentation like "Community App" don't exist. See `WHOP_APP_INTEGRATION_GUIDE.md` for accurate integration instructions.
 # Force deployment
 # Force deployment Sat Oct  4 21:28:51 CEST 2025

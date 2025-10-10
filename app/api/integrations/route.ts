@@ -22,14 +22,15 @@ export async function POST(request: NextRequest): Promise<Response> {
 		}
 
 		// Verify app credentials (in production, this would check against a database)
+		// Note: Only actual Whop apps are supported. Custom integrations require proper setup.
 		const validApps = {
 			'chat_app': process.env.CHAT_APP_SECRET,
 			'forum_app': process.env.FORUM_APP_SECRET,
 			'course_app': process.env.COURSE_APP_SECRET,
 			'event_app': process.env.EVENT_APP_SECRET,
 			'livestreaming_app': process.env.LIVESTREAMING_APP_SECRET,
-			'community_app': process.env.COMMUNITY_APP_SECRET,
-			'referral_app': process.env.REFERRAL_APP_SECRET,
+			// Custom app integrations (if you have custom apps)
+			'custom_referral': process.env.CUSTOM_REFERRAL_SECRET,
 		};
 
 		if (!validApps[app_id as keyof typeof validApps] || validApps[app_id as keyof typeof validApps] !== app_secret) {
@@ -72,13 +73,13 @@ export async function POST(request: NextRequest): Promise<Response> {
 			'speaker_joined': 'live_event_attendance',
 			'raised_hand': 'live_event_attendance',
 			
-			// Community App events
+			// Custom Community events (if you have custom community features)
 			'member_helped': 'member_help',
 			'resource_shared': 'resource_share',
 			'member_introduced': 'self_introduction',
 			'weekly_checkin': 'weekly_checkin',
 			
-			// Referral App events
+			// Custom Referral events (if you have a custom referral system)
 			'user_referred': 'referral',
 			'tier_achieved': 'referral_tier_bonus',
 		};
@@ -167,13 +168,13 @@ export async function GET(request: NextRequest): Promise<Response> {
 			message: "Community Quest Integration API",
 			version: "1.0.0",
 			supported_apps: [
-				'chat_app',
-				'forum_app', 
-				'course_app',
-				'event_app',
-				'livestreaming_app',
-				'community_app',
-				'referral_app'
+				'chat_app',      // Whop Chat App
+				'forum_app',     // Whop Forum App
+				'course_app',    // Whop Course App
+				'event_app',     // Whop Events App
+				'livestreaming_app', // Whop Livestreaming App
+				// Custom integrations (require setup):
+				'custom_referral'        // Custom referral system
 			],
 			documentation: {
 				endpoint: "/api/integrations",
@@ -185,19 +186,24 @@ export async function GET(request: NextRequest): Promise<Response> {
 					course_app: ["module_completed", "course_completed", "quiz_excellent", "progress_shared"],
 					event_app: ["event_attended"],
 					livestreaming_app: ["stream_started", "stream_attended", "stream_chat_message", "stream_reaction", "speaker_joined", "raised_hand"],
-					community_app: ["member_helped", "resource_shared", "member_introduced", "weekly_checkin"],
-					referral_app: ["user_referred", "tier_achieved"]
+					// Custom integrations (require custom app setup):
+					custom_referral: ["user_referred", "tier_achieved"]
 				}
 			}
 		});
 	}
 
 	// Return specific app integration status
+	const webhookUrl = process.env.NEXT_PUBLIC_APP_URL ? 
+		`${process.env.NEXT_PUBLIC_APP_URL}/api/integrations` : 
+		'Not configured - Set NEXT_PUBLIC_APP_URL environment variable';
+		
 	return NextResponse.json({
 		app_id,
 		status: "active",
 		last_activity: new Date().toISOString(),
-		webhook_url: `${process.env.NEXT_PUBLIC_APP_URL}/api/integrations`,
+		webhook_url: webhookUrl,
 		events_tracked: 0, // This would be tracked in a real database
+		configuration_required: !process.env.NEXT_PUBLIC_APP_URL
 	});
 }

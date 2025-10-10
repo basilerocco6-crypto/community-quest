@@ -33,11 +33,16 @@ async function setupEnvironment() {
   // Webhook Secret
   envVars.WHOP_WEBHOOK_SECRET = await question('🔗 Enter your Webhook Secret (whsec_...): ');
 
-  // Optional App URL
-  const appUrl = await question('🌐 Enter your app URL (optional, press Enter to skip): ');
-  if (appUrl.trim()) {
-    envVars.NEXT_PUBLIC_APP_URL = appUrl.trim();
+  // App URL (required for webhooks)
+  console.log('\n🌐 App URL Configuration:');
+  console.log('For development: Use ngrok URL (e.g., https://abc123.ngrok.io)');
+  console.log('For production: Use your domain (e.g., https://your-app.vercel.app)');
+  const appUrl = await question('🌐 Enter your app URL: ');
+  if (!appUrl.trim()) {
+    console.log('⚠️  App URL is required for webhook configuration. Please provide a valid URL.');
+    process.exit(1);
   }
+  envVars.NEXT_PUBLIC_APP_URL = appUrl.trim();
 
   // Create .env.local content
   const envContent = Object.entries(envVars)
@@ -50,9 +55,11 @@ async function setupEnvironment() {
 
   console.log('\n✅ Environment variables saved to .env.local');
   console.log('\n📋 Next steps:');
-  console.log('1. Configure your webhook URL in Whop Dashboard');
-  console.log('2. Restart your development server: npm run dev');
-  console.log('3. Test your webhook by sending a chat message');
+  console.log(`1. Configure webhook URL in Whop Dashboard → Apps → Your App → Webhooks`);
+  console.log(`   Set webhook URL to: ${envVars.NEXT_PUBLIC_APP_URL}/api/webhooks`);
+  console.log('2. Enable required webhook events (see WEBHOOK_SETUP.md for full list)');
+  console.log('3. Restart your development server: npm run dev');
+  console.log('4. Test your webhook by sending a chat message in your Whop community');
   console.log('\n📖 For detailed instructions, see: WEBHOOK_SETUP.md');
 
   rl.close();

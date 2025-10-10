@@ -633,7 +633,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
 
                     {/* Forum Activity */}
                     <div>
-                      <Heading size="3" className="mb-3 text-purple-600">📝 Forum Activity (Quality Content)</Heading>
+                      <Heading size="3" className="mb-3 text-purple-600">📝 Forum Activity (Quality Content) - via Forums App</Heading>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
                           <span className="font-medium">Create a forum post</span>
@@ -660,7 +660,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
 
                     {/* Course & Learning */}
                     <div>
-                      <Heading size="3" className="mb-3 text-orange-600">🎓 Course & Learning</Heading>
+                      <Heading size="3" className="mb-3 text-orange-600">🎓 Course & Learning - via Course App</Heading>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-orange-50 rounded-lg">
                           <span className="font-medium">Complete a course module</span>
@@ -681,9 +681,45 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                       </div>
                     </div>
 
+                    {/* Livestreaming */}
+                    <div>
+                      <Heading size="3" className="mb-3 text-pink-600">📺 Livestreaming - via Livestreaming App</Heading>
+                      <div className="mb-3 p-3 bg-pink-50 rounded-lg">
+                        <Text size="2" color="pink" className="font-medium">
+                          💡 These activities are automatically tracked from your community's Whop Livestreaming App
+                        </Text>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div className="flex justify-between items-center p-3 bg-pink-50 rounded-lg">
+                          <span className="font-medium">Start a livestream</span>
+                          <Badge color="pink">75 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-pink-50 rounded-lg">
+                          <span className="font-medium">Attend a livestream</span>
+                          <Badge color="pink">75 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-pink-50 rounded-lg">
+                          <span className="font-medium">Send chat message during stream</span>
+                          <Badge color="pink">2 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-pink-50 rounded-lg">
+                          <span className="font-medium">React during livestream</span>
+                          <Badge color="pink">5 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Join as speaker in livestream</span>
+                          <Badge color="green">75 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
+                          <span className="font-medium">Raise hand during livestream</span>
+                          <Badge color="green">75 points</Badge>
+                        </div>
+                      </div>
+                    </div>
+
                     {/* Community Value */}
                     <div>
-                      <Heading size="3" className="mb-3 text-green-600">🤝 Community Value (Quality over Quantity)</Heading>
+                      <Heading size="3" className="mb-3 text-green-600">🤝 Community Value (Quality over Quantity) - via Events App & Custom</Heading>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
                           <span className="font-medium">Help another member (verified by admin)</span>
@@ -710,7 +746,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
 
                     {/* Referrals & Growth */}
                     <div>
-                      <Heading size="3" className="mb-3 text-red-600">🚀 Referrals & Growth</Heading>
+                      <Heading size="3" className="mb-3 text-red-600">🚀 Referrals & Growth - via Custom System</Heading>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
                           <span className="font-medium">Refer a new member who joins</span>
