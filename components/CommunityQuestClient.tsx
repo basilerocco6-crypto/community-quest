@@ -20,13 +20,16 @@ import LevelBreakdown from "./LevelBreakdown";
 import RewardsPanel from "./RewardsPanel";
 import CommunityLevelsBreakdown from "./CommunityLevelsBreakdown";
 import AdminPanel from "./AdminPanel";
-import { user, MOCK_LEADERBOARD_WEEKLY, MOCK_LEADERBOARD_MONTHLY, MOCK_LEADERBOARD_ALLTIME, MOCK_LEVELS, User } from "@/lib/types";
+import EngagementTracker from "./EngagementTracker";
+import { MOCK_USER, MOCK_LEADERBOARD_WEEKLY, MOCK_LEADERBOARD_MONTHLY, MOCK_LEADERBOARD_ALLTIME, MOCK_LEVELS, User } from "@/lib/types";
+import { useEngagementData } from "@/hooks/useEngagementData";
 
 interface CommunityQuestProps {
   user: User;
 }
 
-export default function CommunityQuestClient({ user }: CommunityQuestProps) {
+export default function CommunityQuestClient({ user: initialUser }: CommunityQuestProps) {
+  const { user, refreshEngagementData, isLoading } = useEngagementData(initialUser);
   const [showLevelBreakdown, setShowLevelBreakdown] = useState(false);
   const [showRewardsPanel, setShowRewardsPanel] = useState(false);
   const [showPointsGuide, setShowPointsGuide] = useState(false);
@@ -893,6 +896,9 @@ export default function CommunityQuestClient({ user }: CommunityQuestProps) {
           </Dialog.Content>
         </Dialog.Root>
       )}
+
+      {/* Engagement Tracker for testing */}
+      <EngagementTracker userId={user.id} />
     </div>
   );
 }

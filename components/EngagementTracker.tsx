@@ -12,7 +12,12 @@ import {
 import { engagementTracker } from "@/lib/engagement";
 import { MOCK_USER } from "@/lib/types";
 
-export default function EngagementTracker() {
+interface EngagementTrackerProps {
+  userId?: string;
+}
+
+export default function EngagementTracker({ userId }: EngagementTrackerProps) {
+  const currentUserId = userId || MOCK_USER.id;
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [activity, setActivity] = useState("");
@@ -20,23 +25,23 @@ export default function EngagementTracker() {
   const handleSimulateActivity = (type: string) => {
     switch (type) {
       case 'chat':
-        engagementTracker.trackChatMessage(MOCK_USER.id, message.length);
+        engagementTracker.trackChatMessage(currentUserId, message.length);
         setActivity(`Chat message tracked: +2 points`);
         break;
       case 'forum_post':
-        engagementTracker.trackForumPost(MOCK_USER.id, message.length);
+        engagementTracker.trackForumPost(currentUserId, message.length);
         setActivity(`Forum post tracked: +15 points`);
         break;
       case 'forum_comment':
-        engagementTracker.trackForumReply(MOCK_USER.id, 'demo_post');
+        engagementTracker.trackForumReply(currentUserId, 'demo_post');
         setActivity(`Forum comment tracked: +8 points`);
         break;
       case 'course_completion':
-        engagementTracker.trackCourseCompletion(MOCK_USER.id, 'course_1', 'Introduction to Community Building');
+        engagementTracker.trackCourseCompletion(currentUserId, 'course_1', 'Introduction to Community Building');
         setActivity(`Course completion tracked: +200 points`);
         break;
       case 'referral':
-        engagementTracker.trackReferral(MOCK_USER.id, 'new_user_123');
+        engagementTracker.trackReferral(currentUserId, 'new_user_123');
         setActivity(`Referral tracked: +100 points`);
         break;
     }

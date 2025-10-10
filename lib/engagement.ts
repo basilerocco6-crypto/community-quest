@@ -56,6 +56,19 @@ export class EngagementTracker {
     this.activities.push(newActivity);
     this.updateUserPoints(activity.userId, activity.points);
     
+    // Emit event for real-time updates
+    if (typeof window !== 'undefined') {
+      const event = new CustomEvent('engagementUpdate', {
+        detail: {
+          userId: activity.userId,
+          activity: newActivity,
+          type: activity.type,
+          points: activity.points
+        }
+      });
+      window.dispatchEvent(event);
+    }
+    
     return newActivity;
   }
 
