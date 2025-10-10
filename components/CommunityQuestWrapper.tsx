@@ -30,14 +30,14 @@ export default async function CommunityQuestWrapper() {
     const transformedUser = {
       id: user.id,
       name: user.name || user.username || "Community Member",
-      avatar: user.profile_picture_url,
-      email: user.email,
+      avatar: (user.profilePicture as any)?.url || (user.profilePicture as any)?.sourceUrl || null,
+      email: (user as any).email || null,
       currentLevel,
       totalPoints: engagementData.totalPoints,
       weeklyPoints: weeklyEngagement.totalPoints,
       monthlyPoints: monthlyEngagement.totalPoints,
-      joinDate: new Date(user.created_at),
-      lastActive: new Date(user.updated_at || user.created_at)
+      joinDate: new Date(user.createdAt),
+      lastActive: new Date((user as any).updatedAt || user.createdAt)
     };
 
     return <CommunityQuestClient user={transformedUser} />;
