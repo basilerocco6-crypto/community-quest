@@ -15,10 +15,10 @@ body {
 
 /* Ensure desktop layout works correctly within Whop's iframe */
 @media (min-width: 1024px) {
-	.lg\\:hidden {
+	.lg\:hidden {
 		display: none !important;
 	}
-	.hidden.lg\\:block {
+	.hidden.lg\:block {
 		display: block !important;
 	}
 }
@@ -42,11 +42,11 @@ body {
 }
 
 /* Additional Whop-specific overrides */
-[data-whop-app] .lg\\:hidden {
+[data-whop-app] .lg\:hidden {
 	display: none !important;
 }
 
-[data-whop-app] .hidden.lg\\:block {
+[data-whop-app] .hidden.lg\:block {
 	display: block !important;
 }
 

@@ -21,8 +21,8 @@ export default function UserProfile({ user, levels, onShowLevelBreakdown }: User
   const nextLevel = levels.find(level => level.level === user.currentLevel + 1);
   
   const pointsToNextLevel = nextLevel ? nextLevel.requiredPoints - user.totalPoints : 0;
-  const progressPercentage = nextLevel 
-    ? ((user.totalPoints - currentLevel!.requiredPoints) / (nextLevel.requiredPoints - currentLevel!.requiredPoints)) * 100
+  const progressPercentage = nextLevel && currentLevel
+    ? ((user.totalPoints - currentLevel.requiredPoints) / (nextLevel.requiredPoints - currentLevel.requiredPoints)) * 100
     : 100;
 
   return (

@@ -36,6 +36,12 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
 
+  // Debug logging
+  useEffect(() => {
+    console.log("CommunityQuestClient received user:", initialUser);
+    console.log("Current user state:", user);
+  }, [initialUser, user]);
+
   // Safari dark theme fix + Chrome desktop layout fix
   useEffect(() => {
     if (typeof window === 'undefined') return;

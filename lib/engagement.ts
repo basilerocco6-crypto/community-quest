@@ -376,6 +376,12 @@ export class EngagementTracker {
       return breakdown;
     }, {} as Record<string, number>);
 
+    console.log(`Engagement data for user ${userId} (${timeframe}):`, {
+      totalPoints,
+      activitiesCount: userActivities.length,
+      activityBreakdown
+    });
+
     return {
       totalPoints,
       activities: userActivities,
@@ -425,6 +431,26 @@ export class EngagementTracker {
     return Math.random().toString(36).substr(2, 9);
   }
 }
+
+// Initialize a new user in the engagement tracker
+export const initializeUser = (userId: string, userData: Partial<User>) => {
+  const existingUser = engagementTracker['users'].get(userId);
+  if (!existingUser) {
+    engagementTracker['users'].set(userId, {
+      id: userId,
+      name: userData.name || "Community Member",
+      avatar: userData.avatar,
+      email: userData.email,
+      currentLevel: 1,
+      totalPoints: 0,
+      weeklyPoints: 0,
+      monthlyPoints: 0,
+      joinDate: userData.joinDate || new Date(),
+      lastActive: new Date()
+    });
+    console.log(`Initialized new user: ${userId}`);
+  }
+};
 
 // Singleton instance
 export const engagementTracker = new EngagementTracker();
