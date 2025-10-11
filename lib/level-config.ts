@@ -177,3 +177,21 @@ export function validateLevelConfiguration(): { isValid: boolean; errors: string
     errors
   };
 }
+
+/**
+ * Fetches levels from the admin API (for client-side use)
+ * Falls back to default configuration if API is not available
+ */
+export async function fetchLevelsFromAPI(): Promise<Level[]> {
+  try {
+    const response = await fetch('/api/admin/levels');
+    if (response.ok) {
+      const data = await response.json();
+      return data.levels || DEFAULT_LEVEL_CONFIG;
+    }
+  } catch (error) {
+    console.warn('Failed to fetch levels from API, using default configuration:', error);
+  }
+  
+  return DEFAULT_LEVEL_CONFIG;
+}

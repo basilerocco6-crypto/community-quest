@@ -30,8 +30,15 @@ export default function RootLayout({
 				data-whop-app="community-quest"
 			>
 				<WhopApp>{children}</WhopApp>
-				{/* Admin/Config Link */}
-				<div className="fixed bottom-4 right-4 z-50">
+				{/* Admin/Config Links */}
+				<div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2">
+					<a 
+						href="/admin"
+						className="inline-flex items-center gap-2 px-3 py-2 bg-purple-600 text-white text-sm rounded-lg shadow-lg hover:bg-purple-700 transition-colors"
+						title="Admin Dashboard"
+					>
+						⚙️ Admin
+					</a>
 					<a 
 						href="/webhook-config"
 						className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 text-white text-sm rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
