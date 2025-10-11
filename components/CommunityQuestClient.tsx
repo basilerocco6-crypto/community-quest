@@ -629,7 +629,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                           <Badge color="blue">3 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                          <span className="font-medium">Start a meaningful discussion thread</span>
+                          <span className="font-medium">Share helpful resource in chat</span>
                           <Badge color="blue">10 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
@@ -656,8 +656,8 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                           <Badge color="purple">8 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                          <span className="font-medium">Get your post pinned by admin</span>
-                          <Badge color="green">50 points</Badge>
+                          <span className="font-medium">Get 10+ upvotes on your post</span>
+                          <Badge color="green">25 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
                           <span className="font-medium">Receive \"helpful\" reaction from 3+ members</span>
@@ -719,12 +719,8 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                           <Badge color="pink">5 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                          <span className="font-medium">Join as speaker in livestream</span>
-                          <Badge color="green">75 points</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                          <span className="font-medium">Raise hand during livestream</span>
-                          <Badge color="green">75 points</Badge>
+                          <span className="font-medium">Attend full livestream session</span>
+                          <Badge color="green">50 points</Badge>
                         </div>
                       </div>
                     </div>
