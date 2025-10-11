@@ -68,98 +68,14 @@ export interface Reward {
   isActive: boolean;
 }
 
-// Mock data for development
-export const MOCK_LEVELS: Level[] = [
-  {
-    level: 1,
-    name: "Newcomer",
-    requiredPoints: 0,
-    perks: ["Access to community chat", "View leaderboard rankings", "Access to welcome resources and guides"],
-    memberPercentage: 100, // Automatically unlocked for all members
-    badgeColor: "bg-blue-400",
-    isUnlocked: true
-  },
-  {
-    level: 2,
-    name: "Contributor",
-    requiredPoints: 100,
-    perks: ["5% discount on all products", "Early access to new content releases", "Priority support response"],
-    discountPercentage: 5,
-    memberPercentage: 25,
-    badgeColor: "bg-green-400",
-    isUnlocked: false
-  },
-  {
-    level: 3,
-    name: "Active Member",
-    requiredPoints: 300,
-    perks: ["10% discount on all products", "Access to exclusive community polls", "Monthly featured member spotlight"],
-    discountPercentage: 10,
-    memberPercentage: 15,
-    badgeColor: "bg-purple-400",
-    isUnlocked: false
-  },
-  {
-    level: 4,
-    name: "Community Builder",
-    requiredPoints: 600,
-    perks: ["15% discount on all products", "Access to beta features and early releases", "Double points on weekend activities"],
-    discountPercentage: 15,
-    memberPercentage: 8,
-    badgeColor: "bg-orange-400",
-    isUnlocked: false
-  },
-  {
-    level: 5,
-    name: "Expert",
-    requiredPoints: 1000,
-    perks: ["20% discount on all products", "Access to Expert-only forum discussions", "Monthly group coaching call access", "Free access to one premium course/month"],
-    discountPercentage: 20,
-    memberPercentage: 5,
-    badgeColor: "bg-red-400",
-    isUnlocked: false
-  },
-  {
-    level: 6,
-    name: "Grandmaster",
-    requiredPoints: 2000,
-    perks: ["25% discount on all products", "Revenue share on referrals (5%)", "Access to founder's exclusive content library"],
-    discountPercentage: 25,
-    memberPercentage: 3,
-    badgeColor: "bg-indigo-400",
-    isUnlocked: false
-  },
-  {
-    level: 7,
-    name: "Community Leader",
-    requiredPoints: 3500,
-    perks: ["30% discount on all products", "Invitation to exclusive community events", "Revenue share on referrals (10%)", "Direct messaging access to founder"],
-    discountPercentage: 30,
-    memberPercentage: 2,
-    badgeColor: "bg-pink-400",
-    isUnlocked: false
-  },
-  {
-    level: 8,
-    name: "Wizard",
-    requiredPoints: 5500,
-    perks: ["35% discount on all products", "Monthly private mastermind with founder", "Revenue share on referrals (15%)", "Exclusive \"Wizard Council\" forum access", "Free lifetime access to all products"],
-    discountPercentage: 35,
-    memberPercentage: 1,
-    badgeColor: "bg-yellow-400",
-    isUnlocked: false
-  },
-  {
-    level: 9,
-    name: "GOAT",
-    requiredPoints: 8000,
-    perks: ["50% discount on all products", "Monthly 1:1 coaching session with founder (30 min)", "Revenue share on referrals (20%)", "Equity/partnership opportunities discussed", "Free ticket to annual in-person event", "Co-founder status consideration"],
-    discountPercentage: 50,
-    memberPercentage: 0.1,
-    badgeColor: "bg-gradient-to-r from-purple-400 to-pink-400",
-    isUnlocked: false
-  }
-];
+// Import the configurable level system
+import { getConfiguredLevels } from './level-config';
+
+// Get the configured levels (with custom names if set via environment variables)
+export const MOCK_LEVELS: Level[] = getConfiguredLevels();
+
+// Legacy export for backward compatibility - now uses configurable system
+// @deprecated Use getConfiguredLevels() from './level-config' instead
 
 export const MOCK_USER: User = {
   id: "1",

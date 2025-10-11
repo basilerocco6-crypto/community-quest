@@ -41,5 +41,44 @@ For more info, see our docs at https://dev.whop.com/introduction
 This app integrates with standard Whop apps (Chat, Forum, Course, Events, Livestreaming) to track community engagement. 
 
 **Important:** Some apps referenced in older documentation like "Community App" don't exist. See `WHOP_APP_INTEGRATION_GUIDE.md` for accurate integration instructions.
+
+## 🎮 Level Name Customization
+
+The Community Quest system now supports customizable level names! You can override the default level names to better match your community's theme and branding.
+
+### Quick Setup
+
+1. Add environment variables to your `.env.local` file:
+```bash
+LEVEL_1_NAME=Your Custom Name
+LEVEL_2_NAME=Another Custom Name
+# ... and so on for each level
+```
+
+2. Restart your application
+
+3. Level names will be automatically updated throughout the app
+
+### Examples
+
+**Gaming Community:**
+```bash
+LEVEL_1_NAME=Rookie
+LEVEL_2_NAME=Player
+LEVEL_3_NAME=Veteran
+LEVEL_4_NAME=Elite
+LEVEL_5_NAME=Champion
+```
+
+**Business Community:**
+```bash
+LEVEL_1_NAME=Starter
+LEVEL_2_NAME=Builder
+LEVEL_3_NAME=Creator
+LEVEL_4_NAME=Innovator
+LEVEL_5_NAME=Leader
+```
+
+For detailed customization instructions and examples, see `LEVEL_CUSTOMIZATION.md`.
 # Force deployment
 # Force deployment Sat Oct  4 21:28:51 CEST 2025
