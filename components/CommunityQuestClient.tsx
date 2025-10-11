@@ -699,8 +699,8 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-pink-50 rounded-lg">
-                          <span className="font-medium">Start a livestream</span>
-                          <Badge color="pink">75 points</Badge>
+                          <span className="font-medium">Host a community event</span>
+                          <Badge color="pink">100 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-pink-50 rounded-lg">
                           <span className="font-medium">Attend a livestream</span>
