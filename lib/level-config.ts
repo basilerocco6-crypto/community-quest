@@ -19,7 +19,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 1,
     name: "Newcomer",
     requiredPoints: 0,
-    perks: ["Access to community chat", "View leaderboard rankings", "Access to welcome resources and guides"],
+    perks: ["Access to community chat", "View leaderboard rankings", "Access to welcome courses and resources"],
     memberPercentage: 100,
     badgeColor: "bg-blue-400",
     isUnlocked: true
@@ -28,7 +28,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 2,
     name: "Contributor",
     requiredPoints: 100,
-    perks: ["Early access to new content releases", "Priority support response"],
+    perks: ["Early access to new courses", "Priority support response"],
     memberPercentage: 25,
     badgeColor: "bg-green-400",
     isUnlocked: false
@@ -37,7 +37,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 3,
     name: "Active Member",
     requiredPoints: 300,
-    perks: ["Access to exclusive community polls", "Monthly featured member spotlight"],
+    perks: ["Access to exclusive forum discussions", "Monthly featured member spotlight"],
     memberPercentage: 15,
     badgeColor: "bg-purple-400",
     isUnlocked: false
@@ -46,7 +46,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 4,
     name: "Community Builder",
     requiredPoints: 600,
-    perks: ["Access to beta features and early releases", "Double points on weekend activities"],
+    perks: ["Early access to new courses and events", "Double points on weekend activities"],
     memberPercentage: 8,
     badgeColor: "bg-orange-400",
     isUnlocked: false
@@ -55,7 +55,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 5,
     name: "Expert",
     requiredPoints: 1000,
-    perks: ["Access to Expert-only forum discussions", "Monthly group coaching call access", "Free access to one premium course/month"],
+    perks: ["Access to Expert-only forum discussions", "Monthly group coaching sessions", "Free access to one premium course/month"],
     memberPercentage: 5,
     badgeColor: "bg-red-400",
     isUnlocked: false
@@ -64,7 +64,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 6,
     name: "Grandmaster",
     requiredPoints: 2000,
-    perks: ["Revenue share on referrals (5%)", "Access to founder's exclusive content library"],
+    perks: ["Revenue share on referrals (5%)", "Access to founder's exclusive course library"],
     memberPercentage: 3,
     badgeColor: "bg-indigo-400",
     isUnlocked: false
@@ -82,7 +82,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 8,
     name: "Wizard",
     requiredPoints: 5500,
-    perks: ["Monthly private mastermind with founder", "Revenue share on referrals (15%)", "Exclusive \"Wizard Council\" forum access", "Free lifetime access to all products"],
+    perks: ["Monthly private mastermind with founder", "Revenue share on referrals (15%)", "Exclusive \"Wizard Council\" forum access", "Free lifetime access to all courses"],
     memberPercentage: 1,
     badgeColor: "bg-yellow-400",
     isUnlocked: false
