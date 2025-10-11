@@ -4,7 +4,14 @@ The webhook is currently not configured because the required environment variabl
 
 ## 📝 Step 1: Create Environment File
 
-Create a `.env.local` file in your project root with the following variables:
+**Create a `.env.local` file in your project root** (this file should not be committed to git):
+
+```bash
+# Create the environment file
+touch .env.local
+```
+
+Then add the following variables to your `.env.local` file:
 
 ```bash
 # Required: Your Whop App ID (Public)

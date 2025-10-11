@@ -30,6 +30,16 @@ export default function RootLayout({
 				data-whop-app="community-quest"
 			>
 				<WhopApp>{children}</WhopApp>
+				{/* Admin/Config Link */}
+				<div className="fixed bottom-4 right-4 z-50">
+					<a 
+						href="/webhook-config"
+						className="inline-flex items-center gap-2 px-3 py-2 bg-blue-600 text-white text-sm rounded-lg shadow-lg hover:bg-blue-700 transition-colors"
+						title="Webhook Configuration"
+					>
+						🔗 Config
+					</a>
+				</div>
 			</body>
 		</html>
 	);
