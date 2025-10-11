@@ -85,7 +85,7 @@ export default function WebhookConfigPage() {
             🔗 Webhook Configuration
           </Heading>
           <Text size="3" color="gray">
-            Configure your Whop app environment variables and webhook settings
+            Connect your Community Quest app to your Whop community to start tracking member activity
           </Text>
         </div>
 
@@ -100,27 +100,56 @@ export default function WebhookConfigPage() {
           
           <Text color="gray" className="mb-4">
             {allConfigured 
-              ? "All environment variables are configured. Your webhook is ready to receive events."
-              : "Some environment variables are missing. Follow the setup steps below."
+              ? "✅ Your Community Quest app is connected and ready to track member activity!"
+              : "❌ Your app needs to be connected to start tracking member activity and awarding points."
             }
           </Text>
 
           {!allConfigured && (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <Text weight="medium" className="text-yellow-800 mb-2">
-                🚨 Quick Setup Required
-              </Text>
-              <Text size="2" className="text-yellow-700">
-                Run <code className="bg-yellow-100 px-2 py-1 rounded">npm run create-env</code> to create your environment file, 
-                then fill in your Whop credentials.
-              </Text>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
+              <div className="flex items-start gap-3">
+                <div className="text-2xl">🚀</div>
+                <div>
+                  <Text weight="medium" className="text-blue-900 mb-2">
+                    Quick Setup (2 minutes)
+                  </Text>
+                  <Text size="2" className="text-blue-800 mb-4">
+                    To start tracking member activity and awarding points, you need to connect this app to your Whop community.
+                  </Text>
+                  
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                      <Text size="2" className="text-blue-800">
+                        Copy the webhook URL below
+                      </Text>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                      <Text size="2" className="text-blue-800">
+                        Go to your Whop Dashboard → Settings → Webhooks
+                      </Text>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                      <Text size="2" className="text-blue-800">
+                        Add the webhook URL and save
+                      </Text>
+                    </div>
+                  </div>
+                  
+                  <Text size="2" className="text-blue-700 mt-4 font-medium">
+                    💡 Once connected, your members will automatically earn points for chat messages, forum posts, course completions, and more!
+                  </Text>
+                </div>
+              </div>
             </div>
           )}
         </Card>
 
-        {/* Environment Variables */}
+        {/* Connection Details */}
         <Card className="p-6">
-          <Heading size="4" className="mb-4">Environment Variables</Heading>
+          <Heading size="4" className="mb-4">Connection Details</Heading>
           <div className="space-y-3">
             {Object.entries(config.environment).map(([key, value]) => (
               <div key={key} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
