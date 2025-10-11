@@ -18,7 +18,7 @@ export interface EngagementActivity {
     // Chat & Communication
     | 'chat_message' | 'chat_reply' | 'discussion_start' | 'chat_reaction_bonus' | 'chat_streak_bonus'
     // Forum Activity
-    | 'forum_post' | 'forum_reply' | 'forum_pinned' | 'forum_helpful_bonus' | 'forum_engagement_bonus'
+    | 'forum_post' | 'forum_reply' | 'forum_paywalled_post' | 'forum_engagement_bonus'
     // Course & Learning
     | 'course_module' | 'course_completion' | 'quiz_excellence' | 'course_progress_share'
     // Community Value
