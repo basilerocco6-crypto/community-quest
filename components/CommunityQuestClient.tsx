@@ -613,39 +613,44 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                   <div className="space-y-6">
                     {/* Chat & Communication */}
                     <div>
-                      <Heading size="3" className="mb-3 text-blue-600">💬 Chat & Communication (via Whop Chat App)</Heading>
+                      <Heading size="3" className="mb-3 text-blue-600">💬 Community Engagement (via Whop Events)</Heading>
                       <div className="mb-3 p-3 bg-blue-50 rounded-lg">
                         <Text size="2" color="blue" className="font-medium">
-                          💡 These activities are automatically tracked from your community's Whop Chat App
+                          💡 These activities are tracked via Whop membership events and manual admin tracking
                         </Text>
                       </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                          <span className="font-medium">Send a message in chat</span>
-                          <Badge color="blue">2 points</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                          <span className="font-medium">Reply to someone's message</span>
-                          <Badge color="blue">3 points</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
-                          <span className="font-medium">Share helpful resource in chat</span>
+                          <span className="font-medium">Join the community</span>
                           <Badge color="blue">10 points</Badge>
                         </div>
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                          <span className="font-medium">Get 5+ reactions on your message</span>
-                          <Badge color="green">5 bonus points</Badge>
+                        <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                          <span className="font-medium">Update profile information</span>
+                          <Badge color="blue">5 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-blue-50 rounded-lg">
+                          <span className="font-medium">Claim experience/reward</span>
+                          <Badge color="blue">40 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                          <span className="font-medium">Daily chat streak (7 days)</span>
-                          <Badge color="green">20 bonus points</Badge>
+                          <span className="font-medium">Successful payment</span>
+                          <Badge color="green">25 points</Badge>
+                        </div>
+                        <div className="flex justify-between items-center p-3 bg-red-50 rounded-lg">
+                          <span className="font-medium">Cancel membership</span>
+                          <Badge color="red">-25 points</Badge>
                         </div>
                       </div>
                     </div>
 
                     {/* Forum Activity */}
                     <div>
-                      <Heading size="3" className="mb-3 text-purple-600">📝 Forum Activity (Quality Content) - via Forums App</Heading>
+                      <Heading size="3" className="mb-3 text-purple-600">📝 Forum Activity (Manual Tracking)</Heading>
+                      <div className="mb-3 p-3 bg-purple-50 rounded-lg">
+                        <Text size="2" color="purple" className="font-medium">
+                          💡 These activities require manual admin tracking via the admin panel
+                        </Text>
+                      </div>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                         <div className="flex justify-between items-center p-3 bg-purple-50 rounded-lg">
                           <span className="font-medium">Create a forum post</span>
@@ -990,11 +995,11 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                   <div className="bg-blue-100 p-3 rounded-lg ml-9">
                     <Text size="1" className="text-blue-900 font-medium mb-2">Enable these events:</Text>
                     <div className="space-y-1 text-blue-800">
-                      <div>• <code>chat.message_sent</code> - Track chat messages</div>
-                      <div>• <code>forum.post_created</code> - Track forum posts</div>
-                      <div>• <code>course.module_completed</code> - Track course progress</div>
-                      <div>• <code>event.attended</code> - Track event attendance</div>
-                      <div>• <code>livestream.viewed</code> - Track livestream viewing</div>
+                      <div>• <code>membership_went_valid</code> - Track new member joins</div>
+                      <div>• <code>membership_went_invalid</code> - Track member cancellations</div>
+                      <div>• <code>app_payment_succeeded</code> - Track successful payments</div>
+                      <div>• <code>membership_experience_claimed</code> - Track member engagement</div>
+                      <div>• <code>membership_metadata_updated</code> - Track member profile updates</div>
                     </div>
                   </div>
                   

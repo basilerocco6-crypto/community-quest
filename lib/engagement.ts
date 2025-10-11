@@ -485,19 +485,49 @@ export const trackWhopActivity = async (userId: string, activityType: string, me
   // This integrates with Whop's webhook system to track real activities from external apps
   
   switch (activityType) {
-    // === CHAT & COMMUNICATION ===
-    case 'chat_message':
-      return engagementTracker.trackChatMessage(userId, metadata?.messageLength);
-    case 'chat_reply':
-      return engagementTracker.trackChatReply(userId, metadata?.originalMessageId);
-    case 'discussion_start':
-      return engagementTracker.trackDiscussionStart(userId, metadata?.discussionId);
-    case 'chat_reaction_bonus':
-      return engagementTracker.trackChatReactionBonus(userId, metadata?.messageId, metadata?.reactionCount);
-    case 'chat_streak_bonus':
-      return engagementTracker.trackChatStreakBonus(userId, metadata?.streakDays);
+    // === WHOP MEMBERSHIP EVENTS ===
+    case 'membership_went_valid':
+      return engagementTracker.trackActivity({
+        userId,
+        type: 'self_introduction',
+        points: ENGAGEMENT_POINTS.self_introduction,
+        description: 'New member joined the community',
+        metadata: { event: 'membership_went_valid' }
+      });
+    case 'membership_went_invalid':
+      return engagementTracker.trackActivity({
+        userId,
+        type: 'milestone_achievement',
+        points: -ENGAGEMENT_POINTS.milestone_achievement,
+        description: 'Member cancelled membership',
+        metadata: { event: 'membership_went_invalid' }
+      });
+    case 'app_payment_succeeded':
+      return engagementTracker.trackActivity({
+        userId,
+        type: 'milestone_achievement',
+        points: ENGAGEMENT_POINTS.milestone_achievement,
+        description: 'Successful payment processed',
+        metadata: { event: 'app_payment_succeeded' }
+      });
+    case 'membership_experience_claimed':
+      return engagementTracker.trackActivity({
+        userId,
+        type: 'member_help',
+        points: ENGAGEMENT_POINTS.member_help,
+        description: 'Member claimed experience/reward',
+        metadata: { event: 'membership_experience_claimed' }
+      });
+    case 'membership_metadata_updated':
+      return engagementTracker.trackActivity({
+        userId,
+        type: 'profile_completion',
+        points: ENGAGEMENT_POINTS.profile_completion,
+        description: 'Member updated profile information',
+        metadata: { event: 'membership_metadata_updated' }
+      });
     
-    // === FORUM ACTIVITY ===
+    // === LEGACY SUPPORT (for manual tracking) ===
     case 'forum_post':
       return engagementTracker.trackForumPost(userId, metadata?.postLength);
     case 'forum_reply':
