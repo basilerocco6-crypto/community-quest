@@ -36,6 +36,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
   const [showPointsGuide, setShowPointsGuide] = useState(false);
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
+  const [showWebhookSetup, setShowWebhookSetup] = useState(false);
 
   // Debug logging
   useEffect(() => {
@@ -135,6 +136,17 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
               </IconButton>
               
               <NotificationDropdown userId={user.id} />
+
+              {/* Webhook Setup Button - Only show if webhook not configured */}
+              <button 
+                onClick={() => setShowWebhookSetup(true)}
+                className="cursor-pointer"
+                title="Setup Webhook Connection"
+              >
+                <div className="flex items-center gap-2 px-3 py-2 bg-orange-100 text-orange-800 rounded-lg text-sm font-medium hover:bg-orange-200 transition-colors">
+                  🔗 Setup Connection
+                </div>
+              </button>
 
               <button 
                 onClick={() => setShowProfilePanel(true)}
@@ -931,6 +943,69 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
               <div className="flex justify-end">
                 <Button onClick={() => setShowPointsGuide(false)} size="2">
                   Close
+                </Button>
+              </div>
+            </div>
+          </Dialog.Content>
+        </Dialog.Root>
+      )}
+
+      {/* Webhook Setup Modal */}
+      {showWebhookSetup && (
+        <Dialog.Root open={showWebhookSetup} onOpenChange={setShowWebhookSetup}>
+          <Dialog.Content className="max-w-2xl">
+            <Dialog.Title className="text-xl font-semibold mb-4">
+              🔗 Connect to Your Whop Community
+            </Dialog.Title>
+            
+            <div className="space-y-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                <Text weight="medium" className="text-blue-900 mb-2">
+                  Quick Setup (2 minutes)
+                </Text>
+                <Text size="2" className="text-blue-800 mb-4">
+                  To start tracking member activity and awarding points, connect this app to your Whop community.
+                </Text>
+                
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">1</div>
+                    <Text size="2" className="text-blue-800">
+                      Copy this webhook URL:
+                    </Text>
+                  </div>
+                  
+                  <div className="bg-blue-100 p-3 rounded-lg">
+                    <Text size="1" className="font-mono text-blue-900 break-all">
+                      {typeof window !== 'undefined' ? `${window.location.origin}/api/webhooks` : 'Loading...'}
+                    </Text>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
+                    <Text size="2" className="text-blue-800">
+                      Go to your Whop Dashboard → Settings → Webhooks
+                    </Text>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
+                    <Text size="2" className="text-blue-800">
+                      Paste the URL and save - that's it!
+                    </Text>
+                  </div>
+                </div>
+                
+                <Text size="2" className="text-blue-700 mt-4 font-medium">
+                  💡 Once connected, your members will automatically earn points for chat messages, forum posts, course completions, and more!
+                </Text>
+              </div>
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-border">
+              <div className="flex justify-end">
+                <Button onClick={() => setShowWebhookSetup(false)} size="2">
+                  Got it!
                 </Button>
               </div>
             </div>
