@@ -497,16 +497,16 @@ export const trackWhopActivity = async (userId: string, activityType: string, me
     case 'membership_went_invalid':
       return engagementTracker.trackActivity({
         userId,
-        type: 'milestone_achievement',
-        points: -ENGAGEMENT_POINTS.milestone_achievement,
+        type: 'member_help',
+        points: -ENGAGEMENT_POINTS.member_help,
         description: 'Member cancelled membership',
         metadata: { event: 'membership_went_invalid' }
       });
     case 'app_payment_succeeded':
       return engagementTracker.trackActivity({
         userId,
-        type: 'milestone_achievement',
-        points: ENGAGEMENT_POINTS.milestone_achievement,
+        type: 'member_help',
+        points: ENGAGEMENT_POINTS.member_help,
         description: 'Successful payment processed',
         metadata: { event: 'app_payment_succeeded' }
       });
