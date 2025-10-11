@@ -127,13 +127,19 @@ export default function WebhookConfigPage() {
                     <div className="flex items-center gap-3">
                       <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
                       <Text size="2" className="text-blue-800">
-                        Go to your Whop Dashboard → Settings → Webhooks
+                        Go to your Whop Dashboard → Developer → Create Webhook
                       </Text>
                     </div>
                     <div className="flex items-center gap-3">
                       <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
                       <Text size="2" className="text-blue-800">
-                        Add the webhook URL and save
+                        Paste the URL and select these events: chat.message_sent, forum.post_created, course.module_completed, event.attended
+                      </Text>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                      <Text size="2" className="text-blue-800">
+                        Click "Save" - that's it!
                       </Text>
                     </div>
                   </div>

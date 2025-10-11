@@ -984,14 +984,31 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                   <div className="flex items-center gap-3">
                     <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">2</div>
                     <Text size="2" className="text-blue-800">
-                      Go to your Whop Dashboard → Settings → Webhooks
+                      Go to your Whop Dashboard → Developer → Create Webhook
                     </Text>
                   </div>
                   
                   <div className="flex items-center gap-3">
                     <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">3</div>
                     <Text size="2" className="text-blue-800">
-                      Paste the URL and save - that's it!
+                      Paste the URL and select these events:
+                    </Text>
+                  </div>
+                  
+                  <div className="bg-blue-100 p-3 rounded-lg ml-9">
+                    <Text size="1" className="text-blue-900 font-medium mb-2">Enable these events:</Text>
+                    <div className="space-y-1 text-blue-800">
+                      <div>• <code>chat.message_sent</code> - Track chat messages</div>
+                      <div>• <code>forum.post_created</code> - Track forum posts</div>
+                      <div>• <code>course.module_completed</code> - Track course progress</div>
+                      <div>• <code>event.attended</code> - Track event attendance</div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-center gap-3">
+                    <div className="w-6 h-6 bg-blue-600 text-white rounded-full flex items-center justify-center text-sm font-bold">4</div>
+                    <Text size="2" className="text-blue-800">
+                      Click "Save" - that's it!
                     </Text>
                   </div>
                 </div>
