@@ -28,8 +28,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 2,
     name: "Contributor",
     requiredPoints: 100,
-    perks: ["5% discount on all products", "Early access to new content releases", "Priority support response"],
-    discountPercentage: 5,
+    perks: ["Early access to new content releases", "Priority support response"],
     memberPercentage: 25,
     badgeColor: "bg-green-400",
     isUnlocked: false
@@ -38,8 +37,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 3,
     name: "Active Member",
     requiredPoints: 300,
-    perks: ["10% discount on all products", "Access to exclusive community polls", "Monthly featured member spotlight"],
-    discountPercentage: 10,
+    perks: ["Access to exclusive community polls", "Monthly featured member spotlight"],
     memberPercentage: 15,
     badgeColor: "bg-purple-400",
     isUnlocked: false
@@ -48,8 +46,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 4,
     name: "Community Builder",
     requiredPoints: 600,
-    perks: ["15% discount on all products", "Access to beta features and early releases", "Double points on weekend activities"],
-    discountPercentage: 15,
+    perks: ["Access to beta features and early releases", "Double points on weekend activities"],
     memberPercentage: 8,
     badgeColor: "bg-orange-400",
     isUnlocked: false
@@ -58,8 +55,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 5,
     name: "Expert",
     requiredPoints: 1000,
-    perks: ["20% discount on all products", "Access to Expert-only forum discussions", "Monthly group coaching call access", "Free access to one premium course/month"],
-    discountPercentage: 20,
+    perks: ["Access to Expert-only forum discussions", "Monthly group coaching call access", "Free access to one premium course/month"],
     memberPercentage: 5,
     badgeColor: "bg-red-400",
     isUnlocked: false
@@ -68,8 +64,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 6,
     name: "Grandmaster",
     requiredPoints: 2000,
-    perks: ["25% discount on all products", "Revenue share on referrals (5%)", "Access to founder's exclusive content library"],
-    discountPercentage: 25,
+    perks: ["Revenue share on referrals (5%)", "Access to founder's exclusive content library"],
     memberPercentage: 3,
     badgeColor: "bg-indigo-400",
     isUnlocked: false
@@ -78,8 +73,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 7,
     name: "Community Leader",
     requiredPoints: 3500,
-    perks: ["30% discount on all products", "Invitation to exclusive community events", "Revenue share on referrals (10%)", "Direct messaging access to founder"],
-    discountPercentage: 30,
+    perks: ["Invitation to exclusive community events", "Revenue share on referrals (10%)", "Direct messaging access to founder"],
     memberPercentage: 2,
     badgeColor: "bg-pink-400",
     isUnlocked: false
@@ -88,8 +82,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 8,
     name: "Wizard",
     requiredPoints: 5500,
-    perks: ["35% discount on all products", "Monthly private mastermind with founder", "Revenue share on referrals (15%)", "Exclusive \"Wizard Council\" forum access", "Free lifetime access to all products"],
-    discountPercentage: 35,
+    perks: ["Monthly private mastermind with founder", "Revenue share on referrals (15%)", "Exclusive \"Wizard Council\" forum access", "Free lifetime access to all products"],
     memberPercentage: 1,
     badgeColor: "bg-yellow-400",
     isUnlocked: false
@@ -98,8 +91,7 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     level: 9,
     name: "GOAT",
     requiredPoints: 8000,
-    perks: ["50% discount on all products", "Monthly 1:1 coaching session with founder (30 min)", "Revenue share on referrals (20%)", "Equity/partnership opportunities discussed", "Free ticket to annual in-person event", "Co-founder status consideration"],
-    discountPercentage: 50,
+    perks: ["Monthly 1:1 coaching session with founder (30 min)", "Revenue share on referrals (20%)", "Equity/partnership opportunities discussed", "Free ticket to annual in-person event", "Co-founder status consideration"],
     memberPercentage: 0.1,
     badgeColor: "bg-gradient-to-r from-purple-400 to-pink-400",
     isUnlocked: false
