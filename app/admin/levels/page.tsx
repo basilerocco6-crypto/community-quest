@@ -8,7 +8,6 @@ interface LevelFormData {
   name: string;
   requiredPoints: number;
   perks: string[];
-  discountPercentage?: number;
   memberPercentage: number;
   badgeColor: string;
   isUnlocked: boolean;
@@ -39,7 +38,6 @@ export default function AdminLevelsPage() {
     name: '',
     requiredPoints: 0,
     perks: [''],
-    discountPercentage: 0,
     memberPercentage: 100,
     badgeColor: 'bg-blue-400',
     isUnlocked: false,

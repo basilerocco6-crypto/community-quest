@@ -12,8 +12,7 @@ export const ENGAGEMENT_POINTS = {
   // Forum Activity (Quality Content)
   forum_post: 15,
   forum_reply: 8,
-  forum_pinned: 50,
-  forum_helpful_bonus: 15,
+  forum_paywalled_post: 30,
   forum_engagement_bonus: 25,
   
   // Course & Learning
@@ -160,27 +159,15 @@ export class EngagementTracker {
     });
   }
 
-  // Track forum post pinned
-  trackForumPinned(userId: string, postId: string): EngagementActivity {
-    const points = ENGAGEMENT_POINTS.forum_pinned;
+  // Track paywalled forum post
+  trackForumPaywalledPost(userId: string, postId: string): EngagementActivity {
+    const points = ENGAGEMENT_POINTS.forum_paywalled_post;
     return this.trackActivity({
       userId,
-      type: 'forum_pinned',
+      type: 'forum_paywalled_post',
       points,
-      description: 'Got post pinned by admin',
+      description: 'Created paywalled post for premium members',
       metadata: { postId }
-    });
-  }
-
-  // Track forum helpful bonus
-  trackForumHelpfulBonus(userId: string, postId: string, helpfulCount: number): EngagementActivity {
-    const points = ENGAGEMENT_POINTS.forum_helpful_bonus;
-    return this.trackActivity({
-      userId,
-      type: 'forum_helpful_bonus',
-      points,
-      description: `Received "helpful" reaction from ${helpfulCount}+ members`,
-      metadata: { postId, helpfulCount }
     });
   }
 
@@ -515,10 +502,8 @@ export const trackWhopActivity = async (userId: string, activityType: string, me
       return engagementTracker.trackForumPost(userId, metadata?.postLength);
     case 'forum_reply':
       return engagementTracker.trackForumReply(userId, metadata?.postId);
-    case 'forum_pinned':
-      return engagementTracker.trackForumPinned(userId, metadata?.postId);
-    case 'forum_helpful_bonus':
-      return engagementTracker.trackForumHelpfulBonus(userId, metadata?.postId, metadata?.helpfulCount);
+    case 'forum_paywalled_post':
+      return engagementTracker.trackForumPaywalledPost(userId, metadata?.postId);
     case 'forum_engagement_bonus':
       return engagementTracker.trackForumEngagementBonus(userId, metadata?.postId, metadata?.replyCount);
     
