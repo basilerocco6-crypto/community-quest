@@ -176,30 +176,6 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
             ))}
           </div>
 
-          {/* Webhook Information */}
-          <Card>
-            <div className="p-4">
-              <Heading size="3" className="mb-3">🔌 Webhook Configuration</Heading>
-              <div className="space-y-2 text-sm">
-                <div className="flex justify-between">
-                  <Text>Webhook URL:</Text>
-                  <Text weight="medium" className="font-mono">
-                    {typeof window !== 'undefined' ? window.location.origin : 'https://your-app.vercel.app'}/api/integrations
-                  </Text>
-                </div>
-                <div className="flex justify-between">
-                  <Text>Webhook Secret:</Text>
-                  <Text weight="medium" className="font-mono">
-                    [Configure in environment variables]
-                  </Text>
-                </div>
-                <div className="flex justify-between">
-                  <Text>Status:</Text>
-                  <Badge color="green">Active</Badge>
-                </div>
-              </div>
-            </div>
-          </Card>
         </div>
 
         <Dialog.Close />
