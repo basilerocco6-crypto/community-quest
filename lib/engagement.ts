@@ -521,8 +521,8 @@ export const trackWhopActivity = async (userId: string, activityType: string, me
     case 'membership_metadata_updated':
       return engagementTracker.trackActivity({
         userId,
-        type: 'profile_completion',
-        points: ENGAGEMENT_POINTS.profile_completion,
+        type: 'self_introduction',
+        points: ENGAGEMENT_POINTS.self_introduction,
         description: 'Member updated profile information',
         metadata: { event: 'membership_metadata_updated' }
       });
