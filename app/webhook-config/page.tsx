@@ -147,25 +147,26 @@ export default function WebhookConfigPage() {
           )}
         </Card>
 
-        {/* Connection Details */}
+        {/* App Status */}
         <Card className="p-6">
-          <Heading size="4" className="mb-4">Connection Details</Heading>
+          <Heading size="4" className="mb-4">App Status</Heading>
           <div className="space-y-3">
-            {Object.entries(config.environment).map(([key, value]) => (
-              <div key={key} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                <div>
-                  <Text weight="medium" className="font-mono text-sm">{key}</Text>
-                  <Text size="1" color="gray">Required for {key.includes('WEBHOOK') ? 'webhook validation' : 'Whop API access'}</Text>
-                </div>
-                <div className="flex items-center gap-2">
-                  {value.includes('✅') ? (
-                    <Badge color="green" size="1">Configured</Badge>
-                  ) : (
-                    <Badge color="red" size="1">Missing</Badge>
-                  )}
-                </div>
+            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div>
+                <Text weight="medium">Community Quest App</Text>
+                <Text size="1" color="gray">Ready to track member activity</Text>
               </div>
-            ))}
+              <Badge color="green" size="1">Active</Badge>
+            </div>
+            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+              <div>
+                <Text weight="medium">Webhook Connection</Text>
+                <Text size="1" color="gray">Connect to your Whop community</Text>
+              </div>
+              <Badge color={config.webhook.configured ? "green" : "yellow"} size="1">
+                {config.webhook.configured ? "Connected" : "Not Connected"}
+              </Badge>
+            </div>
           </div>
         </Card>
 
@@ -186,16 +187,27 @@ export default function WebhookConfigPage() {
             </div>
 
             {!config.webhook.configured && (
-              <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                <Text weight="medium" className="text-blue-800 mb-2">
-                  📋 Next Steps
+              <div className="bg-green-50 border border-green-200 rounded-lg p-4">
+                <Text weight="medium" className="text-green-800 mb-2">
+                  🎯 Ready to Connect!
                 </Text>
-                <ol className="list-decimal list-inside space-y-2 text-blue-700">
-                  <li>Set NEXT_PUBLIC_APP_URL in your .env.local file</li>
-                  <li>Go to Whop Dashboard → Apps → Your App → Webhooks</li>
-                  <li>Set webhook URL to: <code className="bg-blue-100 px-1 rounded">{config.webhook.url}</code></li>
-                  <li>Enable webhook events (chat.message_sent, etc.)</li>
-                </ol>
+                <div className="space-y-2 text-green-700">
+                  <div className="flex items-center gap-2">
+                    <div className="w-5 h-5 bg-green-600 text-white rounded-full flex items-center justify-center text-xs font-bold">1</div>
+                    <Text size="2">Copy this webhook URL: <code className="bg-green-100 px-2 py-1 rounded font-mono text-sm">{config.webhook.url}</code></Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-5 h-5 bg-green-600 text-white rounded-full flex items-center justify-center text-xs font-bold">2</div>
+                    <Text size="2">Go to your Whop Dashboard → Settings → Webhooks</Text>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-5 h-5 bg-green-600 text-white rounded-full flex items-center justify-center text-xs font-bold">3</div>
+                    <Text size="2">Paste the URL and save - that's it!</Text>
+                  </div>
+                </div>
+                <Text size="2" className="text-green-600 mt-3 font-medium">
+                  ✨ Your members will start earning points automatically!
+                </Text>
               </div>
             )}
           </div>
