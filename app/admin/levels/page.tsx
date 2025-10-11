@@ -178,7 +178,6 @@ export default function AdminLevelsPage() {
       name: '',
       requiredPoints: 0,
       perks: [''],
-      discountPercentage: 0,
       memberPercentage: 100,
       badgeColor: 'bg-blue-400',
       isUnlocked: false,
@@ -272,7 +271,6 @@ export default function AdminLevelsPage() {
                     </h3>
                     <p className="text-gray-600">
                       {level.requiredPoints} points • {level.memberPercentage}% of members
-                      {level.discountPercentage && ` • ${level.discountPercentage}% discount`}
                     </p>
                   </div>
                 </div>
@@ -365,19 +363,6 @@ export default function AdminLevelsPage() {
                         onChange={(e) => setFormData(prev => ({ ...prev, requiredPoints: parseInt(e.target.value) || 0 }))}
                         className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                         min="0"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
-                        Discount %
-                      </label>
-                      <input
-                        type="number"
-                        value={formData.discountPercentage || 0}
-                        onChange={(e) => setFormData(prev => ({ ...prev, discountPercentage: parseInt(e.target.value) || 0 }))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        min="0"
-                        max="100"
                       />
                     </div>
                     <div>
