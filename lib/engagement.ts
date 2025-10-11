@@ -336,12 +336,50 @@ export class EngagementTracker {
 
   // Update user points
   private updateUserPoints(userId: string, points: number): void {
+    let user = this.users.get(userId);
+    
+    // Initialize user if they don't exist
+    if (!user) {
+      user = {
+        id: userId,
+        name: "Community Member",
+        currentLevel: 1,
+        totalPoints: 0,
+        weeklyPoints: 0,
+        monthlyPoints: 0,
+        joinDate: new Date(),
+        lastActive: new Date()
+      };
+      this.users.set(userId, user);
+      console.log(`Auto-initialized new user: ${userId}`);
+    }
+    
+    user.totalPoints += points;
+    user.weeklyPoints += points;
+    user.monthlyPoints += points;
+    user.lastActive = new Date();
+    
+    console.log(`Updated points for user ${userId}: +${points} (total: ${user.totalPoints})`);
+  }
+
+  // Get user data
+  getUser(userId: string): User | undefined {
+    return this.users.get(userId);
+  }
+
+  // Get all users
+  getAllUsers(): User[] {
+    return Array.from(this.users.values());
+  }
+
+  // Reset user points (for testing)
+  resetUserPoints(userId: string): void {
     const user = this.users.get(userId);
     if (user) {
-      user.totalPoints += points;
-      user.weeklyPoints += points;
-      user.monthlyPoints += points;
-      user.lastActive = new Date();
+      user.totalPoints = 0;
+      user.weeklyPoints = 0;
+      user.monthlyPoints = 0;
+      console.log(`Reset points for user ${userId}`);
     }
   }
 

@@ -59,6 +59,10 @@ async function handleEngagementWebhook(webhookData: any) {
 		switch (action) {
 			// === WHOP CHAT APP EVENTS ===
 			case "chat.message_sent":
+				if (!data.user_id) {
+					console.error("Missing user_id in chat.message_sent webhook");
+					break;
+				}
 				await trackWhopActivity(data.user_id, 'chat_message', {
 					messageLength: data.content?.length || 0,
 					channelId: data.channel_id,
@@ -68,6 +72,10 @@ async function handleEngagementWebhook(webhookData: any) {
 				break;
 			
 			case "chat.message_replied":
+				if (!data.user_id) {
+					console.error("Missing user_id in chat.message_replied webhook");
+					break;
+				}
 				await trackWhopActivity(data.user_id, 'chat_reply', {
 					originalMessageId: data.original_message_id,
 					channelId: data.channel_id,
