@@ -81,6 +81,14 @@ export default function WebhookConfigPage() {
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="text-center">
+          <div className="flex items-center justify-center gap-4 mb-4">
+            <a 
+              href="/admin" 
+              className="inline-flex items-center gap-2 px-4 py-2 bg-muted hover:bg-muted/80 text-muted-foreground rounded-lg transition-colors"
+            >
+              ← Back to Admin
+            </a>
+          </div>
           <Heading size="6" className="mb-2">
             🔗 Webhook Configuration
           </Heading>
