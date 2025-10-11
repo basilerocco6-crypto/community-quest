@@ -187,4 +187,3 @@ export async function fetchLevelsFromAPI(): Promise<Level[]> {
   
   return DEFAULT_LEVEL_CONFIG;
 }
-// Deployment trigger Sat Oct 11 16:59:26 CEST 2025
