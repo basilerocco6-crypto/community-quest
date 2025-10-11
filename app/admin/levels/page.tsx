@@ -207,24 +207,24 @@ export default function AdminLevelsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading levels...</p>
+          <p className="text-muted-foreground">Loading levels...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-background py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-8">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900">Level Management</h1>
-              <p className="text-gray-600 mt-2">Customize community levels, names, and benefits</p>
+              <h1 className="text-3xl font-bold text-foreground">Level Management</h1>
+              <p className="text-muted-foreground mt-2">Customize community levels, names, and benefits</p>
             </div>
             <button
               onClick={() => {
@@ -259,17 +259,17 @@ export default function AdminLevelsPage() {
         {/* Levels List */}
         <div className="grid gap-6">
           {levels.map((level) => (
-            <div key={level.level} className="bg-white rounded-lg shadow-md p-6">
+            <div key={level.level} className="bg-card rounded-lg shadow-md p-6 border border-border">
               <div className="flex justify-between items-start">
                 <div className="flex items-center space-x-4">
                   <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${level.badgeColor}`}>
                     {level.level}
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900">
+                    <h3 className="text-xl font-semibold text-card-foreground">
                       Level {level.level} - {level.name}
                     </h3>
-                    <p className="text-gray-600">
+                    <p className="text-muted-foreground">
                       {level.requiredPoints} points • {level.memberPercentage}% of members
                     </p>
                   </div>
@@ -292,10 +292,10 @@ export default function AdminLevelsPage() {
 
               {/* Perks */}
               <div className="mt-4">
-                <h4 className="font-medium text-gray-900 mb-2">Benefits:</h4>
+                <h4 className="font-medium text-card-foreground mb-2">Benefits:</h4>
                 <ul className="list-disc list-inside space-y-1">
                   {level.perks.map((perk, index) => (
-                    <li key={index} className="text-gray-600">{perk}</li>
+                    <li key={index} className="text-muted-foreground">{perk}</li>
                   ))}
                 </ul>
               </div>
@@ -306,10 +306,10 @@ export default function AdminLevelsPage() {
         {/* Edit/Add Form Modal */}
         {(editingLevel !== null || showAddForm) && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="bg-card rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-border">
               <div className="p-6">
                 <div className="flex justify-between items-center mb-6">
-                  <h2 className="text-2xl font-bold text-gray-900">
+                  <h2 className="text-2xl font-bold text-card-foreground">
                     {editingLevel !== null ? `Edit Level ${editingLevel}` : 'Add New Level'}
                   </h2>
                   <button
@@ -317,7 +317,7 @@ export default function AdminLevelsPage() {
                       setEditingLevel(null);
                       setShowAddForm(false);
                     }}
-                    className="text-gray-400 hover:text-gray-600 text-2xl"
+                    className="text-muted-foreground hover:text-foreground text-2xl"
                   >
                     ×
                   </button>
@@ -327,26 +327,26 @@ export default function AdminLevelsPage() {
                   {/* Basic Info */}
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-card-foreground mb-1">
                         Level Number
                       </label>
                       <input
                         type="number"
                         value={formData.level}
                         onChange={(e) => setFormData(prev => ({ ...prev, level: parseInt(e.target.value) || 1 }))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-background text-foreground"
                         min="1"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-card-foreground mb-1">
                         Level Name
                       </label>
                       <input
                         type="text"
                         value={formData.name}
                         onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-background text-foreground"
                         placeholder="e.g., Rookie, Player, Veteran"
                       />
                     </div>
@@ -354,26 +354,26 @@ export default function AdminLevelsPage() {
 
                   <div className="grid grid-cols-3 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-card-foreground mb-1">
                         Required Points
                       </label>
                       <input
                         type="number"
                         value={formData.requiredPoints}
                         onChange={(e) => setFormData(prev => ({ ...prev, requiredPoints: parseInt(e.target.value) || 0 }))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-background text-foreground"
                         min="0"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1">
+                      <label className="block text-sm font-medium text-card-foreground mb-1">
                         Member %
                       </label>
                       <input
                         type="number"
                         value={formData.memberPercentage}
                         onChange={(e) => setFormData(prev => ({ ...prev, memberPercentage: parseFloat(e.target.value) || 0 }))}
-                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-background text-foreground"
                         min="0"
                         max="100"
                         step="0.1"
@@ -383,7 +383,7 @@ export default function AdminLevelsPage() {
 
                   {/* Badge Color */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-card-foreground mb-2">
                       Badge Color
                     </label>
                     <div className="grid grid-cols-6 gap-2">
@@ -402,7 +402,7 @@ export default function AdminLevelsPage() {
 
                   {/* Perks */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-card-foreground mb-2">
                       Benefits/Perks
                     </label>
                     <div className="space-y-2">
@@ -412,7 +412,7 @@ export default function AdminLevelsPage() {
                             type="text"
                             value={perk}
                             onChange={(e) => updatePerk(index, e.target.value)}
-                            className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="flex-1 px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                             placeholder="Enter a benefit or perk"
                           />
                           <button
@@ -439,7 +439,7 @@ export default function AdminLevelsPage() {
                         setEditingLevel(null);
                         setShowAddForm(false);
                       }}
-                      className="px-4 py-2 text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                      className="px-4 py-2 text-muted-foreground border border-border rounded-lg hover:bg-gray-50 transition-colors"
                     >
                       Cancel
                     </button>
