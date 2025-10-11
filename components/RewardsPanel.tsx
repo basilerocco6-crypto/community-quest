@@ -35,7 +35,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
         <div className="flex flex-col items-center text-center mb-8 relative">
           <Sheet.Close className="absolute top-0 right-0" />
           <Sheet.Title className="text-2xl font-bold mb-2">Your Rewards</Sheet.Title>
-          <Sheet.Description className="text-sm text-gray-500">
+          <Sheet.Description className="text-sm text-muted-foreground">
             Level {user.currentLevel} • {user.totalPoints} points
           </Sheet.Description>
         </div>
@@ -72,7 +72,7 @@ export default function RewardsPanel({ user, isOpen, onClose }: RewardsPanelProp
                 {availableRewards.length > 0 ? (
                   <div className="space-y-3">
                     {availableRewards.map((reward) => (
-                      <div key={reward.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg border">
+                      <div key={reward.id} className="flex items-center justify-between p-3 bg-muted rounded-lg border">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
                             <Heading size="3" className="font-medium">{reward.name}</Heading>

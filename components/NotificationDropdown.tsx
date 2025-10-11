@@ -33,7 +33,7 @@ const getNotificationIcon = (type: string) => {
       );
     case 'system':
       return (
-        <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+        <svg className="w-5 h-5 text-muted-foreground" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
         </svg>
       );
@@ -51,7 +51,7 @@ const getNotificationIcon = (type: string) => {
       );
     default:
       return (
-        <svg className="w-5 h-5 text-gray-500" fill="currentColor" viewBox="0 0 20 20">
+        <svg className="w-5 h-5 text-muted-foreground" fill="currentColor" viewBox="0 0 20 20">
           <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
         </svg>
       );
@@ -267,10 +267,10 @@ export default function NotificationDropdown({ userId = '1' }: NotificationDropd
       {/* Notification Bell Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2 text-gray-600 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg transition-colors"
+        className="relative p-2 text-muted-foreground hover:text-foreground focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg transition-colors"
         title="Notifications"
       >
-        <svg className="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+        <svg className="h-5 w-5 text-muted-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
         </svg>
         
@@ -284,10 +284,10 @@ export default function NotificationDropdown({ userId = '1' }: NotificationDropd
 
       {/* Dropdown Panel */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-gray-200 z-50 max-h-96 overflow-hidden">
+        <div className="absolute right-0 mt-2 w-80 bg-white rounded-lg shadow-lg border border-border z-50 max-h-96 overflow-hidden">
           {/* Header */}
-          <div className="px-4 py-3 border-b border-gray-200 flex justify-between items-center">
-            <h3 className="text-lg font-semibold text-gray-900">Notifications</h3>
+          <div className="px-4 py-3 border-b border-border flex justify-between items-center">
+            <h3 className="text-lg font-semibold text-foreground">Notifications</h3>
             {unreadCount > 0 && (
               <button
                 onClick={markAllAsRead}
@@ -303,14 +303,14 @@ export default function NotificationDropdown({ userId = '1' }: NotificationDropd
             {loading ? (
               <div className="px-4 py-8 text-center">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-2"></div>
-                <p className="text-gray-600 text-sm">Loading notifications...</p>
+                <p className="text-muted-foreground text-sm">Loading notifications...</p>
               </div>
             ) : notifications.length === 0 ? (
               <div className="px-4 py-8 text-center">
-                <svg className="w-12 h-12 text-gray-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-12 h-12 text-muted-foreground mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-5 5v-5zM5 12a7 7 0 1114 0 7 7 0 01-14 0z" />
                 </svg>
-                <p className="text-gray-600 text-sm">No notifications yet</p>
+                <p className="text-muted-foreground text-sm">No notifications yet</p>
               </div>
             ) : (
               <div className="divide-y divide-gray-100">
@@ -318,7 +318,7 @@ export default function NotificationDropdown({ userId = '1' }: NotificationDropd
                   <div
                     key={notification.id}
                     onClick={() => handleNotificationClick(notification)}
-                    className={`px-4 py-3 hover:bg-gray-50 cursor-pointer transition-colors ${
+                    className={`px-4 py-3 hover:bg-muted cursor-pointer transition-colors ${
                       !notification.isRead ? 'bg-blue-50 border-l-4 border-l-blue-500' : ''
                     }`}
                   >
@@ -330,11 +330,11 @@ export default function NotificationDropdown({ userId = '1' }: NotificationDropd
                         <div className="flex justify-between items-start">
                           <div className="flex-1">
                             <p className={`text-sm font-medium ${
-                              !notification.isRead ? 'text-gray-900' : 'text-gray-700'
+                              !notification.isRead ? 'text-foreground' : 'text-muted-foreground'
                             }`}>
                               {notification.title}
                             </p>
-                            <p className="text-sm text-gray-600 mt-1 line-clamp-2">
+                            <p className="text-sm text-muted-foreground mt-1 line-clamp-2">
                               {notification.message}
                             </p>
                           </div>
@@ -343,14 +343,14 @@ export default function NotificationDropdown({ userId = '1' }: NotificationDropd
                               e.stopPropagation();
                               deleteNotification(notification.id);
                             }}
-                            className="ml-2 text-gray-400 hover:text-gray-600 p-1"
+                            className="ml-2 text-muted-foreground hover:text-muted-foreground p-1"
                           >
                             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             </svg>
                           </button>
                         </div>
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-muted-foreground mt-1">
                           {formatTimeAgo(notification.createdAt)}
                         </p>
                       </div>
@@ -363,7 +363,7 @@ export default function NotificationDropdown({ userId = '1' }: NotificationDropd
 
           {/* Footer */}
           {notifications.length > 0 && (
-            <div className="px-4 py-3 border-t border-gray-200 bg-gray-50">
+            <div className="px-4 py-3 border-t border-border bg-muted">
               <button
                 onClick={() => {
                   // Could navigate to a full notifications page

@@ -144,7 +144,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                   <Heading size="4" className="mb-4">{category}</Heading>
                   <div className="space-y-3">
                     {rules.map(rule => (
-                      <div key={rule.id} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div key={rule.id} className="flex items-center justify-between p-3 bg-muted rounded-lg">
                         <div className="flex-1">
                           <div className="flex items-center gap-3">
                             <input
@@ -193,7 +193,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
                 <div className="space-y-3 text-sm">
                   <div className="p-3 bg-blue-50 rounded-lg">
                     <Text weight="medium">1. Configure Webhook URL</Text>
-                    <Text color="gray">Set your webhook URL to: <code className="font-mono bg-gray-200 px-1 rounded">{typeof window !== 'undefined' ? window.location.origin : 'https://your-app.vercel.app'}/api/integrations</code></Text>
+                    <Text color="gray">Set your webhook URL to: <code className="font-mono bg-muted px-1 rounded">{typeof window !== 'undefined' ? window.location.origin : 'https://your-app.vercel.app'}/api/integrations</code></Text>
                   </div>
                   <div className="p-3 bg-green-50 rounded-lg">
                     <Text weight="medium">2. Set App Credentials</Text>
@@ -208,7 +208,7 @@ export default function AdminPanel({ isOpen, onClose }: AdminPanelProps) {
 
               <div>
                 <Heading size="3" className="mb-3">📡 Event Format</Heading>
-                <div className="p-4 bg-gray-50 rounded-lg">
+                <div className="p-4 bg-muted rounded-lg">
                   <pre className="text-sm overflow-x-auto">
 {`{
   "app_id": "chat_app",

@@ -264,7 +264,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                   <div className="relative">
                     <div className="p-3 rounded-full shadow-lg" style={{backgroundColor: '#FA4616'}}>
                       <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
-                        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                        <div className="w-24 h-24 rounded-full overflow-hidden border-2 border-white shadow-md bg-muted flex items-center justify-center">
                           {user.avatar ? (
                             <img 
                               src={user.avatar} 
@@ -302,7 +302,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                             <span className="text-sm font-bold text-white">{level.level}</span>
                           </div>
                         ) : (
-                          <svg className="w-5 h-5 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
+                          <svg className="w-5 h-5 text-muted-foreground" fill="currentColor" viewBox="0 0 20 20">
                             <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
                           </svg>
                         )}
@@ -362,7 +362,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                         {/* Inner ring */}
                         <div className="p-2 rounded-full" style={{backgroundColor: '#FCF6F5'}}>
                           {/* Custom large avatar */}
-                          <div className="w-40 h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-white shadow-md bg-gray-100 flex items-center justify-center">
+                          <div className="w-40 h-40 lg:w-48 lg:h-48 rounded-full overflow-hidden border-2 border-white shadow-md bg-muted flex items-center justify-center">
                             {user.avatar ? (
                               <img 
                                 src={user.avatar} 
@@ -599,7 +599,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
         <Dialog.Root open onOpenChange={() => setShowPointsGuide(false)}>
           <Dialog.Content size="4" className="max-h-[90vh] max-w-4xl">
             <Dialog.Title className="text-2xl font-bold mb-4">How Points & Levels Work</Dialog.Title>
-            <Dialog.Description className="text-gray-600 mb-6">
+            <Dialog.Description className="text-muted-foreground mb-6">
               Learn how to earn points and progress through community levels
             </Dialog.Description>
             <Dialog.Close />
@@ -846,42 +846,42 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                   <Heading size="4" className="mb-4">🏆 Level Benefits</Heading>
                   
                   <div className="space-y-3">
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
                       <Badge color="yellow">Level 1</Badge>
                       <div>
                         <span className="font-medium">Noob (0-99 points)</span>
                         <Text size="1" color="gray"> Access to community chat, View leaderboard rankings, Access to welcome resources and guides</Text>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
                       <Badge color="yellow">Level 2</Badge>
                       <div>
                         <span className="font-medium">Contributor (100-299 points)</span>
                         <Text size="1" color="gray"> Access to exclusive 'Contributors Only' chat, Custom 'Contributor' badge</Text>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
                       <Badge color="yellow">Level 3</Badge>
                       <div>
                         <span className="font-medium">Action Taker (300-599 points)</span>
                         <Text size="1" color="gray"> Early access to new content/courses, Priority support response, Monthly spotlight feature opportunity</Text>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
                       <Badge color="gray">Level 4</Badge>
                       <div>
                         <span className="font-medium">Builder (600-999 points)</span>
                         <Text size="1" color="gray"> Featured member profile, Double points on weekend activities</Text>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
                       <Badge color="gray">Level 5</Badge>
                       <div>
                         <span className="font-medium">Expert (1,000-1,999 points)</span>
                         <Text size="1" color="gray">Access to Expert-only forum discussions, Monthly group coaching sessions, Free access to one premium course/month</Text>
                       </div>
                     </div>
-                    <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                    <div className="flex items-center gap-3 p-3 bg-muted rounded-lg">
                       <Badge color="gray">Level 6-9</Badge>
                       <div>
                         <span className="font-medium">Grandmaster → GOAT (2,000+ points)</span>

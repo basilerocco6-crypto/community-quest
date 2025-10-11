@@ -447,7 +447,7 @@ export default function AdminLevelsPage() {
                         setEditingLevel(null);
                         setShowAddForm(false);
                       }}
-                      className="px-4 py-2 text-muted-foreground border border-border rounded-lg hover:bg-gray-50 transition-colors"
+                      className="px-4 py-2 text-muted-foreground border border-border rounded-lg hover:bg-muted transition-colors"
                     >
                       Cancel
                     </button>
