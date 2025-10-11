@@ -99,7 +99,6 @@ export default function AdminLevelsPage() {
       name: level.name,
       requiredPoints: level.requiredPoints,
       perks: level.perks.length > 0 ? level.perks : [''],
-      discountPercentage: level.discountPercentage || 0,
       memberPercentage: level.memberPercentage,
       badgeColor: level.badgeColor,
       isUnlocked: level.isUnlocked,
