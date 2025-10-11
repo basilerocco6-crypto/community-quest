@@ -852,7 +852,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                       <Badge color="yellow">Level 1</Badge>
                       <div>
                         <span className="font-medium">Noob (0-99 points)</span>
-                        <Text size="1" color="gray"> Access to basic community channels, View leaderboard rankings, Access to welcome resources</Text>
+                        <Text size="1" color="gray"> Access to community chat, View leaderboard rankings, Access to welcome resources and guides</Text>
                       </div>
                     </div>
                     <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
@@ -887,7 +887,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                       <Badge color="gray">Level 6-9</Badge>
                       <div>
                         <span className="font-medium">Grandmaster → GOAT (2,000+ points)</span>
-                        <Text size="1" color="gray">25-50% product discounts, Revenue sharing on referrals, Access to founder's private content, Monthly 1:1 coaching, Equity opportunities, Co-founder consideration</Text>
+                        <Text size="1" color="gray">25-50% product discounts, Revenue sharing on referrals, Access to founder's exclusive content library, Monthly 1:1 coaching, Equity opportunities, Co-founder consideration</Text>
                       </div>
                     </div>
                   </div>

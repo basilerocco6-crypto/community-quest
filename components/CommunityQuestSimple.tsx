@@ -368,10 +368,10 @@ export default function CommunityQuestSimple() {
                 <h3 className="font-semibold mb-2">Tier Structure & Benefits</h3>
                 <div className="space-y-2 text-sm">
                   <div><strong>1. Noob (0-99 points)</strong> - Just getting started</div>
-                  <div>Benefits: Access to basic community channels, View leaderboard rankings, Access to welcome resources</div>
+                  <div>Benefits: Access to community chat, View leaderboard rankings, Access to welcome resources and guides</div>
                   
                   <div><strong>2. Contributor (100-299 points)</strong> - Starting to engage</div>
-                  <div>Benefits: Everything from Noob + Access to exclusive "Contributors Only" chat, Custom "Contributor" badge</div>
+                  <div>Benefits: Everything from Noob + 5% discount on all products, Early access to new content releases, Custom "Contributor" badge</div>
                   
                   <div><strong>3. Action Taker (300-599 points)</strong> - Consistently active</div>
                   <div>Benefits: Everything from Contributor + Early access to new content/courses, Priority support response, Monthly spotlight feature opportunity</div>
@@ -380,13 +380,13 @@ export default function CommunityQuestSimple() {
                   <div>Benefits: Everything from Action Taker + Featured member profile, Double points on weekend activities</div>
                   
                   <div><strong>5. Expert (1,000-1,999 points)</strong> - Proven contributor</div>
-                  <div>Benefits: Everything from Builder + Access to Expert-only masterminds, Monthly group coaching call access, "Expert" role with special color/badge, Ability to host community events, Free access to one premium course/month</div>
+                  <div>Benefits: Everything from Builder + Access to Expert-only forum discussions, Monthly group coaching call access, "Expert" badge recognition, Invitation to exclusive community events, Free access to one premium course/month</div>
                   
                   <div><strong>6. Grandmaster (2,000-3,499 points)</strong> - Top-tier member</div>
                   <div>Benefits: Everything from Expert + Access to beta features first, Revenue share on referrals (5%), Custom profile banner</div>
                   
                   <div><strong>7. Leader (3,500-5,499 points)</strong> - Community pillar</div>
-                  <div>Benefits: Everything from Grandmaster + Co-host community events, Moderator privileges (if desired), Revenue share on referrals (10%)</div>
+                  <div>Benefits: Everything from Grandmaster + Invitation to exclusive community events, Revenue share on referrals (10%), Direct messaging access to founder</div>
                   
                   <div><strong>8. Wizard (5,500-7,999 points)</strong> - Elite status</div>
                   <div>Benefits: Everything from Leader + 15% discount on all products, Monthly private mastermind with owner, Revenue share on referrals (15%), Exclusive "Wizard Council" access</div>
