@@ -656,12 +656,8 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                           <Badge color="purple">8 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                          <span className="font-medium">Get 10+ upvotes on your post</span>
-                          <Badge color="green">25 points</Badge>
-                        </div>
-                        <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
-                          <span className="font-medium">Receive \"helpful\" reaction from 3+ members</span>
-                          <Badge color="green">15 bonus points</Badge>
+                          <span className="font-medium">Create paywalled post for premium members</span>
+                          <Badge color="green">30 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
                           <span className="font-medium">Create a post with 10+ replies</span>
@@ -715,8 +711,8 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                           <Badge color="pink">2 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-pink-50 rounded-lg">
-                          <span className="font-medium">React during livestream</span>
-                          <Badge color="pink">5 points</Badge>
+                          <span className="font-medium">Watch livestream for 30+ minutes</span>
+                          <Badge color="pink">20 points</Badge>
                         </div>
                         <div className="flex justify-between items-center p-3 bg-green-50 rounded-lg">
                           <span className="font-medium">Attend full livestream session</span>
@@ -998,6 +994,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                       <div>• <code>forum.post_created</code> - Track forum posts</div>
                       <div>• <code>course.module_completed</code> - Track course progress</div>
                       <div>• <code>event.attended</code> - Track event attendance</div>
+                      <div>• <code>livestream.viewed</code> - Track livestream viewing</div>
                     </div>
                   </div>
                   
