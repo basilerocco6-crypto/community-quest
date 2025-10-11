@@ -420,7 +420,7 @@ export default function AdminLevelsPage() {
                             type="text"
                             value={perk}
                             onChange={(e) => updatePerk(index, e.target.value)}
-                            className="flex-1 px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            className="flex-1 px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-background text-foreground"
                             placeholder="Enter a benefit or perk"
                           />
                           <button
@@ -441,7 +441,7 @@ export default function AdminLevelsPage() {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex justify-end space-x-4 pt-6 border-t">
+                  <div className="flex justify-end space-x-4 pt-6 border-t border-border">
                     <button
                       onClick={() => {
                         setEditingLevel(null);
