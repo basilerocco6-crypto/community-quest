@@ -201,34 +201,6 @@ export default function WebhookConfigPage() {
           </div>
         </Card>
 
-        {/* Instructions */}
-        <Card className="p-6">
-          <Heading size="4" className="mb-4">Setup Instructions</Heading>
-          <div className="space-y-4">
-            <div>
-              <Text weight="medium" className="mb-2">1. Create Environment File</Text>
-              <Text size="2" color="gray">{config.instructions.setup}</Text>
-            </div>
-            
-            <div>
-              <Text weight="medium" className="mb-2">2. Configure Webhook</Text>
-              <Text size="2" color="gray">{config.instructions.webhook}</Text>
-            </div>
-
-            <div>
-              <Text weight="medium" className="mb-2">3. Development Setup</Text>
-              <Text size="2" color="gray">{config.instructions.development}</Text>
-            </div>
-
-            <div className="pt-4 border-t">
-              <Button asChild>
-                <a href="/WEBHOOK_SETUP.md" target="_blank" rel="noopener noreferrer">
-                  📖 View Detailed Documentation
-                </a>
-              </Button>
-            </div>
-          </div>
-        </Card>
       </div>
     </div>
   );
