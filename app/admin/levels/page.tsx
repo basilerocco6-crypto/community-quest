@@ -14,18 +14,18 @@ interface LevelFormData {
 }
 
 const BADGE_COLORS = [
-  'bg-blue-400',
-  'bg-green-400',
-  'bg-purple-400',
-  'bg-orange-400',
-  'bg-red-400',
-  'bg-indigo-400',
-  'bg-pink-400',
-  'bg-yellow-400',
-  'bg-gradient-to-r from-purple-400 to-pink-400',
-  'bg-gradient-to-r from-blue-400 to-purple-400',
-  'bg-gradient-to-r from-green-400 to-blue-400',
-  'bg-gradient-to-r from-red-400 to-orange-400',
+  { class: 'bg-blue-400', color: '#60a5fa' },
+  { class: 'bg-green-400', color: '#4ade80' },
+  { class: 'bg-purple-400', color: '#a78bfa' },
+  { class: 'bg-orange-400', color: '#fb923c' },
+  { class: 'bg-red-400', color: '#f87171' },
+  { class: 'bg-indigo-400', color: '#818cf8' },
+  { class: 'bg-pink-400', color: '#f472b6' },
+  { class: 'bg-yellow-400', color: '#facc15' },
+  { class: 'bg-gray-400', color: '#9ca3af' },
+  { class: 'bg-teal-400', color: '#2dd4bf' },
+  { class: 'bg-gradient-to-r from-purple-400 to-pink-400', color: 'linear-gradient(90deg, #a78bfa, #f472b6)' },
+  { class: 'bg-gradient-to-r from-blue-400 to-purple-400', color: 'linear-gradient(90deg, #60a5fa, #a78bfa)' },
 ];
 
 export default function AdminLevelsPage() {
@@ -395,15 +395,21 @@ export default function AdminLevelsPage() {
                       Badge Color
                     </label>
                     <div className="grid grid-cols-6 gap-2">
-                      {BADGE_COLORS.map((color) => (
+                      {BADGE_COLORS.map((colorObj) => (
                         <button
-                          key={color}
-                          onClick={() => setFormData(prev => ({ ...prev, badgeColor: color }))}
-                          className={`w-12 h-12 rounded-full border-2 border-border hover:border-blue-500 transition-all cursor-pointer ${color} ${
-                            formData.badgeColor === color ? 'ring-4 ring-blue-500 border-blue-500' : ''
+                          key={colorObj.class}
+                          onClick={() => setFormData(prev => ({ ...prev, badgeColor: colorObj.class }))}
+                          className={`w-12 h-12 rounded-full border-2 transition-all cursor-pointer ${
+                            formData.badgeColor === colorObj.class 
+                              ? 'ring-4 ring-blue-500 border-blue-500 shadow-lg' 
+                              : 'border-gray-300 hover:border-blue-500 hover:shadow-md'
                           }`}
-                          title={color}
+                          title={colorObj.class}
                           type="button"
+                          style={{ 
+                            backgroundColor: colorObj.color.startsWith('linear-gradient') ? undefined : colorObj.color,
+                            backgroundImage: colorObj.color.startsWith('linear-gradient') ? colorObj.color : undefined
+                          }}
                         />
                       ))}
                     </div>
