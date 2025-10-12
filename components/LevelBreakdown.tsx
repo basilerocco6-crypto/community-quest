@@ -50,7 +50,7 @@ export default function LevelBreakdown({ levels, onClose }: LevelBreakdownProps)
                         <Text size="2" color="gray">{level.name}</Text>
                       </div>
                       <Text size="2" color="gray">
-                        {level.requiredPoints} points required • {level.memberPercentage}% of members
+                        {level.requiredPoints} points required • {level.requiredPoints}% of members
                       </Text>
                       
                       {/* Perks */}

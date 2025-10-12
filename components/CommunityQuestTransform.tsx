@@ -263,7 +263,7 @@ export default function CommunityQuestTransform() {
                             Level {level.level} - {level.name}
                           </div>
                           <div className="text-xs text-muted-foreground">
-                            {level.memberPercentage}% of members
+                            {level.requiredPoints}% of members
                           </div>
                         </div>
                       </div>
@@ -286,7 +286,7 @@ export default function CommunityQuestTransform() {
                             Level {level.level} - {level.name}
                           </div>
                           <div className="text-xs text-muted-foreground">
-                            {level.memberPercentage}% of members
+                            {level.requiredPoints}% of members
                           </div>
                         </div>
                       </div>

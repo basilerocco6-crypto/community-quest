@@ -340,7 +340,7 @@ export default function CommunityQuestMobile() {
                         Level {level.level} - {level.name}
                       </div>
                       <div className="mobile-level-percentage">
-                        {level.memberPercentage}% of members
+                        {level.requiredPoints}% of members
                       </div>
                     </div>
                   </div>

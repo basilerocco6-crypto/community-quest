@@ -35,7 +35,7 @@ export default function CommunityLevelsBreakdown({ levels, user }: CommunityLeve
             <div className="flex flex-col">
               <Text size="2" className="text-white">Level {level.level}</Text>
               <Text size="1" color="gray" className="text-muted-foreground">
-                {level.memberPercentage}% of members
+                {level.requiredPoints} points required
               </Text>
             </div>
           </div>

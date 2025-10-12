@@ -336,7 +336,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                           Level {level.level} - {level.name}
                         </div>
                         <div className="text-xs text-muted-foreground">
-                          {level.memberPercentage}% of members
+                          {level.requiredPoints} points
                         </div>
                       </div>
                       <div className="flex-shrink-0">
@@ -444,7 +444,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                                 Level {level.level} - {level.name}
                               </div>
                               <div className="text-xs text-muted-foreground">
-                                {level.memberPercentage}% of members
+                                {level.requiredPoints} points
                               </div>
                             </div>
                           </div>
@@ -474,7 +474,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                                 Level {level.level} - {level.name}
                               </div>
                               <div className="text-xs text-muted-foreground">
-                                {level.memberPercentage}% of members
+                                {level.requiredPoints} points
                               </div>
                             </div>
                           </div>
