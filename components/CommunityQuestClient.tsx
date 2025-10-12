@@ -75,13 +75,19 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
   useEffect(() => {
     const fetchLevels = async () => {
       try {
+        console.log('Fetching levels from API...');
         const response = await fetch('/api/admin/levels');
         if (response.ok) {
           const data = await response.json();
-          setLevels(data.levels || levels);
+          console.log('Fetched levels:', data.levels);
+          setLevels(data.levels || MOCK_LEVELS);
+        } else {
+          console.warn('API response not ok:', response.status);
+          setLevels(MOCK_LEVELS);
         }
       } catch (error) {
         console.warn('Failed to fetch levels, using mock data:', error);
+        setLevels(MOCK_LEVELS);
       }
     };
     fetchLevels();
