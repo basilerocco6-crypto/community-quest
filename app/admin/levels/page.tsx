@@ -399,10 +399,11 @@ export default function AdminLevelsPage() {
                         <button
                           key={color}
                           onClick={() => setFormData(prev => ({ ...prev, badgeColor: color }))}
-                          className={`w-12 h-12 rounded-full ${color} ${
-                            formData.badgeColor === color ? 'ring-4 ring-blue-500' : ''
+                          className={`w-12 h-12 rounded-full border-2 border-border hover:border-blue-500 transition-all cursor-pointer ${color} ${
+                            formData.badgeColor === color ? 'ring-4 ring-blue-500 border-blue-500' : ''
                           }`}
                           title={color}
+                          type="button"
                         />
                       ))}
                     </div>
