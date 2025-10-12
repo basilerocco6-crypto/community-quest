@@ -63,7 +63,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [showWebhookSetup, setShowWebhookSetup] = useState(false);
-  const [levels, setLevels] = useState<Level[]>(levels);
+  const [levels, setLevels] = useState<Level[]>(MOCK_LEVELS);
 
   // Debug logging
   useEffect(() => {
