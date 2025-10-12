@@ -22,8 +22,34 @@ import CommunityLevelsBreakdown from "./CommunityLevelsBreakdown";
 import AdminPanel from "./AdminPanel";
 import EngagementTracker from "./EngagementTracker";
 import NotificationDropdown from "./NotificationDropdown";
-import { MOCK_USER, MOCK_LEADERBOARD_WEEKLY, MOCK_LEADERBOARD_MONTHLY, MOCK_LEADERBOARD_ALLTIME, MOCK_LEVELS, User } from "@/lib/types";
+import { MOCK_USER, MOCK_LEADERBOARD_WEEKLY, MOCK_LEADERBOARD_MONTHLY, MOCK_LEADERBOARD_ALLTIME, MOCK_LEVELS, User, Level } from "@/lib/types";
 import { useEngagementData } from "@/hooks/useEngagementData";
+
+// Badge color mapping for consistent display
+const BADGE_COLORS = [
+  { class: 'bg-blue-400', color: '#60a5fa' },
+  { class: 'bg-green-400', color: '#4ade80' },
+  { class: 'bg-purple-400', color: '#a78bfa' },
+  { class: 'bg-orange-400', color: '#fb923c' },
+  { class: 'bg-red-400', color: '#f87171' },
+  { class: 'bg-indigo-400', color: '#818cf8' },
+  { class: 'bg-pink-400', color: '#f472b6' },
+  { class: 'bg-yellow-400', color: '#facc15' },
+  { class: 'bg-gray-400', color: '#9ca3af' },
+  { class: 'bg-teal-400', color: '#2dd4bf' },
+  { class: 'bg-gradient-to-r from-purple-400 to-pink-400', color: 'linear-gradient(90deg, #a78bfa, #f472b6)' },
+  { class: 'bg-gradient-to-r from-blue-400 to-purple-400', color: 'linear-gradient(90deg, #60a5fa, #a78bfa)' },
+];
+
+const getBadgeColor = (badgeClass: string): string => {
+  const colorObj = BADGE_COLORS.find(c => c.class === badgeClass);
+  return colorObj ? colorObj.color : '#60a5fa'; // Default to blue
+};
+
+const getBadgeGradient = (badgeClass: string): string => {
+  const colorObj = BADGE_COLORS.find(c => c.class === badgeClass);
+  return colorObj ? colorObj.color : 'linear-gradient(90deg, #60a5fa, #a78bfa)'; // Default gradient
+};
 
 interface CommunityQuestProps {
   user: User;
@@ -37,12 +63,29 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
   const [showProfilePanel, setShowProfilePanel] = useState(false);
   const [showAdminPanel, setShowAdminPanel] = useState(false);
   const [showWebhookSetup, setShowWebhookSetup] = useState(false);
+  const [levels, setLevels] = useState<Level[]>(levels);
 
   // Debug logging
   useEffect(() => {
     console.log("CommunityQuestClient received user:", initialUser);
     console.log("Current user state:", user);
   }, [initialUser, user]);
+
+  // Fetch levels from API
+  useEffect(() => {
+    const fetchLevels = async () => {
+      try {
+        const response = await fetch('/api/admin/levels');
+        if (response.ok) {
+          const data = await response.json();
+          setLevels(data.levels || levels);
+        }
+      } catch (error) {
+        console.warn('Failed to fetch levels, using mock data:', error);
+      }
+    };
+    fetchLevels();
+  }, []);
 
   // Safari dark theme fix + Chrome desktop layout fix
   useEffect(() => {
@@ -288,13 +331,13 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                   <div className="flex flex-col gap-2 text-center">
                     <div className="text-sm font-medium text-foreground">Community Member</div>
                     <div className="text-sm font-semibold" style={{color: '#2563EB'}}>Level {user.currentLevel}</div>
-                    <div className="text-xs text-muted-foreground">{((MOCK_LEVELS.find(l => l.level === user.currentLevel + 1)?.requiredPoints || user.totalPoints) - user.totalPoints)} points to level up</div>
+                    <div className="text-xs text-muted-foreground">{((levels.find(l => l.level === user.currentLevel + 1)?.requiredPoints || user.totalPoints) - user.totalPoints)} points to level up</div>
                   </div>
                 </div>
 
                 {/* Mobile Levels Section */}
                 <div className="space-y-3">
-                  {MOCK_LEVELS.map((level) => (
+                  {levels.map((level) => (
                     <div key={level.level} className="flex items-center gap-3 w-full">
                       <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center">
                         {level.level === 1 ? (
@@ -389,7 +432,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                     <div className="flex flex-col gap-2 text-center">
                       <div className="text-xl lg:text-2xl font-bold text-foreground">{user.name}</div>
                       <div className="text-base lg:text-lg" style={{color: '#2563EB'}}>Level {user.currentLevel}</div>
-                      <div className="text-xs lg:text-sm" style={{color: '#9CA3AF'}}>{((MOCK_LEVELS.find(l => l.level === user.currentLevel + 1)?.requiredPoints || user.totalPoints) - user.totalPoints)} points to level up</div>
+                      <div className="text-xs lg:text-sm" style={{color: '#9CA3AF'}}>{((levels.find(l => l.level === user.currentLevel + 1)?.requiredPoints || user.totalPoints) - user.totalPoints)} points to level up</div>
                     </div>
 
                   </div>
@@ -399,7 +442,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
                     <div className="grid grid-cols-2 gap-8" style={{display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '2rem'}}>
                       {/* Left Column - Levels 1-5 */}
                       <div className="space-y-3">
-                        {MOCK_LEVELS.slice(0, 5).map((level) => (
+                        {levels.slice(0, 5).map((level) => (
                           <div key={level.level} className="flex items-start gap-3 w-full">
                             {/* Lock Icon Container - Fixed width */}
                             <div className="w-10 flex-shrink-0">
@@ -429,7 +472,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
 
                       {/* Right Column - Levels 6-9 */}
                       <div className="space-y-3">
-                        {MOCK_LEVELS.slice(5, 9).map((level) => (
+                        {levels.slice(5, 9).map((level) => (
                           <div key={level.level} className="flex items-start gap-3 w-full">
                             {/* Lock Icon Container - Fixed width */}
                             <div className="w-10 flex-shrink-0">
@@ -486,7 +529,7 @@ export default function CommunityQuestClient({ user: initialUser }: CommunityQue
       {/* Level Breakdown Modal */}
       {showLevelBreakdown && (
         <LevelBreakdown 
-          levels={MOCK_LEVELS}
+          levels={levels}
           onClose={() => setShowLevelBreakdown(false)}
         />
       )}

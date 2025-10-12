@@ -471,23 +471,28 @@ export default function AdminLevelsPage() {
                   </div>
 
                   {/* Actions */}
-                  <div className="flex justify-end space-x-4 pt-6 border-t border-border">
-                    <button
-                      onClick={() => {
-                        setEditingLevel(null);
-                        setShowAddForm(false);
-                      }}
-                      className="px-4 py-2 text-muted-foreground border border-border rounded-lg hover:bg-muted transition-colors"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      onClick={editingLevel !== null ? handleSave : handleAddLevel}
-                      disabled={saving}
-                      className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-                    >
-                      {saving ? 'Saving...' : (editingLevel !== null ? 'Save Changes' : 'Add Level')}
-                    </button>
+                  <div className="flex justify-between items-center pt-6 border-t border-border">
+                    <div className="text-sm text-muted-foreground">
+                      {editingLevel !== null ? `Editing Level ${editingLevel}` : 'Adding New Level'}
+                    </div>
+                    <div className="flex space-x-4">
+                      <button
+                        onClick={() => {
+                          setEditingLevel(null);
+                          setShowAddForm(false);
+                        }}
+                        className="px-6 py-2 text-muted-foreground border border-border rounded-lg hover:bg-muted transition-colors"
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={editingLevel !== null ? handleSave : handleAddLevel}
+                        disabled={saving}
+                        className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors font-medium"
+                      >
+                        {saving ? 'Saving...' : (editingLevel !== null ? 'Save Changes' : 'Add Level')}
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
