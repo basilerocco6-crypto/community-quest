@@ -13,31 +13,6 @@ interface LevelFormData {
   isUnlocked: boolean;
 }
 
-const BADGE_COLORS = [
-  { class: 'bg-blue-400', color: '#60a5fa' },
-  { class: 'bg-green-400', color: '#4ade80' },
-  { class: 'bg-purple-400', color: '#a78bfa' },
-  { class: 'bg-orange-400', color: '#fb923c' },
-  { class: 'bg-red-400', color: '#f87171' },
-  { class: 'bg-indigo-400', color: '#818cf8' },
-  { class: 'bg-pink-400', color: '#f472b6' },
-  { class: 'bg-yellow-400', color: '#facc15' },
-  { class: 'bg-gray-400', color: '#9ca3af' },
-  { class: 'bg-teal-400', color: '#2dd4bf' },
-  { class: 'bg-gradient-to-r from-purple-400 to-pink-400', color: 'linear-gradient(90deg, #a78bfa, #f472b6)' },
-  { class: 'bg-gradient-to-r from-blue-400 to-purple-400', color: 'linear-gradient(90deg, #60a5fa, #a78bfa)' },
-];
-
-// Helper functions to get badge colors
-const getBadgeColor = (badgeClass: string): string => {
-  const colorObj = BADGE_COLORS.find(c => c.class === badgeClass);
-  return colorObj ? colorObj.color : '#60a5fa'; // Default to blue if not found
-};
-
-const getBadgeGradient = (badgeClass: string): string => {
-  const colorObj = BADGE_COLORS.find(c => c.class === badgeClass);
-  return colorObj ? colorObj.color : 'linear-gradient(90deg, #60a5fa, #a78bfa)'; // Default gradient
-};
 
 export default function AdminLevelsPage() {
   const [levels, setLevels] = useState<Level[]>([]);
@@ -288,13 +263,7 @@ export default function AdminLevelsPage() {
             <div key={level.level} className="bg-card rounded-lg shadow-md p-6 border border-border">
               <div className="flex justify-between items-start">
                 <div className="flex items-center space-x-4">
-                  <div 
-                    className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold"
-                    style={{
-                      backgroundColor: getBadgeColor(level.badgeColor),
-                      backgroundImage: level.badgeColor.startsWith('bg-gradient') ? getBadgeGradient(level.badgeColor) : undefined
-                    }}
-                  >
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold bg-blue-500">
                     {level.level}
                   </div>
                   <div>
@@ -413,34 +382,6 @@ export default function AdminLevelsPage() {
                     </div>
                   </div>
 
-                  {/* Badge Color */}
-                  <div>
-                    <label className="block text-sm font-medium text-card-foreground mb-2">
-                      Badge Color
-                    </label>
-                    <div className="grid grid-cols-6 gap-2">
-                      {BADGE_COLORS.map((colorObj) => (
-                        <button
-                          key={colorObj.class}
-                          onClick={() => {
-                            console.log('Selected badge color:', colorObj.class);
-                            setFormData(prev => ({ ...prev, badgeColor: colorObj.class }));
-                          }}
-                          className={`w-12 h-12 rounded-full border-2 transition-all cursor-pointer ${
-                            formData.badgeColor === colorObj.class 
-                              ? 'ring-4 ring-blue-500 border-blue-500 shadow-lg' 
-                              : 'border-gray-300 hover:border-blue-500 hover:shadow-md'
-                          }`}
-                          title={colorObj.class}
-                          type="button"
-                          style={{ 
-                            backgroundColor: colorObj.color.startsWith('linear-gradient') ? undefined : colorObj.color,
-                            backgroundImage: colorObj.color.startsWith('linear-gradient') ? colorObj.color : undefined
-                          }}
-                        />
-                      ))}
-                    </div>
-                  </div>
 
                   {/* Perks */}
                   <div>

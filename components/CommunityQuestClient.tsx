@@ -25,31 +25,6 @@ import NotificationDropdown from "./NotificationDropdown";
 import { MOCK_USER, MOCK_LEADERBOARD_WEEKLY, MOCK_LEADERBOARD_MONTHLY, MOCK_LEADERBOARD_ALLTIME, MOCK_LEVELS, User, Level } from "@/lib/types";
 import { useEngagementData } from "@/hooks/useEngagementData";
 
-// Badge color mapping for consistent display
-const BADGE_COLORS = [
-  { class: 'bg-blue-400', color: '#60a5fa' },
-  { class: 'bg-green-400', color: '#4ade80' },
-  { class: 'bg-purple-400', color: '#a78bfa' },
-  { class: 'bg-orange-400', color: '#fb923c' },
-  { class: 'bg-red-400', color: '#f87171' },
-  { class: 'bg-indigo-400', color: '#818cf8' },
-  { class: 'bg-pink-400', color: '#f472b6' },
-  { class: 'bg-yellow-400', color: '#facc15' },
-  { class: 'bg-gray-400', color: '#9ca3af' },
-  { class: 'bg-teal-400', color: '#2dd4bf' },
-  { class: 'bg-gradient-to-r from-purple-400 to-pink-400', color: 'linear-gradient(90deg, #a78bfa, #f472b6)' },
-  { class: 'bg-gradient-to-r from-blue-400 to-purple-400', color: 'linear-gradient(90deg, #60a5fa, #a78bfa)' },
-];
-
-const getBadgeColor = (badgeClass: string): string => {
-  const colorObj = BADGE_COLORS.find(c => c.class === badgeClass);
-  return colorObj ? colorObj.color : '#60a5fa'; // Default to blue
-};
-
-const getBadgeGradient = (badgeClass: string): string => {
-  const colorObj = BADGE_COLORS.find(c => c.class === badgeClass);
-  return colorObj ? colorObj.color : 'linear-gradient(90deg, #60a5fa, #a78bfa)'; // Default gradient
-};
 
 interface CommunityQuestProps {
   user: User;
