@@ -28,6 +28,17 @@ const BADGE_COLORS = [
   { class: 'bg-gradient-to-r from-blue-400 to-purple-400', color: 'linear-gradient(90deg, #60a5fa, #a78bfa)' },
 ];
 
+// Helper functions to get badge colors
+const getBadgeColor = (badgeClass: string): string => {
+  const colorObj = BADGE_COLORS.find(c => c.class === badgeClass);
+  return colorObj ? colorObj.color : '#60a5fa'; // Default to blue if not found
+};
+
+const getBadgeGradient = (badgeClass: string): string => {
+  const colorObj = BADGE_COLORS.find(c => c.class === badgeClass);
+  return colorObj ? colorObj.color : 'linear-gradient(90deg, #60a5fa, #a78bfa)'; // Default gradient
+};
+
 export default function AdminLevelsPage() {
   const [levels, setLevels] = useState<Level[]>([]);
   const [loading, setLoading] = useState(true);
@@ -80,7 +91,7 @@ export default function AdminLevelsPage() {
       const data = await response.json();
       if (response.ok) {
         setLevels(data.levels);
-        setMessage({ type: 'success', text: data.message || 'Levels saved successfully!' });
+        setMessage({ type: 'success', text: 'Level updated successfully! Badge color has been saved.' });
         setEditingLevel(null);
         setShowAddForm(false);
       } else {
@@ -270,7 +281,13 @@ export default function AdminLevelsPage() {
             <div key={level.level} className="bg-card rounded-lg shadow-md p-6 border border-border">
               <div className="flex justify-between items-start">
                 <div className="flex items-center space-x-4">
-                  <div className={`w-12 h-12 rounded-full flex items-center justify-center text-white font-bold ${level.badgeColor}`}>
+                  <div 
+                    className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold"
+                    style={{
+                      backgroundColor: getBadgeColor(level.badgeColor),
+                      backgroundImage: level.badgeColor.startsWith('bg-gradient') ? getBadgeGradient(level.badgeColor) : undefined
+                    }}
+                  >
                     {level.level}
                   </div>
                   <div>
