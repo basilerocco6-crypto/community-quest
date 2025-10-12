@@ -20,7 +20,6 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     name: "Newcomer",
     requiredPoints: 0,
     perks: ["Access to community chat", "View leaderboard rankings", "Access to welcome courses and resources"],
-    memberPercentage: 100,
     badgeColor: "bg-blue-400",
     isUnlocked: true
   },
@@ -29,7 +28,6 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     name: "Contributor",
     requiredPoints: 100,
     perks: ["Early access to new courses", "Priority support response"],
-    memberPercentage: 25,
     badgeColor: "bg-green-400",
     isUnlocked: false
   },
@@ -38,7 +36,6 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     name: "Active Member",
     requiredPoints: 300,
     perks: ["Access to exclusive forum discussions", "Monthly featured member spotlight"],
-    memberPercentage: 15,
     badgeColor: "bg-purple-400",
     isUnlocked: false
   },
@@ -47,7 +44,6 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     name: "Community Builder",
     requiredPoints: 600,
     perks: ["Early access to new courses and events", "Double points on weekend activities"],
-    memberPercentage: 8,
     badgeColor: "bg-orange-400",
     isUnlocked: false
   },
@@ -56,7 +52,6 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     name: "Expert",
     requiredPoints: 1000,
     perks: ["Access to Expert-only forum discussions", "Monthly group coaching sessions", "Free access to one premium course/month"],
-    memberPercentage: 5,
     badgeColor: "bg-red-400",
     isUnlocked: false
   },
@@ -65,7 +60,6 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     name: "Grandmaster",
     requiredPoints: 2000,
     perks: ["Revenue share on referrals (5%)", "Access to founder's exclusive course library"],
-    memberPercentage: 3,
     badgeColor: "bg-indigo-400",
     isUnlocked: false
   },
@@ -74,7 +68,6 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     name: "Community Leader",
     requiredPoints: 3500,
     perks: ["Invitation to exclusive community events", "Revenue share on referrals (10%)", "Direct messaging access to founder"],
-    memberPercentage: 2,
     badgeColor: "bg-pink-400",
     isUnlocked: false
   },
@@ -83,7 +76,6 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     name: "Wizard",
     requiredPoints: 5500,
     perks: ["Monthly private mastermind with founder", "Revenue share on referrals (15%)", "Exclusive \"Wizard Council\" forum access", "Free lifetime access to all courses"],
-    memberPercentage: 1,
     badgeColor: "bg-yellow-400",
     isUnlocked: false
   },
@@ -92,7 +84,6 @@ const DEFAULT_LEVEL_CONFIG: Level[] = [
     name: "GOAT",
     requiredPoints: 8000,
     perks: ["Monthly 1:1 coaching session with founder (30 min)", "Revenue share on referrals (20%)", "Equity/partnership opportunities discussed", "Free ticket to annual in-person event", "Co-founder status consideration"],
-    memberPercentage: 0.1,
     badgeColor: "bg-gradient-to-r from-purple-400 to-pink-400",
     isUnlocked: false
   }

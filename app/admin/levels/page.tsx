@@ -8,7 +8,6 @@ interface LevelFormData {
   name: string;
   requiredPoints: number;
   perks: string[];
-  memberPercentage: number;
   badgeColor: string;
   isUnlocked: boolean;
 }
@@ -24,7 +23,6 @@ export default function AdminLevelsPage() {
     name: '',
     requiredPoints: 0,
     perks: [''],
-    memberPercentage: 100,
     badgeColor: 'bg-blue-400',
     isUnlocked: false,
   });
@@ -85,7 +83,6 @@ export default function AdminLevelsPage() {
       name: level.name,
       requiredPoints: level.requiredPoints,
       perks: level.perks.length > 0 ? level.perks : [''],
-      memberPercentage: level.memberPercentage,
       badgeColor: level.badgeColor,
       isUnlocked: level.isUnlocked,
     });
@@ -171,7 +168,6 @@ export default function AdminLevelsPage() {
       name: '',
       requiredPoints: 0,
       perks: [''],
-      memberPercentage: 100,
       badgeColor: 'bg-blue-400',
       isUnlocked: false,
     });
@@ -271,7 +267,7 @@ export default function AdminLevelsPage() {
                       Level {level.level} - {level.name}
                     </h3>
                     <p className="text-muted-foreground">
-                      {level.requiredPoints} points • {level.memberPercentage}% of members
+                      {level.requiredPoints} points
                     </p>
                   </div>
                 </div>
@@ -364,20 +360,6 @@ export default function AdminLevelsPage() {
                         onChange={(e) => setFormData(prev => ({ ...prev, requiredPoints: parseInt(e.target.value) || 0 }))}
                         className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-background text-foreground"
                         min="0"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-card-foreground mb-1">
-                        Member %
-                      </label>
-                      <input
-                        type="number"
-                        value={formData.memberPercentage}
-                        onChange={(e) => setFormData(prev => ({ ...prev, memberPercentage: parseFloat(e.target.value) || 0 }))}
-                        className="w-full px-3 py-2 border border-border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-background text-foreground"
-                        min="0"
-                        max="100"
-                        step="0.1"
                       />
                     </div>
                   </div>

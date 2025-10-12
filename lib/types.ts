@@ -40,7 +40,6 @@ export interface Level {
   perks: string[];
   discountPercentage?: number;
   badgeColor: string;
-  memberPercentage: number;
   isUnlocked: boolean;
 }
 
