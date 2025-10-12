@@ -118,13 +118,16 @@ export default function AdminLevelsPage() {
   };
 
   const handleSave = () => {
+    console.log('Saving with formData:', formData);
     const updatedLevels = levels.map(level => {
       if (level.level === editingLevel) {
-        return {
+        const updatedLevel = {
           ...level,
           ...formData,
           perks: formData.perks.filter(perk => perk.trim() !== ''),
         };
+        console.log('Updated level:', updatedLevel);
+        return updatedLevel;
       }
       return level;
     });
@@ -415,7 +418,10 @@ export default function AdminLevelsPage() {
                       {BADGE_COLORS.map((colorObj) => (
                         <button
                           key={colorObj.class}
-                          onClick={() => setFormData(prev => ({ ...prev, badgeColor: colorObj.class }))}
+                          onClick={() => {
+                            console.log('Selected badge color:', colorObj.class);
+                            setFormData(prev => ({ ...prev, badgeColor: colorObj.class }));
+                          }}
                           className={`w-12 h-12 rounded-full border-2 transition-all cursor-pointer ${
                             formData.badgeColor === colorObj.class 
                               ? 'ring-4 ring-blue-500 border-blue-500 shadow-lg' 
@@ -477,7 +483,7 @@ export default function AdminLevelsPage() {
                     </button>
                     <button
                       onClick={editingLevel !== null ? handleSave : handleAddLevel}
-                      disabled={saving || !formData.name.trim()}
+                      disabled={saving}
                       className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                     >
                       {saving ? 'Saving...' : (editingLevel !== null ? 'Save Changes' : 'Add Level')}
