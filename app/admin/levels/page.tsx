@@ -285,13 +285,13 @@ export default function AdminLevelsPage() {
                 <div className="flex space-x-2">
                   <button
                     onClick={() => handleEdit(level)}
-                    className="text-blue-600 hover:text-blue-800 px-3 py-1 rounded border border-blue-600 hover:bg-blue-50 transition-colors"
+                    className="text-blue-600 hover:text-blue-800 px-3 py-1 rounded border border-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
                   >
                     Edit
                   </button>
                   <button
                     onClick={() => handleDelete(level.level)}
-                    className="text-red-600 hover:text-red-800 px-3 py-1 rounded border border-red-600 hover:bg-red-50 transition-colors"
+                    className="text-red-600 hover:text-red-800 px-3 py-1 rounded border border-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"
                   >
                     Delete
                   </button>
@@ -425,7 +425,7 @@ export default function AdminLevelsPage() {
                           />
                           <button
                             onClick={() => removePerk(index)}
-                            className="text-red-600 hover:text-red-800 px-3 py-2"
+                            className="text-red-600 hover:text-red-800 px-3 py-2 transition-colors"
                           >
                             Remove
                           </button>
@@ -433,7 +433,7 @@ export default function AdminLevelsPage() {
                       ))}
                       <button
                         onClick={addPerk}
-                        className="text-blue-600 hover:text-blue-800 px-3 py-2 border border-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
+                        className="text-blue-600 hover:text-blue-800 px-3 py-2 border border-blue-600 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors"
                       >
                         + Add Benefit
                       </button>
